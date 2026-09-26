@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LABMD — направление D «Спокойствие»</title>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="./tokens.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      color-scheme: light;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--lmd-bg);
+      color: var(--lmd-ink);
+      font-family: var(--lmd-font-text);
+      font-size: 17px;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a,
+    input {
+      transition:
+        color var(--lmd-transition),
+        background-color var(--lmd-transition),
+        border-color var(--lmd-transition),
+        box-shadow var(--lmd-transition),
+        transform var(--lmd-transition);
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--lmd-brand);
+      outline-offset: var(--lmd-space-1);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--lmd-ink);
+      font-family: var(--lmd-font-head);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      max-width: 16ch;
+      margin-bottom: var(--lmd-space-5);
+      font-size: clamp(2.75rem, 6vw, 4rem);
+    }
+
+    h2 {
+      margin-bottom: var(--lmd-space-5);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+    }
+
+    h3 {
+      margin-bottom: var(--lmd-space-3);
+      font-size: clamp(1.5rem, 3vw, 1.75rem);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .page-shell {
+      width: min(100% - (var(--lmd-space-5) * 2), 75rem);
+      margin-inline: auto;
+      padding-block: var(--lmd-space-6) var(--lmd-space-8);
+    }
+
+    .board-section {
+      padding-block: var(--lmd-space-8);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .board-section:first-child {
+      padding-top: var(--lmd-space-5);
+    }
+
+    .board-section:last-child {
+      border-bottom: 0;
+    }
+
+    .section-kicker,
+    .eyebrow,
+    .token-name,
+    .label,
+    .trust-label {
+      margin-bottom: var(--lmd-space-2);
+      color: var(--lmd-brand);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section-lead {
+      max-width: 45rem;
+      margin-bottom: var(--lmd-space-7);
+      color: var(--lmd-ink-muted);
+      font-size: 1.125rem;
+    }
+
+    .intro-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--lmd-space-5);
+      margin-bottom: var(--lmd-space-8);
+      padding-bottom: var(--lmd-space-5);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: var(--lmd-space-4);
+    }
+
+    .wordmark-name {
+      font-family: var(--lmd-font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    .wordmark-caption {
+      max-width: 22rem;
+      color: var(--lmd-ink-muted);
+      line-height: 1.35;
+    }
+
+    .direction-mark {
+      flex: 0 0 auto;
+      padding: var(--lmd-space-2) var(--lmd-space-4);
+      border: 1px solid var(--lmd-border);
+      border-radius: 999px;
+      color: var(--lmd-ink);
+      font-weight: 500;
+    }
+
+    .intro-copy {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
+      align-items: end;
+      gap: var(--lmd-space-8);
+    }
+
+    .intro-character {
+      margin-bottom: var(--lmd-space-5);
+      color: var(--lmd-ink-muted);
+      font-size: 1.25rem;
+    }
+
+    .care-note {
+      padding: var(--lmd-space-5);
+      border-left: var(--lmd-space-1) solid var(--lmd-brand);
+      background: var(--lmd-surface);
+      box-shadow: var(--lmd-shadow);
+    }
+
+    .care-note strong {
+      display: block;
+      margin-bottom: var(--lmd-space-2);
+      font-family: var(--lmd-font-head);
+      font-size: 1.5rem;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--lmd-space-5);
+    }
+
+    .token-card {
+      overflow: hidden;
+      border: 1px solid var(--lmd-border);
+      border-radius: var(--lmd-radius);
+      background: var(--lmd-surface);
+      box-shadow: var(--lmd-shadow);
+    }
+
+    .swatch {
+      min-height: 8rem;
+      background: var(--swatch);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .token-copy {
+      padding: var(--lmd-space-4);
+    }
+
+    .token-copy p {
+      margin-bottom: var(--lmd-space-1);
+    }
+
+    .token-name {
+      overflow-wrap: anywhere;
+    }
+
+    .token-value,
+    .token-contrast,
+    .price,
+    .stat-value,
+    .reference-table,
+    .trust-value {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .token-value {
+      font-weight: 500;
+    }
+
+    .token-contrast {
+      color: var(--lmd-ink-muted);
+    }
+
+    .type-stack {
+      display: grid;
+      gap: var(--lmd-space-5);
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 10rem minmax(0, 1fr);
+      gap: var(--lmd-space-6);
+      align-items: baseline;
+      padding-block: var(--lmd-space-5);
+      border-top: 1px solid var(--lmd-border);
+    }
+
+    .type-meta {
+      color: var(--lmd-ink-muted);
+    }
+
+    .type-h1,
+    .type-h2,
+    .type-h3 {
+      font-family: var(--lmd-font-head);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .type-h1 { font-size: 4rem; }
+    .type-h2 { font-size: 2.75rem; }
+    .type-h3 { font-size: 1.75rem; }
+    .type-body { font-size: 1.0625rem; }
+    .type-small { font-size: 1.0625rem; color: var(--lmd-ink-muted); }
+    .type-price { font-size: 1.5rem; font-weight: 500; }
+
+    .glyph-line {
+      display: block;
+      margin-top: var(--lmd-space-2);
+      color: var(--lmd-ink-muted);
+      font-size: 1.0625rem;
+      letter-spacing: 0.04em;
+    }
+
+    .ui-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--lmd-space-5);
+      min-width: 0;
+    }
+
+    .component-panel {
+      padding: var(--lmd-space-6);
+      border: 1px solid var(--lmd-border);
+      border-radius: var(--lmd-radius);
+      background: var(--lmd-surface);
+      box-shadow: var(--lmd-shadow);
+      min-width: 0;
+    }
+
+    .component-panel-wide {
+      grid-column: 1 / -1;
+    }
+
+    .component-title {
+      margin-bottom: var(--lmd-space-5);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--lmd-space-3);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: calc(var(--lmd-space-7) + var(--lmd-space-2));
+      align-items: center;
+      justify-content: center;
+      padding: var(--lmd-space-3) var(--lmd-space-5);
+      border: 1px solid var(--lmd-brand);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      cursor: pointer;
+      font-weight: 500;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+
+    .button-primary {
+      background: var(--lmd-brand);
+      color: var(--lmd-brand-contrast);
+    }
+
+    .button-primary:hover {
+      border-color: var(--lmd-brand-hover);
+      background: var(--lmd-brand-hover);
+    }
+
+    .button-secondary {
+      background: var(--lmd-surface);
+      color: var(--lmd-brand);
+    }
+
+    .button-secondary:hover {
+      background: var(--lmd-bg);
+      color: var(--lmd-brand-hover);
+    }
+
+    .button:active {
+      transform: translateY(var(--lmd-space-1));
+    }
+
+    .button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+      transform: none;
+    }
+
+    .analysis-card {
+      display: grid;
+      gap: var(--lmd-space-5);
+    }
+
+    .analysis-top,
+    .analysis-bottom {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--lmd-space-5);
+    }
+
+    .analysis-name {
+      margin-bottom: var(--lmd-space-2);
+      font-family: var(--lmd-font-head);
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .analysis-code,
+    .analysis-note {
+      margin: 0;
+      color: var(--lmd-ink-muted);
+    }
+
+    .price {
+      white-space: nowrap;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .ready-time {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--lmd-space-7);
+      padding-inline: var(--lmd-space-4);
+      border: 1px solid var(--lmd-success);
+      border-radius: 999px;
+      color: var(--lmd-success);
+      font-weight: 500;
+    }
+
+    .license-badge {
+      display: inline-flex;
+      min-height: var(--lmd-space-7);
+      align-items: center;
+      padding-inline: var(--lmd-space-4);
+      border: 1px solid var(--lmd-border);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      background: var(--lmd-bg);
+      color: var(--lmd-ink);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: var(--lmd-space-2);
+      font-weight: 500;
+    }
+
+    .input {
+      width: 100%;
+      min-height: calc(var(--lmd-space-7) + var(--lmd-space-2));
+      padding: var(--lmd-space-3) var(--lmd-space-4);
+      border: 1px solid var(--lmd-border);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      background: var(--lmd-surface);
+      color: var(--lmd-ink);
+    }
+
+    .input::placeholder {
+      color: var(--lmd-ink-muted);
+      opacity: 1;
+    }
+
+    .input:hover {
+      border-color: var(--lmd-brand);
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      border: 1px solid var(--lmd-border);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      max-width: 100%;
+    }
+
+    .reference-table {
+      width: 100%;
+      min-width: 38rem;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .reference-table th,
+    .reference-table td {
+      padding: var(--lmd-space-4) var(--lmd-space-5);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .reference-table th {
+      background: var(--lmd-bg);
+      font-weight: 500;
+    }
+
+    .reference-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .hero-fragment {
+      overflow: hidden;
+      border: 1px solid var(--lmd-border);
+      border-radius: var(--lmd-radius);
+      background: var(--lmd-surface);
+      box-shadow: var(--lmd-shadow);
+    }
+
+    .hero-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--lmd-space-5);
+      padding: var(--lmd-space-5) var(--lmd-space-6);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .hero-contact {
+      color: var(--lmd-ink);
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .hero-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
+      gap: var(--lmd-space-8);
+      align-items: center;
+      padding: var(--lmd-space-8);
+    }
+
+    .hero-copy p {
+      max-width: 39rem;
+      margin-bottom: var(--lmd-space-6);
+      color: var(--lmd-ink-muted);
+      font-size: 1.25rem;
+    }
+
+    .hero-trust {
+      display: grid;
+      gap: var(--lmd-space-3);
+      margin: 0;
+    }
+
+    .trust-item {
+      padding: var(--lmd-space-5);
+      border-left: var(--lmd-space-1) solid var(--lmd-brand);
+      background: var(--lmd-bg);
+    }
+
+    .trust-item dt,
+    .trust-item dd {
+      margin: 0;
+    }
+
+    .trust-label {
+      color: var(--lmd-ink-muted);
+    }
+
+    .trust-value {
+      font-weight: 500;
+    }
+
+    .genetics {
+      padding: var(--lmd-space-8);
+      border: 1px solid var(--lmd-accent-contrast);
+      border-radius: var(--lmd-radius);
+      background: var(--lmd-accent);
+      color: var(--lmd-accent-contrast);
+    }
+
+    .genetics h2,
+    .genetics h3,
+    .genetics .eyebrow {
+      color: var(--lmd-accent-contrast);
+    }
+
+    .genetics-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.6fr);
+      gap: var(--lmd-space-8);
+      align-items: end;
+      margin-bottom: var(--lmd-space-7);
+    }
+
+    .genetics-header h2 {
+      margin-bottom: 0;
+    }
+
+    .genetics-header p {
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    .genetics-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--lmd-space-4);
+    }
+
+    .genetics-item {
+      display: grid;
+      gap: var(--lmd-space-5);
+      align-content: space-between;
+      min-height: 14rem;
+      padding: var(--lmd-space-5);
+      border: 1px solid var(--lmd-accent-contrast);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      background: var(--lmd-surface);
+      color: var(--lmd-ink);
+    }
+
+    .genetics-item h3 {
+      color: var(--lmd-ink);
+    }
+
+    .genetics-meta {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--lmd-space-4);
+    }
+
+    .genetics-meta span:first-child {
+      color: var(--lmd-ink-muted);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--lmd-space-6);
+    }
+
+    .summary-card {
+      padding-top: var(--lmd-space-5);
+      border-top: var(--lmd-space-1) solid var(--lmd-brand);
+    }
+
+    .summary-card p {
+      color: var(--lmd-ink-muted);
+    }
+
+    @media (max-width: 56rem) {
+      .palette-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .intro-copy,
+      .hero-main,
+      .genetics-header {
+        grid-template-columns: 1fr;
+      }
+
+      .ui-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .component-panel-wide {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 40rem) {
+      .page-shell {
+        width: min(100% - (var(--lmd-space-4) * 2), 75rem);
+        padding-top: var(--lmd-space-4);
+      }
+
+      .board-section {
+        padding-block: var(--lmd-space-7);
+      }
+
+      .intro-nav,
+      .hero-bar,
+      .analysis-top,
+      .analysis-bottom,
+      .genetics-meta {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .intro-nav {
+        display: flex;
+      }
+
+      .wordmark {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--lmd-space-2);
+      }
+
+      .wordmark-caption {
+        max-width: 18rem;
+      }
+
+      .intro-copy {
+        gap: var(--lmd-space-6);
+      }
+
+      .palette-grid,
+      .genetics-list,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .type-row {
+        grid-template-columns: 1fr;
+        gap: var(--lmd-space-2);
+      }
+
+      .type-h1 { font-size: 2.75rem; }
+      .type-h2 { font-size: 2.25rem; }
+
+      .component-panel,
+      .hero-main,
+      .genetics {
+        padding: var(--lmd-space-5);
+      }
+
+      .button-row,
+      .button {
+        width: 100%;
+      }
+
+      .hero-main,
+      .genetics-header {
+        gap: var(--lmd-space-6);
+      }
+
+      .hero-contact {
+        white-space: normal;
+      }
+
+      .swatch {
+        min-height: var(--lmd-space-8);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="board-section" aria-labelledby="direction-title">
+      <div class="intro-nav">
+        <div class="wordmark" aria-label="LABMD, Центр лабораторной медицинской диагностики">
+          <img src="./logo.svg" alt="LABMD" style="height:44px;width:auto;display:block">
+          <span class="wordmark-name" hidden>LABMD</span>
+          
+        </div>
+        <span class="direction-mark">D · заботливый</span>
+      </div>
+
+      <div class="intro-copy">
+        <div>
+          <p class="section-kicker">Архетип: заботливый</p>
+          <h1 id="direction-title">Направление D — «Спокойствие»</h1>
+          <p class="intro-character">Светлая, ясная медицинская среда: мы рядом, называем сроки и объясняем следующий шаг без тревожных формулировок.</p>
+        </div>
+        <aside class="care-note" aria-label="Голос направления">
+          <strong>Не останетесь один на один с результатом</strong>
+          <p>Подскажем, как подготовиться, когда будет готов анализ и к какому врачу обратиться дальше.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="board-section" aria-labelledby="palette-title">
+      <p class="section-kicker">01 · Палитра</p>
+      <h2 id="palette-title">Тихий свет, точные ориентиры</h2>
+      <p class="section-lead">Большая часть пространства остаётся белой и голубовато-светлой. Приглушённый бирюзово-синий ведёт к действию, а персиковый выделяет только медицинскую генетику.</p>
+
+      <div class="palette-grid">
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-ink)" aria-label="Цвет #163A45"></div>
+          <div class="token-copy"><p class="token-name">--lmd-ink</p><p class="token-value">#163A45</p><p class="token-contrast">12,03:1 на surface</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-ink-muted)" aria-label="Цвет #496972"></div>
+          <div class="token-copy"><p class="token-name">--lmd-ink-muted</p><p class="token-value">#496972</p><p class="token-contrast">5,85:1 на surface</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-bg)" aria-label="Цвет #F6FBFC"></div>
+          <div class="token-copy"><p class="token-name">--lmd-bg</p><p class="token-value">#F6FBFC</p><p class="token-contrast">11,66:1 с ink</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-surface)" aria-label="Цвет #FCFEFE"></div>
+          <div class="token-copy"><p class="token-name">--lmd-surface</p><p class="token-value">#FCFEFE</p><p class="token-contrast">12,03:1 с ink</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-border)" aria-label="Цвет #6F929B"></div>
+          <div class="token-copy"><p class="token-name">--lmd-border</p><p class="token-value">#6F929B</p><p class="token-contrast">3,31:1 к surface</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-brand)" aria-label="Цвет #247784"></div>
+          <div class="token-copy"><p class="token-name">--lmd-brand</p><p class="token-value">#247784</p><p class="token-contrast">5,02:1 с contrast</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-brand-hover)" aria-label="Цвет #1B5F6A"></div>
+          <div class="token-copy"><p class="token-name">--lmd-brand-hover</p><p class="token-value">#1B5F6A</p><p class="token-contrast">7,03:1 с contrast</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-brand-contrast)" aria-label="Цвет #F8FCFD"></div>
+          <div class="token-copy"><p class="token-name">--lmd-brand-contrast</p><p class="token-value">#F8FCFD</p><p class="token-contrast">5,02:1 на brand</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-accent)" aria-label="Цвет #F5B097"></div>
+          <div class="token-copy"><p class="token-name">--lmd-accent</p><p class="token-value">#F5B097</p><p class="token-contrast">7,11:1 с accent-contrast</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-accent-contrast)" aria-label="Цвет #4B2820"></div>
+          <div class="token-copy"><p class="token-name">--lmd-accent-contrast</p><p class="token-value">#4B2820</p><p class="token-contrast">7,11:1 на accent</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-success)" aria-label="Цвет #297157"></div>
+          <div class="token-copy"><p class="token-name">--lmd-success</p><p class="token-value">#297157</p><p class="token-contrast">5,77:1 на surface</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-warning)" aria-label="Цвет #A05E18"></div>
+          <div class="token-copy"><p class="token-name">--lmd-warning</p><p class="token-value">#A05E18</p><p class="token-contrast">5,05:1 на surface</p></div>
+        </article>
+        <article class="token-card">
+          <div class="swatch" style="--swatch: var(--lmd-danger)" aria-label="Цвет #A43E42"></div>
+          <div class="token-copy"><p class="token-name">--lmd-danger</p><p class="token-value">#A43E42</p><p class="token-contrast">6,20:1 на surface</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="board-section" aria-labelledby="type-title">
+      <p class="section-kicker">02 · Типографика</p>
+      <h2 id="type-title">Мягкий голос, медицинская ясность</h2>
+      <p class="section-lead">Nunito Sans 700 работает только в заголовках и вордмарке. Весь прикладной текст — Golos Text 400/500 с базой 17 px и табличными цифрами.</p>
+
+      <div class="type-stack">
+        <div class="type-row"><div class="type-meta">H1 · 64/70</div><div class="type-h1">Анализы без лишней тревоги<span class="glyph-line">Щ ъ ё № · 0123456789</span></div></div>
+        <div class="type-row"><div class="type-meta">H2 · 44/48</div><div class="type-h2">Мы всё объясним<span class="glyph-line">Щ ъ ё № · 0123456789</span></div></div>
+        <div class="type-row"><div class="type-meta">H3 · 28/31</div><div class="type-h3">Подготовка к исследованию<span class="glyph-line">Щ ъ ё № · 0123456789</span></div></div>
+        <div class="type-row"><div class="type-meta">Body · 17/28</div><div class="type-body">Перед сдачей анализа можно пить обычную воду. Если принимаете лекарства, скажите об этом администратору — подскажем, нужно ли уточнить подготовку у врача.<span class="glyph-line">Щ ъ ё № · 0123456789</span></div></div>
+        <div class="type-row"><div class="type-meta">Small · 17/28</div><div class="type-small">Лицензия ЛО-78-01-006578 от 20.02.2016 · Щ ъ ё № · 0123456789</div></div>
+        <div class="type-row"><div class="type-meta">Цена · 24/34</div><div class="type-price">Иммуноблот ANA-профиль — 4 350 ₽<span class="glyph-line">Щ ъ ё № · 0123456789</span></div></div>
+      </div>
+    </section>
+
+    <section class="board-section" aria-labelledby="ui-title">
+      <p class="section-kicker">03 · UI на токенах</p>
+      <h2 id="ui-title">Спокойные действия, видимые факты</h2>
+      <p class="section-lead">Крупные элементы не торопят человека. При этом цена, срок готовности и лицензия остаются в строгой сетке и не растворяются в дружелюбной подаче.</p>
+
+      <div class="ui-grid">
+        <article class="component-panel">
+          <h3 class="component-title">Кнопки</h3>
+          <div class="button-row">
+            <button class="button button-primary" type="button">Выбрать анализ</button>
+            <button class="button button-secondary" type="button">Как подготовиться</button>
+            <button class="button button-secondary" type="button" disabled>Недоступно</button>
+          </div>
+        </article>
+
+        <article class="component-panel">
+          <h3 class="component-title">Поиск без догадок</h3>
+          <label class="field-label" for="analysis-search">Название анализа или симптом</label>
+          <input class="input" id="analysis-search" type="search" placeholder="Например, клинический анализ крови">
+        </article>
+
+        <article class="component-panel analysis-card">
+          <div class="analysis-top">
+            <div>
+              <p class="analysis-name">Клинический анализ крови</p>
+              <p class="analysis-code">Код исследования: 01-001</p>
+            </div>
+            <span class="price">400 ₽</span>
+          </div>
+          <div class="analysis-bottom">
+            <div><span class="ready-time">Готовность: 1 рабочий день</span></div>
+            <button class="button button-primary" type="button">Добавить</button>
+          </div>
+          <p class="analysis-note">Не уверены, подходит ли исследование? Позвоните — уточним назначение и подготовку.</p>
+        </article>
+
+        <article class="component-panel">
+          <h3 class="component-title">Лицензия всегда рядом</h3>
+          <div class="license-badge">Лицензия ЛО-78-01-006578</div>
+          <p>Выдана 20.02.2016. Реквизит не спрятан в подвале страницы и читается без мелкого шрифта.</p>
+        </article>
+
+        <article class="component-panel component-panel-wide">
+          <h3 class="component-title">Референсные значения</h3>
+          <div class="table-scroll" tabindex="0" aria-label="Таблица прокручивается по горизонтали на узких экранах">
+            <table class="reference-table">
+              <thead><tr><th scope="col">Показатель</th><th scope="col">Результат</th><th scope="col">Референс</th><th scope="col">Единицы</th></tr></thead>
+              <tbody>
+                <tr><td>Гемоглобин</td><td>137</td><td>120–150</td><td>г/л</td></tr>
+                <tr><td>Лейкоциты</td><td>6,2</td><td>4,0–9,0</td><td>10⁹/л</td></tr>
+                <tr><td>Тромбоциты</td><td>245</td><td>180–320</td><td>10⁹/л</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="board-section" aria-labelledby="hero-title">
+      <p class="section-kicker">04 · Hero-фрагмент</p>
+      <h2 id="hero-title">Первый экран, который снижает тревогу</h2>
+
+      <div class="hero-fragment">
+        <div class="hero-bar">
+          <div class="wordmark"><img src="./logo.svg" alt="LABMD — Центр лабораторной медицинской диагностики" style="height:38px;width:auto;display:block"></div>
+          <a class="hero-contact" href="tel:+79219058951">+7 (921) 905-89-51</a>
+        </div>
+        <div class="hero-main">
+          <div class="hero-copy">
+            <p class="eyebrow">Лабораторная диагностика в Санкт-Петербурге</p>
+            <h1>Сдать анализы спокойно и с пониманием</h1>
+            <p>Расскажем, как подготовиться, заранее покажем цену и срок. Если назначение непонятно, поможем разобраться без сложных медицинских формулировок.</p>
+            <div class="button-row">
+              <a class="button button-primary" href="#ui-title">Подобрать анализ</a>
+              <a class="button button-secondary" href="tel:+79219058951">Записаться</a>
+            </div>
+          </div>
+
+          <dl class="hero-trust">
+            <div class="trust-item"><dt class="trust-label">Срок результата</dt><dd class="trust-value">Показываем до оформления</dd></div>
+            <div class="trust-item"><dt class="trust-label">Лицензия</dt><dd class="trust-value">ЛО-78-01-006578</dd></div>
+            <div class="trust-item"><dt class="trust-label">Своя лаборатория</dt><dd class="trust-value">Большой пр. ПС, 102</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="board-section" aria-labelledby="genetics-title">
+      <p class="section-kicker">05 · Фирменное направление</p>
+      <div class="genetics">
+        <div class="genetics-header">
+          <div>
+            <p class="eyebrow">Медицинская генетика</p>
+            <h2 id="genetics-title">Сложное исследование — понятный следующий шаг</h2>
+          </div>
+          <p>Объясним подготовку и формат результата до сдачи анализа. Диагнозов по интернету не ставим: заключение интерпретирует врач.</p>
+        </div>
+
+        <div class="genetics-list">
+          <article class="genetics-item">
+            <h3>Комплексное исследование хромосомного набора (23 хромосомы)</h3>
+            <div class="genetics-meta"><span>Медицинская генетика</span><span class="price">6 900 ₽</span></div>
+          </article>
+          <article class="genetics-item">
+            <h3>Синдром Жильбера</h3>
+            <div class="genetics-meta"><span>Медицинская генетика</span><span class="price">2 900 ₽</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="board-section" aria-labelledby="summary-title">
+      <p class="section-kicker">06 · Итог</p>
+      <h2 id="summary-title">Кому подойдёт «Спокойствие»</h2>
+      <div class="summary-grid">
+        <article class="summary-card">
+          <h3>Подойдёт</h3>
+          <p>Пациентам, которым важно заранее понимать цену, подготовку и срок результата.</p>
+          <p>Людям старшего возраста и тем, кто тревожится перед анализами или сталкивается со сложной диагностикой впервые.</p>
+        </article>
+        <article class="summary-card">
+          <h3>Не подойдёт</h3>
+          <p>Бренду, который хочет выглядеть как технологический стартап, премиальный велнес-клуб или эмоциональный лайфстайл-сервис.</p>
+          <p>Направление сохраняет медицинскую строгость: лицензия, сроки, коды исследований и табличные значения остаются на первом плане.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+<p style="max-width:960px;margin:32px auto 60px;padding:0 24px;font-size:15px;opacity:.75"><a href="../../index.html">← Все варианты</a> · <a href="./moodboard.html">Мудборд направления</a></p></body>
+</html>

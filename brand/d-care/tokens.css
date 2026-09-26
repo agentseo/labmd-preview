@@ -1,0 +1,28 @@
+:root {
+  --lmd-ink: #163A45;
+  --lmd-ink-muted: #496972;
+  --lmd-bg: #F6FBFC;
+  --lmd-surface: #FCFEFE;
+  --lmd-border: #6F929B;
+  --lmd-brand: #247784;
+  --lmd-brand-hover: #1B5F6A;
+  --lmd-brand-contrast: #F8FCFD;
+  --lmd-accent: #F5B097;
+  --lmd-accent-contrast: #4B2820;
+  --lmd-success: #297157;
+  --lmd-warning: #A05E18;
+  --lmd-danger: #A43E42;
+  --lmd-font-head: 'Nunito Sans', sans-serif;
+  --lmd-font-text: 'Golos Text', sans-serif;
+  --lmd-radius: 18px;
+  --lmd-shadow: 0 18px 50px rgba(22, 58, 69, 0.10);
+  --lmd-space-1: 4px;
+  --lmd-space-2: 8px;
+  --lmd-space-3: 12px;
+  --lmd-space-4: 16px;
+  --lmd-space-5: 24px;
+  --lmd-space-6: 32px;
+  --lmd-space-7: 48px;
+  --lmd-space-8: 64px;
+  --lmd-transition: 180ms cubic-bezier(0.25, 1, 0.5, 1);
+}

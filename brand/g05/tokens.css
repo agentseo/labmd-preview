@@ -1,0 +1,22 @@
+:root {
+  --lmd-ink: #17233A;
+  --lmd-ink-muted: #525C73;
+  --lmd-bg: #F5F7FC;
+  --lmd-surface: #FFFFFF;
+  --lmd-border: #868FA6;
+  --lmd-brand: #2B5EA8;
+  --lmd-brand-hover: #1F4780;
+  --lmd-brand-contrast: #FFFFFF;
+  --lmd-accent: #C6392F;
+  --lmd-accent-contrast: #FFFFFF;
+  --lmd-success: #1C6B52;
+  --lmd-warning: #8A5300;
+  --lmd-danger: #A4342F;
+  --lmd-font-head: "Inter", system-ui, sans-serif;
+  --lmd-font-text: "Inter", system-ui, sans-serif;
+  --lmd-radius: 12px;
+  --lmd-shadow: 0 8px 26px rgb(20 32 48 / 8%);
+  --lmd-space-1: 4px;  --lmd-space-2: 8px;  --lmd-space-3: 12px; --lmd-space-4: 16px;
+  --lmd-space-5: 24px; --lmd-space-6: 32px; --lmd-space-7: 48px; --lmd-space-8: 64px;
+  --lmd-transition: 180ms cubic-bezier(.22,1,.36,1);
+}

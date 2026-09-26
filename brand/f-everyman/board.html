@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Направление F — «Без переплат» · LABMD</title>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--lmd-bg);
+      color: var(--lmd-ink);
+      font-family: var(--lmd-font-text);
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      background: var(--lmd-bg);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a,
+    input {
+      transition: color var(--lmd-transition), background-color var(--lmd-transition), border-color var(--lmd-transition), box-shadow var(--lmd-transition), transform var(--lmd-transition);
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--lmd-brand);
+      outline-offset: var(--lmd-space-1);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--lmd-font-head);
+      color: var(--lmd-ink);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      margin-bottom: var(--lmd-space-5);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+    }
+
+    h2 {
+      margin-bottom: var(--lmd-space-3);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+    }
+
+    h3 {
+      margin-bottom: var(--lmd-space-2);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: var(--lmd-space-4);
+    }
+
+    .container {
+      width: min(100% - (var(--lmd-space-6) * 2), 72rem);
+      margin-inline: auto;
+    }
+
+    .section {
+      padding-block: var(--lmd-space-8);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .section--soft {
+      background: var(--lmd-surface);
+    }
+
+    .section-head {
+      max-width: 46rem;
+      margin-bottom: var(--lmd-space-7);
+    }
+
+    .section-kicker,
+    .token-name,
+    .type-label {
+      color: var(--lmd-brand);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: var(--lmd-space-3);
+    }
+
+    .intro {
+      padding-block: var(--lmd-space-8);
+      background: var(--lmd-bg);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .intro-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--lmd-space-5);
+      margin-bottom: var(--lmd-space-7);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--lmd-space-4);
+      color: var(--lmd-ink);
+      text-decoration: none;
+    }
+
+    .wordmark-name {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .wordmark-caption {
+      max-width: 15rem;
+      color: var(--lmd-ink-muted);
+      font-size: 0.78rem;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .archetype-label {
+      padding: var(--lmd-space-2) var(--lmd-space-4);
+      border: 1px solid var(--lmd-brand);
+      border-radius: 999px;
+      color: var(--lmd-brand);
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .intro-copy {
+      max-width: 55rem;
+    }
+
+    .intro-copy p {
+      max-width: 42rem;
+      margin-bottom: 0;
+      color: var(--lmd-ink-muted);
+      font-size: 1.15rem;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--lmd-space-4);
+    }
+
+    .swatch {
+      overflow: hidden;
+      background: var(--lmd-bg);
+      border: 1px solid var(--lmd-border);
+      border-radius: var(--lmd-radius);
+    }
+
+    .swatch-color {
+      min-height: calc(var(--lmd-space-8) + var(--lmd-space-5));
+      background: var(--swatch);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .swatch-meta {
+      padding: var(--lmd-space-4);
+    }
+
+    .token-name {
+      display: block;
+      overflow-wrap: anywhere;
+    }
+
+    .token-hex {
+      display: block;
+      margin-top: var(--lmd-space-1);
+      color: var(--lmd-ink);
+      font-size: 1rem;
+      font-variant-numeric: tabular-nums;
+      font-weight: 650;
+    }
+
+    .token-contrast {
+      display: block;
+      margin-top: var(--lmd-space-2);
+      color: var(--lmd-ink-muted);
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .type-stack {
+      display: grid;
+      gap: var(--lmd-space-6);
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 8rem minmax(0, 1fr);
+      gap: var(--lmd-space-5);
+      align-items: baseline;
+      padding-bottom: var(--lmd-space-5);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .type-sample {
+      margin: 0;
+      color: var(--lmd-ink);
+    }
+
+    .type-h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .type-h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    .type-h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .type-body {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .type-small {
+      font-size: 0.89rem;
+      line-height: 1.5;
+    }
+
+    .type-price {
+      color: var(--lmd-brand);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .glyph-check {
+      color: var(--lmd-ink-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ui-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: var(--lmd-space-6);
+      align-items: start;
+    }
+
+    .ui-column {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--lmd-space-5);
+    }
+
+    .demo-panel {
+      padding: var(--lmd-space-6);
+      background: var(--lmd-bg);
+      border: 1px solid var(--lmd-border);
+      border-radius: var(--lmd-radius);
+      box-shadow: var(--lmd-shadow);
+    }
+
+    .demo-panel h3 {
+      margin-bottom: var(--lmd-space-5);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--lmd-space-3);
+    }
+
+    .button {
+      min-height: var(--lmd-space-7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--lmd-space-2);
+      padding: var(--lmd-space-3) var(--lmd-space-5);
+      border: 2px solid var(--lmd-brand);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      font-weight: 650;
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button--primary {
+      background: var(--lmd-brand);
+      color: var(--lmd-brand-contrast);
+    }
+
+    .button--primary:hover,
+    .button--primary:active {
+      background: var(--lmd-brand-hover);
+      border-color: var(--lmd-brand-hover);
+      color: var(--lmd-brand-contrast);
+    }
+
+    .button--secondary {
+      background: var(--lmd-bg);
+      color: var(--lmd-brand);
+    }
+
+    .button--secondary:hover,
+    .button--secondary:active {
+      background: var(--lmd-surface);
+      border-color: var(--lmd-brand-hover);
+      color: var(--lmd-brand-hover);
+    }
+
+    .button:disabled {
+      background: var(--lmd-surface);
+      border-color: var(--lmd-border);
+      color: var(--lmd-ink-muted);
+      cursor: not-allowed;
+    }
+
+    .analysis-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--lmd-space-5);
+    }
+
+    .analysis-card h3 {
+      max-width: 24rem;
+      margin-bottom: 0;
+    }
+
+    .analysis-summary {
+      display: flex;
+      align-items: baseline;
+      gap: var(--lmd-space-2);
+      margin-bottom: 0;
+      padding-bottom: var(--lmd-space-5);
+      color: var(--lmd-ink-muted);
+      border-bottom: 1px solid var(--lmd-border);
+      font-size: 0.89rem;
+      font-weight: 600;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .analysis-price {
+      color: var(--lmd-brand);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
+    }
+
+    .license {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--lmd-space-2);
+      width: fit-content;
+      padding: var(--lmd-space-2) var(--lmd-space-3);
+      background: var(--lmd-surface);
+      border: 1px solid var(--lmd-border);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      color: var(--lmd-ink);
+      font-size: 0.84rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: var(--lmd-space-2);
+      color: var(--lmd-ink);
+      font-weight: 600;
+    }
+
+    .field-help {
+      margin-top: var(--lmd-space-2);
+      margin-bottom: 0;
+      color: var(--lmd-ink-muted);
+      font-size: 0.84rem;
+    }
+
+    .field-input {
+      width: 100%;
+      min-height: var(--lmd-space-7);
+      padding: var(--lmd-space-3) var(--lmd-space-4);
+      background: var(--lmd-bg);
+      border: 1px solid var(--lmd-border);
+      border-radius: calc(var(--lmd-radius) - var(--lmd-space-1));
+      color: var(--lmd-ink);
+    }
+
+    .field-input::placeholder {
+      color: var(--lmd-ink-muted);
+    }
+
+    .field-input:hover {
+      border-color: var(--lmd-brand);
+    }
+
+    .field-input:focus {
+      border-color: var(--lmd-brand);
+      box-shadow: 0 0 0 var(--lmd-space-1) color-mix(in srgb, var(--lmd-brand) 16%, var(--lmd-bg));
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--lmd-border);
+      border-radius: var(--lmd-radius);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: var(--lmd-ink);
+      font-size: 0.89rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    th,
+    td {
+      padding: var(--lmd-space-3) var(--lmd-space-4);
+      border-bottom: 1px solid var(--lmd-border);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      background: var(--lmd-surface);
+      font-weight: 650;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .hero {
+      padding-block: calc(var(--lmd-space-8) + var(--lmd-space-6));
+      background: var(--lmd-bg);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(20rem, 0.88fr);
+      gap: var(--lmd-space-8);
+      align-items: center;
+    }
+
+    .hero-copy h2 {
+      max-width: 42rem;
+      margin-bottom: var(--lmd-space-5);
+      font-size: clamp(2.5rem, 5vw, 4.25rem);
+    }
+
+    .hero-copy > p {
+      max-width: 39rem;
+      margin-bottom: var(--lmd-space-6);
+      color: var(--lmd-ink-muted);
+      font-size: 1.15rem;
+    }
+
+    .hero-offer {
+      position: relative;
+      padding: var(--lmd-space-7);
+      background: var(--lmd-surface);
+      border: 1px solid var(--lmd-border);
+      border-radius: var(--lmd-radius);
+      box-shadow: var(--lmd-shadow);
+    }
+
+    .hero-offer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: var(--lmd-space-7);
+      right: var(--lmd-space-7);
+      height: var(--lmd-space-1);
+      background: var(--lmd-brand);
+      border-radius: 0 0 var(--lmd-radius) var(--lmd-radius);
+    }
+
+    .hero-offer-label {
+      display: block;
+      margin-bottom: var(--lmd-space-4);
+      color: var(--lmd-ink-muted);
+      font-weight: 600;
+    }
+
+    .hero-price {
+      display: block;
+      margin-bottom: var(--lmd-space-4);
+      color: var(--lmd-brand);
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hero-price-note {
+      margin-bottom: 0;
+      color: var(--lmd-ink);
+      font-weight: 600;
+    }
+
+    .trust-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--lmd-space-5);
+      margin: var(--lmd-space-7) 0 0;
+      padding: var(--lmd-space-5) 0 0;
+      border-top: 1px solid var(--lmd-border);
+      list-style: none;
+    }
+
+    .trust-list li {
+      color: var(--lmd-ink-muted);
+      font-size: 0.89rem;
+      line-height: 1.45;
+    }
+
+    .trust-list strong {
+      display: block;
+      margin-bottom: var(--lmd-space-1);
+      color: var(--lmd-ink);
+      font-size: 1rem;
+    }
+
+    .genetics {
+      padding-block: calc(var(--lmd-space-8) + var(--lmd-space-5));
+      background: var(--lmd-accent);
+      color: var(--lmd-accent-contrast);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .genetics .section-kicker,
+    .genetics h2,
+    .genetics p {
+      color: var(--lmd-accent-contrast);
+    }
+
+    .genetics-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.7fr);
+      gap: var(--lmd-space-8);
+      align-items: end;
+      margin-bottom: var(--lmd-space-7);
+    }
+
+    .genetics-head p {
+      margin-bottom: var(--lmd-space-1);
+    }
+
+    .genetics-list {
+      overflow: hidden;
+      background: var(--lmd-bg);
+      border: 1px solid var(--lmd-accent-contrast);
+      border-radius: var(--lmd-radius);
+    }
+
+    .genetics-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--lmd-space-6);
+      align-items: center;
+      padding: var(--lmd-space-6);
+      color: var(--lmd-ink);
+      border-bottom: 1px solid var(--lmd-border);
+    }
+
+    .genetics-item:last-child {
+      border-bottom: 0;
+    }
+
+    .genetics-item h3 {
+      margin-bottom: var(--lmd-space-2);
+    }
+
+    .genetics-item p {
+      margin-bottom: 0;
+      color: var(--lmd-ink-muted);
+      font-size: 0.89rem;
+    }
+
+    .genetics-price {
+      color: var(--lmd-brand);
+      font-size: 1.65rem;
+      font-weight: 700;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .verdict {
+      padding-block: calc(var(--lmd-space-8) + var(--lmd-space-5));
+      background: var(--lmd-bg);
+    }
+
+    .verdict-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+      gap: var(--lmd-space-8);
+    }
+
+    .verdict-copy {
+      max-width: 42rem;
+      color: var(--lmd-ink-muted);
+    }
+
+    .verdict-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 56rem) {
+      .palette-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ui-grid,
+      .hero-grid,
+      .genetics-head,
+      .verdict-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid,
+      .genetics-head,
+      .verdict-grid {
+        gap: var(--lmd-space-7);
+      }
+
+      .hero-offer {
+        max-width: 30rem;
+      }
+    }
+
+    @media (max-width: 32rem) {
+      html {
+        font-size: 18px;
+      }
+
+      .container {
+        width: min(100% - (var(--lmd-space-4) * 2), 72rem);
+      }
+
+      .section,
+      .intro,
+      .hero,
+      .genetics,
+      .verdict {
+        padding-block: var(--lmd-space-7);
+      }
+
+      .intro-line {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .wordmark-caption {
+        max-width: 11rem;
+      }
+
+      .archetype-label {
+        white-space: normal;
+      }
+
+      .palette-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .type-row {
+        grid-template-columns: 1fr;
+        gap: var(--lmd-space-3);
+      }
+
+      .type-h1 {
+        font-size: 2.5rem;
+      }
+
+      .type-h2 {
+        font-size: 2rem;
+      }
+
+      .type-price {
+        font-size: 2.5rem;
+      }
+
+      .demo-panel,
+      .hero-offer,
+      .genetics-item {
+        padding: var(--lmd-space-5);
+      }
+
+      .button-row,
+      .button {
+        width: 100%;
+      }
+
+      .analysis-summary {
+        flex-wrap: wrap;
+        white-space: normal;
+        gap: var(--lmd-space-1);
+        font-size: 0.89rem;
+      }
+
+      .analysis-price {
+        font-size: 2.5rem;
+      }
+
+      .trust-list {
+        grid-template-columns: 1fr;
+        gap: var(--lmd-space-4);
+      }
+
+      .genetics-item {
+        grid-template-columns: 1fr;
+        gap: var(--lmd-space-3);
+      }
+
+      .genetics-price {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="container">
+      <div class="intro-line">
+        <a class="wordmark" href="#hero" aria-label="LABMD — к фрагменту главной страницы">
+          <img src="./logo.svg" alt="LABMD" style="height:44px;width:auto;display:block">
+          <span class="wordmark-name" hidden>LABMD</span>
+          
+        </a>
+        <span class="archetype-label">Архетип: Свой</span>
+      </div>
+      <div class="intro-copy">
+        <span class="section-kicker">Фирменный стиль · направление F</span>
+        <h1>Направление F — «Без переплат»</h1>
+        <p>Спокойная, честная и понятная медицина: цена видна сразу, важное объяснено простыми словами, а аккуратность не превращается в пафос.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--soft" aria-labelledby="palette-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">01 · Палитра</span>
+          <h2 id="palette-title">Ясный сине-бирюзовый, тёплый янтарный</h2>
+          <p>Белый фон и прохладная поверхность дают воздух. Сине-бирюзовый работает точечно — в кнопках, ценах и навигации; янтарный закреплён за генетикой.</p>
+        </div>
+        <div class="palette-grid">
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-ink)"></div><div class="swatch-meta"><span class="token-name">--lmd-ink</span><span class="token-hex">#15383A</span><span class="token-contrast">12,66:1 на #FFFFFF</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-ink-muted)"></div><div class="swatch-meta"><span class="token-name">--lmd-ink-muted</span><span class="token-hex">#426164</span><span class="token-contrast">6,72:1 на #FFFFFF</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-bg)"></div><div class="swatch-meta"><span class="token-name">--lmd-bg</span><span class="token-hex">#FFFFFF</span><span class="token-contrast">12,66:1 с #15383A</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-surface)"></div><div class="swatch-meta"><span class="token-name">--lmd-surface</span><span class="token-hex">#F6FAF9</span><span class="token-contrast">12,03:1 с #15383A</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-border)"></div><div class="swatch-meta"><span class="token-name">--lmd-border</span><span class="token-hex">#73989A</span><span class="token-contrast">3,14:1 на #FFFFFF</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-brand)"></div><div class="swatch-meta"><span class="token-name">--lmd-brand</span><span class="token-hex">#0B747C</span><span class="token-contrast">5,52:1 с #FFFFFF</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-brand-contrast)"></div><div class="swatch-meta"><span class="token-name">--lmd-brand-contrast</span><span class="token-hex">#FFFFFF</span><span class="token-contrast">5,52:1 с #0B747C</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-brand-hover)"></div><div class="swatch-meta"><span class="token-name">--lmd-brand-hover</span><span class="token-hex">#075D64</span><span class="token-contrast">7,61:1 с #FFFFFF</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-accent)"></div><div class="swatch-meta"><span class="token-name">--lmd-accent</span><span class="token-hex">#F5C66F</span><span class="token-contrast">7,95:1 с #15383A</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-accent-contrast)"></div><div class="swatch-meta"><span class="token-name">--lmd-accent-contrast</span><span class="token-hex">#15383A</span><span class="token-contrast">7,95:1 с #F5C66F</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-success)"></div><div class="swatch-meta"><span class="token-name">--lmd-success</span><span class="token-hex">#3D681E</span><span class="token-contrast">6,57:1 с #FFFFFF</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-warning)"></div><div class="swatch-meta"><span class="token-name">--lmd-warning</span><span class="token-hex">#9B4F0B</span><span class="token-contrast">5,97:1 с #FFFFFF</span></div></article>
+          <article class="swatch"><div class="swatch-color" style="--swatch: var(--lmd-danger)"></div><div class="swatch-meta"><span class="token-name">--lmd-danger</span><span class="token-hex">#8B3F3F</span><span class="token-contrast">7,29:1 с #FFFFFF</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="type-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">02 · Типографика</span>
+          <h2 id="type-title">Inter — нейтрально и без барьеров</h2>
+          <p>База 18 px. Заголовки 600–700, цифры табличные: цены и результаты легко сравнивать даже в плотных строках.</p>
+        </div>
+        <div class="type-stack">
+          <div class="type-row"><span class="type-label">H1 · 72 / 700</span><p class="type-sample type-h1">Анализы без переплат</p></div>
+          <div class="type-row"><span class="type-label">H2 · 45 / 700</span><p class="type-sample type-h2">Цена понятна заранее</p></div>
+          <div class="type-row"><span class="type-label">H3 · 27 / 600</span><p class="type-sample type-h3">Клинический анализ крови</p></div>
+          <div class="type-row"><span class="type-label">Body · 18 / 400</span><p class="type-sample type-body">Сдайте анализ утром. Результат появится в личном кабинете, а срок готовности мы покажем до оплаты.</p></div>
+          <div class="type-row"><span class="type-label">Small · 16 / 400</span><p class="type-sample type-small">Щ ъ ё № · 0123456789 · Санкт-Петербург, Большой пр. ПС, 102</p></div>
+          <div class="type-row"><span class="type-label">Цена · 54 / 700</span><p class="type-sample type-price">4 350 ₽</p></div>
+          <div class="type-row"><span class="type-label">Контрольная строка</span><p class="type-sample glyph-check">Иммуноблот ANA-профиль — 4 350 ₽ · Щ ъ ё № · 0123456789</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="ui-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">03 · UI на токенах</span>
+          <h2 id="ui-title">Цена — часть ответа, а не примечание</h2>
+          <p>Чёткие границы, радиус 14 px и минимальная тень сохраняют аккуратность. Ни скидочных ярлыков, ни зачёркнутых цен, ни звёздочек.</p>
+        </div>
+        <div class="ui-grid">
+          <div class="ui-column">
+            <article class="demo-panel analysis-card">
+              <h3>Клинический анализ крови</h3>
+              <p class="analysis-summary"><strong class="analysis-price">400 ₽</strong><span>· 1 день</span><span>· что входит: 19<span class="analysis-detail"> показателей</span></span></p>
+              <div class="button-row">
+                <button class="button button--primary" type="button">Добавить в корзину</button>
+                <button class="button button--secondary" type="button">Что входит</button>
+              </div>
+              <span class="license">Лицензия ЛО-78-01-006578</span>
+            </article>
+
+            <article class="demo-panel">
+              <h3>Кнопки и состояния</h3>
+              <div class="button-row">
+                <button class="button button--primary" type="button">Основная</button>
+                <button class="button button--secondary" type="button">Вторичная</button>
+                <button class="button" type="button" disabled>Недоступно</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="ui-column">
+            <article class="demo-panel">
+              <h3>Поиск анализа</h3>
+              <label class="field-label" for="analysis-search">Название или показатель</label>
+              <input class="field-input" id="analysis-search" type="search" placeholder="Например, ферритин">
+              <p class="field-help">Подскажем обычными словами, если точного названия нет.</p>
+            </article>
+
+            <article class="demo-panel">
+              <h3>Референсные значения</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th scope="col">Показатель</th><th scope="col">Результат</th><th scope="col">Норма</th></tr></thead>
+                  <tbody>
+                    <tr><td>Гемоглобин</td><td>138 г/л</td><td>120–160</td></tr>
+                    <tr><td>Лейкоциты</td><td>5,8 × 10⁹/л</td><td>4,0–9,0</td></tr>
+                    <tr><td>Тромбоциты</td><td>246 × 10⁹/л</td><td>180–320</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="section-kicker">04 · Фрагмент главной</span>
+            <h2 id="hero-title">Анализы без переплат и пафоса</h2>
+            <p>Показываем цену, срок и состав исследования заранее. Если название сложное — объясним, что выбрать и как подготовиться.</p>
+            <div class="button-row">
+              <a class="button button--primary" href="#ui-title">Подобрать анализ</a>
+              <a class="button button--secondary" href="#genetics-title">Записаться</a>
+            </div>
+          </div>
+          <aside class="hero-offer" aria-label="Стоимость клинического анализа крови">
+            <span class="hero-offer-label">Клинический анализ крови</span>
+            <strong class="hero-price">400 ₽</strong>
+            <p class="hero-price-note">Полная цена. Без доплат при оформлении.</p>
+          </aside>
+        </div>
+        <ul class="trust-list" aria-label="Почему можно доверять LABMD">
+          <li><strong>Срок — до оплаты</strong>Готовность видна у каждого анализа.</li>
+          <li><strong>Лицензия открыто</strong>ЛО-78-01-006578 от 20.02.2016.</li>
+          <li><strong>Врачи поимённо</strong>Имена лабораторных специалистов, не безликий «эксперт».</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="genetics" aria-labelledby="genetics-title">
+      <div class="container">
+        <div class="genetics-head">
+          <div>
+            <span class="section-kicker">05 · Фирменное направление</span>
+            <h2 id="genetics-title">Медицинская генетика</h2>
+          </div>
+          <p>Сложные исследования — с понятным названием, полной ценой и объяснением результата.</p>
+        </div>
+        <div class="genetics-list">
+          <article class="genetics-item">
+            <div>
+              <h3>Комплексное исследование хромосомного набора (23 хромосомы)</h3>
+              <p>Покажем срок и подготовку до записи.</p>
+            </div>
+            <strong class="genetics-price">6 900 ₽</strong>
+          </article>
+          <article class="genetics-item">
+            <div>
+              <h3>Синдром Жильбера</h3>
+              <p>Объясним, что проверяет анализ и кому он нужен.</p>
+            </div>
+            <strong class="genetics-price">2 900 ₽</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="verdict" aria-labelledby="verdict-title">
+      <div class="container verdict-grid">
+        <div>
+          <span class="section-kicker">06 · Итог</span>
+          <h2 id="verdict-title">Кому подойдёт</h2>
+        </div>
+        <div class="verdict-copy">
+          <p>Подойдёт тем, кто хочет заранее понимать цену, срок и состав анализа. Особенно хорошо работает для первого знакомства с LABMD и для аудитории, которой важны крупный текст и спокойная навигация.</p>
+          <p>Не подойдёт бренду, который хочет выглядеть премиальным клубом или строить образ на технологической холодности. Это направление не обещает «дешевле всех»: его ценность — честность, ясность и уважение к деньгам пациента.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+<p style="max-width:960px;margin:32px auto 60px;padding:0 24px;font-size:15px;opacity:.75"><a href="../../index.html">← Все варианты</a> · <a href="./moodboard.html">Мудборд направления</a></p></body>
+</html>

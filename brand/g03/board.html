@@ -1,0 +1,152 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LABMD — брендбук G03 · Индиго + янтарь</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="./tokens.css">
+<style>
+ *,*::before,*::after{box-sizing:border-box}
+ body{margin:0;background:var(--lmd-bg);color:var(--lmd-ink);
+   font:400 18px/1.6 var(--lmd-font-text);}
+ .wrap{max-width:1080px;margin:0 auto;padding:var(--lmd-space-7) var(--lmd-space-5) var(--lmd-space-8)}
+ h1{font:700 38px/1.15 var(--lmd-font-head);letter-spacing:-.02em;margin:0 0 var(--lmd-space-2)}
+ h2{font:700 24px/1.25 var(--lmd-font-head);margin:var(--lmd-space-7) 0 var(--lmd-space-4)}
+ h3{font:600 19px/1.3 var(--lmd-font-head);margin:0 0 var(--lmd-space-3)}
+ .lede{color:var(--lmd-ink-muted);max-width:70ch;margin:0}
+ .card{background:var(--lmd-surface);border:1px solid color-mix(in srgb,var(--lmd-border) 45%,transparent);
+   border-radius:var(--lmd-radius);padding:var(--lmd-space-5);box-shadow:var(--lmd-shadow)}
+ .head{display:flex;align-items:center;gap:var(--lmd-space-3);margin-bottom:var(--lmd-space-6)}
+ .head img{height:52px;width:auto;display:block}
+ .wm{font:700 30px/1 var(--lmd-font-head);letter-spacing:.02em;color:var(--lmd-brand)}
+ .wm small{display:block;font:400 12px/1.3 var(--lmd-font-text);color:var(--lmd-ink-muted);
+   letter-spacing:0;margin-top:4px}
+ .sizes{display:flex;gap:var(--lmd-space-5);align-items:flex-end;flex-wrap:wrap}
+ .sizes figure{margin:0;text-align:center} .sizes img{display:block}
+ .sizes span{display:block;font-size:11px;color:var(--lmd-ink-muted);margin-top:4px}
+ .pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--lmd-space-3)}
+ .sw .chip{height:74px;border-radius:10px;display:flex;align-items:flex-end;padding:8px 10px;
+   font:600 13px var(--lmd-font-text);border:1px solid color-mix(in srgb,var(--lmd-border) 40%,transparent)}
+ .sw b{display:block;font:600 13px var(--lmd-font-text);margin-top:6px}
+ .sw u{display:block;text-decoration:none;font-size:12px;color:var(--lmd-ink-muted)}
+ .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;
+   border-radius:var(--lmd-radius);font:600 17px var(--lmd-font-text);border:1px solid transparent;
+   cursor:pointer;transition:background var(--lmd-transition)}
+ .btn-primary{background:var(--lmd-brand);color:var(--lmd-brand-contrast)}
+ .btn-primary:hover{background:var(--lmd-brand-hover)}
+ .btn-secondary{background:transparent;color:var(--lmd-brand);border-color:var(--lmd-border)}
+ .row{display:flex;gap:var(--lmd-space-3);flex-wrap:wrap;align-items:center}
+ .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--lmd-space-4)}
+ .price{font:700 34px/1 var(--lmd-font-head);font-variant-numeric:tabular-nums;color:var(--lmd-brand)}
+ .meta{color:var(--lmd-ink-muted);font-size:15px}
+ table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+ th,td{text-align:left;padding:10px 12px;border-bottom:1px solid color-mix(in srgb,var(--lmd-border) 35%,transparent)}
+ th{font:600 14px var(--lmd-font-head);color:var(--lmd-ink-muted);text-transform:uppercase;letter-spacing:.04em}
+ td.num{text-align:right}
+ .lic{display:inline-flex;gap:8px;align-items:center;padding:8px 14px;border-radius:999px;
+   background:color-mix(in srgb,var(--lmd-brand) 10%,transparent);color:var(--lmd-brand);font-size:14px;font-weight:600}
+ input{width:100%;min-height:52px;padding:0 14px;border-radius:var(--lmd-radius);
+   border:1px solid var(--lmd-border);background:var(--lmd-surface);color:var(--lmd-ink);font:400 17px var(--lmd-font-text)}
+ .hero{background:var(--lmd-surface);border-radius:18px;padding:var(--lmd-space-7);
+   border:1px solid color-mix(in srgb,var(--lmd-border) 35%,transparent)}
+ .hero h2{margin:0 0 var(--lmd-space-3);font-size:34px;line-height:1.15}
+ .trust{display:flex;gap:var(--lmd-space-5);flex-wrap:wrap;margin-top:var(--lmd-space-5);
+   color:var(--lmd-ink-muted);font-size:15px}
+ .gen{background:var(--lmd-accent);color:var(--lmd-accent-contrast);border-radius:18px;padding:var(--lmd-space-6)}
+ .gen h2{margin:0 0 var(--lmd-space-4);color:var(--lmd-accent-contrast)}
+ .gen .card{box-shadow:none}
+ .type dt{color:var(--lmd-ink-muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin-top:14px}
+ .dark{background:var(--lmd-ink);border-radius:14px;padding:var(--lmd-space-5);margin-top:var(--lmd-space-3)}
+</style></head>
+<body><div class="wrap">
+
+<div class="head"><img src="../_current/recolor/03.svg" alt="LABMD">
+  <div class="wm">LABMD<small>Центр лабораторной медицинской диагностики</small></div></div>
+
+<h1>Брендбук · G03 · Индиго + янтарь</h1>
+<p class="lede">Знак — действующий логотип LABMD без изменений геометрии, перекрашен под палитру.
+Типографика и расположение вордмарка одинаковы в обоих брендбуках: различается только цвет.</p>
+
+<h2>1 · Логотип</h2>
+<div class="card">
+  <div class="sizes">
+    <figure><img src="../_current/recolor/03.svg" height=23><span>23 px</span></figure><figure><img src="../_current/recolor/03.svg" height=32><span>32 px</span></figure><figure><img src="../_current/recolor/03.svg" height=48><span>48 px</span></figure><figure><img src="../_current/recolor/03.svg" height=72><span>72 px</span></figure><figure><img src="../_current/recolor/03.svg" height=120><span>120 px</span></figure>
+  </div>
+  <div class="dark"><img src="../_current/recolor/03.svg" height="48" alt=""></div>
+  <p class="meta" style="margin-bottom:0">23 px — фактическая высота логотипа в шапке lab-md.ru сегодня.
+  На этом размере рисунок теряется: это дефект геометрии, а не палитры, чинится отдельно.</p>
+</div>
+
+<h2>2 · Палитра</h2>
+<div class="pal"><div class="sw"><div class="chip" style="background:#2F6DA8;color:#fff">#2F6DA8</div><b>--lmd-brand</b><u>5.42:1 к белому</u></div><div class="sw"><div class="chip" style="background:#215282;color:#fff">#215282</div><b>--lmd-brand-hover</b><u>8.1:1 к белому</u></div><div class="sw"><div class="chip" style="background:#F0A93F;color:#16283A">#F0A93F</div><b>--lmd-accent</b><u>7.96:1 к тексту на нём</u></div><div class="sw"><div class="chip" style="background:#16283A;color:#fff">#16283A</div><b>--lmd-ink</b><u>14.1:1 к фону</u></div><div class="sw"><div class="chip" style="background:#4F5F72;color:#fff">#4F5F72</div><b>--lmd-ink-muted</b><u>6.14:1 к фону</u></div><div class="sw"><div class="chip" style="background:#848FA2;color:#fff">#848FA2</div><b>--lmd-border</b><u>3.07:1 к фону</u></div><div class="sw"><div class="chip" style="background:#F5F8FC;color:#16283A">#F5F8FC</div><b>--lmd-bg</b><u>14.1:1 к тексту</u></div><div class="sw"><div class="chip" style="background:#FFFFFF;color:#16283A">#FFFFFF</div><b>--lmd-surface</b><u>15.01:1 к тексту</u></div></div>
+<p class="meta">Все пары проверены расчётом по WCAG 2.1: обычный текст ≥ 4.5:1, границы ≥ 3:1.
+Акцент <code>#F0A93F</code> — только заливка и фон, текстом им не набирать.</p>
+
+<h2>3 · Типографика</h2>
+<div class="card type">
+  <dt>H1 · 38/44 · 700</dt><div style="font:700 38px/1.15 var(--lmd-font-head)">Точная диагностика рядом</div>
+  <dt>H2 · 24/30 · 700</dt><div style="font:700 24px/1.25 var(--lmd-font-head)">Аутоиммунная диагностика</div>
+  <dt>H3 · 19/25 · 600</dt><div style="font:600 19px/1.3 var(--lmd-font-head)">Медицинская генетика</div>
+  <dt>Основной текст · 18/29 · 400</dt>
+  <div>Щука ёж № — кириллица в наборе. Иммуноблот ANA-профиль — 4 350 ₽</div>
+  <dt>Мелкий · 15/22</dt><div class="meta">Срок готовности и подготовка к исследованию</div>
+  <dt>Цифры · табличные</dt><div class="price">0123456789</div>
+</div>
+
+<h2>4 · Интерфейс</h2>
+<div class="grid2">
+  <div class="card">
+    <h3>Кнопки</h3>
+    <div class="row"><button class="btn btn-primary">Записаться</button>
+      <button class="btn btn-secondary">Подобрать анализ</button></div>
+    <h3 style="margin-top:24px">Поле ввода</h3>
+    <input placeholder="Поиск анализа или врача">
+    <h3 style="margin-top:24px">Лицензия</h3>
+    <span class="lic">Лицензия ЛО-78-01-006578</span>
+  </div>
+  <div class="card">
+    <h3>Карточка анализа</h3>
+    <div class="meta">Клинический анализ крови с лейкоформулой и СОЭ</div>
+    <div class="row" style="justify-content:space-between;margin-top:14px">
+      <span class="price">400 ₽</span><button class="btn btn-primary">В корзину</button></div>
+    <div class="meta" style="margin-top:10px">Срок готовности — уточняется · Кровь из вены</div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3>Референсные значения</h3>
+  <table><thead><tr><th>Показатель</th><th class="num">Результат</th><th class="num">Норма</th></tr></thead>
+  <tbody>
+    <tr><td>Глюкоза, ммоль/л</td><td class="num">5.1</td><td class="num">4.1 – 5.9</td></tr>
+    <tr><td>Холестерин общий, ммоль/л</td><td class="num">4.7</td><td class="num">3.0 – 5.2</td></tr>
+    <tr><td>С-реактивный белок, мг/л</td><td class="num">1.2</td><td class="num">0 – 5.0</td></tr>
+  </tbody></table>
+</div>
+
+<h2>5 · Первый экран</h2>
+<div class="hero">
+  <h2>Точная диагностика по доступной цене</h2>
+  <p class="lede">Аутоиммунные состояния, наследственные патологии и медицинская генетика.
+  12 лет лабораторной практики в Санкт-Петербурге.</p>
+  <div class="row" style="margin-top:24px">
+    <button class="btn btn-primary">Подобрать анализ</button>
+    <button class="btn btn-secondary">Записаться</button></div>
+  <div class="trust"><span>Лицензия ЛО-78-01-006578</span><span>12+ лет практики</span>
+    <span>Собственная лаборатория в СПб</span></div>
+</div>
+
+<h2>6 · Медицинская генетика</h2>
+<div class="gen">
+  <h2>Фирменное направление</h2>
+  <div class="grid2">
+    <div class="card"><h3>Комплексное исследование хромосомного набора</h3>
+      <div class="meta">23 хромосомы</div><div class="price" style="margin-top:10px">6 900 ₽</div></div>
+    <div class="card"><h3>Синдром Жильбера</h3>
+      <div class="meta">Молекулярно-генетическое исследование</div>
+      <div class="price" style="margin-top:10px">2 900 ₽</div></div>
+  </div>
+</div>
+
+<h2>7 · Итог</h2>
+<div class="card"><p style="margin:0">Индиго держит доверие, янтарь даёт тепло и закрепляется за блоком генетики — фирменным направлением. Тёплый акцент в этом сегменте не занят никем из девяти конкурентов. Риск: янтарь светлый, текстом по нему набирать нельзя, только тёмным по заливке.</p></div>
+
+<p class="meta" style="margin-top:32px"><a href="../../index.html" style="color:var(--lmd-brand)">← Все варианты</a> · <a href="../_current/recolor/index.html" style="color:var(--lmd-brand)">Все варианты цвета знака</a></p>
+</div></body></html>

@@ -1,0 +1,773 @@
+<!doctype html>
+<html><head><link rel="stylesheet" href="./fonts.css"><style>
+    .sc-placeholder{background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:rgba(0,0,0,.7);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:rgba(0,0,0,.5);background:rgba(0,0,0,.05);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      section, article, figure, table { break-inside: avoid; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>x-dc{display:none!important}</style>
+<style></style><style>html,body{height:100%;margin:0}#dc-root,#dc-root>.sc-host{height:100%}</style><style data-dc-tpl="4">
+    body { margin:0; font-family:Manrope, system-ui, sans-serif; color:#16323a; background:#fff; -webkit-font-smoothing:antialiased; }
+    * { box-sizing:border-box; }
+    img { display:block; max-width:100%; }
+    a { color:inherit; }
+    ::selection { background:#cfeef0; }
+  </style></head>
+<body>
+<div id="dc-root"><div class="sc-host" data-sc-name="ЛМД - Вариант 1 (бирюза)"><div data-dc-tpl="5" id="top" style="background: rgb(255, 255, 255);">
+
+  
+  <div data-dc-tpl="6" style="background: rgb(22, 50, 58); color: rgba(255, 255, 255, 0.82); font-size: 13px;">
+    <div data-dc-tpl="7" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px; height: 42px; display: flex; align-items: center; justify-content: space-between;">
+      <div data-dc-tpl="8" style="display: flex; align-items: center; gap: 16px;">
+        <span data-dc-tpl="9" style="display: inline-flex; align-items: center; gap: 7px;"><svg data-dc-tpl="10" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6fd0dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="11" d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle data-dc-tpl="12" cx="12" cy="10" r="3"></circle></svg>СПб, Большой пр. ПС, 102</span>
+        <span data-dc-tpl="13" style="opacity: 0.35;">·</span>
+        <span data-dc-tpl="14" style="display: inline-flex; align-items: center; gap: 7px; opacity: 0.85;"><svg data-dc-tpl="15" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="16" cx="12" cy="12" r="9"></circle><path data-dc-tpl="17" d="M12 7v5l3 2"></path></svg>пн–пт 9:00–16:00 · сб 9:00–13:00</span>
+      </div>
+      <div data-dc-tpl="18" style="display: flex; align-items: center; gap: 16px;">
+        <span data-dc-tpl="19" style="display: inline-flex; align-items: center; gap: 7px; opacity: 0.8;"><svg data-dc-tpl="20" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="21" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path data-dc-tpl="22" d="m9 12 2 2 4-4"></path></svg>Лицензия ЛО-78-01-006578</span>
+        <a data-dc-tpl="23" href="#" style="color: rgb(127, 227, 208); text-decoration: none; font-weight: 600;">ВКонтакте</a>
+        <a data-dc-tpl="24" href="#" style="color: rgb(127, 227, 208); text-decoration: none; font-weight: 600;">Telegram</a>
+      </div>
+    </div>
+  </div>
+
+  
+  <header data-dc-tpl="25" style="position: sticky; top: 0px; z-index: 100; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(10px); border-bottom: 1px solid rgb(227, 236, 238);">
+    <div data-dc-tpl="26" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a data-dc-tpl="27" href="#top" style="display: inline-flex; align-items: center; gap: 12px; text-decoration: none;">
+        <span data-dc-tpl="28" style="position: relative; width: 44px; height: 44px; flex: 0 0 auto;">
+          <span data-dc-tpl="29" style="position: absolute; width: 28px; height: 28px; left: 0px; top: 3px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgb(127, 214, 226), rgb(47, 155, 171));"></span>
+          <span data-dc-tpl="30" style="position: absolute; width: 21px; height: 21px; left: 19px; top: 19px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgb(244, 173, 146), rgb(232, 131, 90));"></span>
+        </span>
+        <span data-dc-tpl="31" style="display: flex; flex-direction: column; line-height: 1.04;">
+          <span data-dc-tpl="32" style="font-weight: 800; font-size: 24px; letter-spacing: 0.5px; color: rgb(31, 122, 140);">ЛМД</span>
+          <span data-dc-tpl="33" style="font-size: 10.5px; font-weight: 600; color: rgb(130, 152, 160); letter-spacing: 0.2px; margin-top: 1px;">Лабораторная диагностика</span>
+        </span>
+      </a>
+      <nav data-dc-tpl="34" style="display: flex; gap: 2px; flex: 0 0 auto;">
+        <a data-dc-tpl="35" href="#analizy" class="scp0" style="white-space: nowrap; text-decoration: none; color: rgb(81, 102, 109); font-weight: 600; font-size: 15px; padding: 9px 12px; border-radius: 9px; transition: 0.15s;">Анализы и цены</a>
+        <a data-dc-tpl="36" href="#razdely" class="scp0" style="white-space: nowrap; text-decoration: none; color: rgb(81, 102, 109); font-weight: 600; font-size: 15px; padding: 9px 12px; border-radius: 9px; transition: 0.15s;">Разделы диагностики</a>
+        <a data-dc-tpl="37" href="#kaksdat" class="scp0" style="white-space: nowrap; text-decoration: none; color: rgb(81, 102, 109); font-weight: 600; font-size: 15px; padding: 9px 12px; border-radius: 9px; transition: 0.15s;">Как сдать</a>
+        <a data-dc-tpl="38" href="#about" class="scp0" style="white-space: nowrap; text-decoration: none; color: rgb(81, 102, 109); font-weight: 600; font-size: 15px; padding: 9px 12px; border-radius: 9px; transition: 0.15s;">О компании</a>
+        <a data-dc-tpl="39" href="#footer" class="scp0" style="white-space: nowrap; text-decoration: none; color: rgb(81, 102, 109); font-weight: 600; font-size: 15px; padding: 9px 12px; border-radius: 9px; transition: 0.15s;">Контакты</a>
+      </nav>
+      <div data-dc-tpl="40" style="display: flex; align-items: center; gap: 14px; flex: 0 0 auto;">
+        <a data-dc-tpl="41" href="tel:+79219058951" style="font-weight: 800; font-size: 16px; text-decoration: none; color: rgb(22, 50, 58); white-space: nowrap;">+7 (921) 905-89-51</a>
+        <a data-dc-tpl="42" href="#zayavka" class="scp1" style="display: inline-flex; align-items: center; justify-content: center; background: rgb(47, 155, 171); color: rgb(255, 255, 255); font-weight: 800; font-size: 15px; padding: 12px 22px; border-radius: 11px; text-decoration: none; box-shadow: rgba(47, 155, 171, 0.28) 0px 8px 20px; transition: background 0.15s;">Записаться</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <section data-dc-tpl="43" style="background: linear-gradient(rgb(232, 244, 246) 0%, rgb(255, 255, 255) 100%); padding: 60px 0px 72px;">
+    <div data-dc-tpl="44" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 54px; align-items: center;">
+      <div data-dc-tpl="45">
+        <span data-dc-tpl="46" style="display: inline-flex; align-items: center; gap: 8px; background: rgb(255, 255, 255); border: 1px solid rgb(214, 236, 239); color: rgb(31, 122, 140); font-weight: 700; font-size: 13px; padding: 8px 15px; border-radius: 999px; box-shadow: rgba(20, 60, 70, 0.06) 0px 1px 3px;"><svg data-dc-tpl="47" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="48" cx="12" cy="8" r="6"></circle><path data-dc-tpl="49" d="M8.5 13 7 22l5-3 5 3-1.5-9"></path></svg>12+ лет лабораторной диагностики в Санкт-Петербурге</span>
+        <h1 data-dc-tpl="50" style="font-size: 52px; line-height: 1.05; font-weight: 800; letter-spacing: -1.2px; margin: 18px 0px 16px;">Точная диагностика — по понятной цене</h1>
+        <p data-dc-tpl="51" style="font-size: 18px; color: rgb(81, 102, 109); line-height: 1.6; max-width: 540px; margin: 0px 0px 24px;">Общелабораторные анализы по доступной цене и узкая экспертиза там, где она нужна: аутоиммунные состояния, наследственные патологии, онкология. Клинический анализ крови — <b data-dc-tpl="52" style="color: rgb(22, 50, 58);">всего 400&nbsp;₽</b>.</p>
+        <div data-dc-tpl="53" style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 26px;">
+          <a data-dc-tpl="54" href="#podbor" class="scp1" style="display: inline-flex; align-items: center; gap: 9px; background: rgb(47, 155, 171); color: rgb(255, 255, 255); font-weight: 800; font-size: 16px; padding: 15px 26px; border-radius: 12px; text-decoration: none; box-shadow: rgba(47, 155, 171, 0.3) 0px 10px 24px; transition: background 0.15s;">Подобрать анализ<svg data-dc-tpl="55" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="56" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="57" points="14 6 20 12 14 18"></polyline></svg></a>
+          <a data-dc-tpl="58" href="#zayavka" class="scp2" style="display: inline-flex; align-items: center; background: rgb(255, 255, 255); color: rgb(31, 122, 140); font-weight: 800; font-size: 16px; padding: 15px 26px; border-radius: 12px; text-decoration: none; border: 1.5px solid rgb(207, 227, 230); transition: 0.15s;">Записаться</a>
+        </div>
+        <div data-dc-tpl="59" style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <span data-dc-tpl="60" style="display: inline-flex; align-items: center; gap: 8px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); padding: 9px 14px; border-radius: 10px; font-weight: 700; font-size: 13.5px; box-shadow: rgba(20, 60, 70, 0.05) 0px 1px 3px;"><svg data-dc-tpl="61" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f9bab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="62" cx="12" cy="12" r="9"></circle><polyline data-dc-tpl="63" points="16 10 11 15 8.5 12.5"></polyline></svg>12+ лет опыта</span>
+          <span data-dc-tpl="64" style="display: inline-flex; align-items: center; gap: 8px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); padding: 9px 14px; border-radius: 10px; font-weight: 700; font-size: 13.5px; box-shadow: rgba(20, 60, 70, 0.05) 0px 1px 3px;"><svg data-dc-tpl="65" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f9bab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="66" cx="12" cy="12" r="9"></circle><polyline data-dc-tpl="67" points="16 10 11 15 8.5 12.5"></polyline></svg>Аутоиммунная и генетическая экспертиза</span>
+          <span data-dc-tpl="68" style="display: inline-flex; align-items: center; gap: 8px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); padding: 9px 14px; border-radius: 10px; font-weight: 700; font-size: 13.5px; box-shadow: rgba(20, 60, 70, 0.05) 0px 1px 3px;"><svg data-dc-tpl="69" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f9bab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="70" cx="12" cy="12" r="9"></circle><polyline data-dc-tpl="71" points="16 10 11 15 8.5 12.5"></polyline></svg>Лицензия с 2016 года</span>
+        </div>
+      </div>
+
+      <div data-dc-tpl="72" style="position: relative;">
+        <div data-dc-tpl="73" style="position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 3.5; background: linear-gradient(150deg, rgb(207, 233, 237), rgb(232, 244, 246)); box-shadow: rgba(20, 60, 70, 0.18) 0px 24px 60px; display: grid; place-items: center;">
+          <div data-dc-tpl="74" style="text-align: center; color: rgb(91, 138, 146);">
+            <svg data-dc-tpl="75" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="margin: 0px auto 10px;"><path data-dc-tpl="76" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path><line data-dc-tpl="77" x1="8" y1="14" x2="16" y2="14"></line></svg>
+            <div data-dc-tpl="78" style="font-weight: 700; font-size: 14px;">Фото лаборатории</div>
+            <div data-dc-tpl="79" style="font-size: 12.5px; opacity: 0.75;">замените на реальное изображение</div>
+          </div>
+        </div>
+        <div data-dc-tpl="80" style="position: absolute; left: -18px; bottom: -18px; background: rgb(47, 155, 171); color: rgb(255, 255, 255); padding: 18px 22px; border-radius: 16px; box-shadow: rgba(47, 155, 171, 0.4) 0px 18px 40px;">
+          <div data-dc-tpl="81" style="font-size: 32px; font-weight: 800; line-height: 1;">12 лет</div>
+          <div data-dc-tpl="82" style="font-size: 13px; opacity: 0.92; margin-top: 3px;">на рынке диагностики</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="83" id="podbor" style="padding: 0px 0px 8px; margin-top: -36px; position: relative; z-index: 5;">
+    <div data-dc-tpl="84" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="85" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 20px; padding: 26px 28px; box-shadow: rgba(20, 60, 70, 0.1) 0px 18px 50px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;">
+        <div data-dc-tpl="86" style="display: flex; align-items: center; gap: 14px;">
+          <span data-dc-tpl="87" style="width: 52px; height: 52px; border-radius: 14px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="88" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="89" cx="11" cy="11" r="7"></circle><line data-dc-tpl="90" x1="21" y1="21" x2="16.5" y2="16.5"></line></svg></span>
+          <div data-dc-tpl="91">
+            <div data-dc-tpl="92" style="font-weight: 800; font-size: 19px;">Не знаете, какой анализ нужен?</div>
+            <div data-dc-tpl="93" style="font-size: 14px; color: rgb(124, 138, 143);">Опишите симптом или назначение врача — подскажем исследование</div>
+          </div>
+        </div>
+        <form data-dc-tpl="94" style="display: flex; flex-direction: column; gap: 12px;">
+          <div data-dc-tpl="95" style="display: flex; gap: 10px;">
+            <input data-dc-tpl="96" placeholder="Например: целиакия, витамин D, гормоны щитовидной…" class="scp3" value="" style="flex: 1 1 0%; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; padding: 14px 16px; border: 1.5px solid rgb(227, 236, 238); border-radius: 12px; background: rgb(247, 250, 251); color: rgb(22, 50, 58); outline: none;">
+            <button data-dc-tpl="97" type="submit" class="scp1" style="display: inline-flex; align-items: center; gap: 8px; background: rgb(47, 155, 171); color: rgb(255, 255, 255); font-style: inherit; font-variant: inherit; font-weight: 800; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; padding: 0px 24px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 12px; cursor: pointer; box-shadow: rgba(47, 155, 171, 0.28) 0px 8px 20px; transition: background 0.15s;">Найти</button>
+          </div>
+          <div data-dc-tpl="98" style="display: flex; align-items: center; gap: 9px; flex-wrap: wrap;">
+            <span data-dc-tpl="99" style="font-size: 13px; color: rgb(154, 169, 174); font-weight: 600;">Частые запросы:</span>
+            
+              <button data-dc-tpl="101" type="button" class="scp4" style="font-style: inherit; font-variant: inherit; font-weight: 600; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; color: rgb(31, 122, 140); background: rgb(238, 246, 247); border: 1px solid rgb(220, 236, 239); padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: 0.15s;"><span class="sc-interp">целиакия</span></button>
+            
+              <button data-dc-tpl="101" type="button" class="scp4" style="font-style: inherit; font-variant: inherit; font-weight: 600; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; color: rgb(31, 122, 140); background: rgb(238, 246, 247); border: 1px solid rgb(220, 236, 239); padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: 0.15s;"><span class="sc-interp">витамин D</span></button>
+            
+              <button data-dc-tpl="101" type="button" class="scp4" style="font-style: inherit; font-variant: inherit; font-weight: 600; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; color: rgb(31, 122, 140); background: rgb(238, 246, 247); border: 1px solid rgb(220, 236, 239); padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: 0.15s;"><span class="sc-interp">гормоны щитовидной</span></button>
+            
+              <button data-dc-tpl="101" type="button" class="scp4" style="font-style: inherit; font-variant: inherit; font-weight: 600; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; color: rgb(31, 122, 140); background: rgb(238, 246, 247); border: 1px solid rgb(220, 236, 239); padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: 0.15s;"><span class="sc-interp">анемия</span></button>
+            
+              <button data-dc-tpl="101" type="button" class="scp4" style="font-style: inherit; font-variant: inherit; font-weight: 600; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; color: rgb(31, 122, 140); background: rgb(238, 246, 247); border: 1px solid rgb(220, 236, 239); padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: 0.15s;"><span class="sc-interp">аутоиммунная панель</span></button>
+            
+            <span data-dc-tpl="102" style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: rgb(176, 137, 104); background: rgb(251, 241, 234); padding: 6px 12px; border-radius: 999px; font-weight: 600; margin-left: auto;"><svg data-dc-tpl="103" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="104" cx="12" cy="12" r="9"></circle><path data-dc-tpl="105" d="M12 7v5l3 2"></path></svg>Скоро: умный подбор в чате</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="106" style="padding: 56px 0px 0px;">
+    <div data-dc-tpl="107" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="108" style="background: rgb(22, 50, 58); border-radius: 20px; display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden;">
+        <div data-dc-tpl="109" style="padding: 30px 26px; text-align: center; color: rgb(255, 255, 255);">
+          <div data-dc-tpl="110" style="font-size: 38px; font-weight: 800; line-height: 1; color: rgb(127, 227, 208);">12+</div>
+          <div data-dc-tpl="111" style="font-weight: 700; margin-top: 8px; font-size: 15px;">лет на рынке</div>
+          <div data-dc-tpl="112" style="font-size: 12.5px; opacity: 0.6; margin-top: 3px;">лабораторной диагностики</div>
+        </div>
+        <div data-dc-tpl="113" style="padding: 30px 26px; text-align: center; color: rgb(255, 255, 255); border-left: 1px solid rgba(255, 255, 255, 0.1);">
+          <div data-dc-tpl="114" style="font-size: 38px; font-weight: 800; line-height: 1; color: rgb(127, 227, 208);">400&nbsp;₽</div>
+          <div data-dc-tpl="115" style="font-weight: 700; margin-top: 8px; font-size: 15px;">клинический анализ крови</div>
+          <div data-dc-tpl="116" style="font-size: 12.5px; opacity: 0.6; margin-top: 3px;">с лейкоформулой и СОЭ</div>
+        </div>
+        <div data-dc-tpl="117" style="padding: 30px 26px; text-align: center; color: rgb(255, 255, 255); border-left: 1px solid rgba(255, 255, 255, 0.1);">
+          <div data-dc-tpl="118" style="font-size: 38px; font-weight: 800; line-height: 1; color: rgb(127, 227, 208);">3</div>
+          <div data-dc-tpl="119" style="font-weight: 700; margin-top: 8px; font-size: 15px;">профиля экспертизы</div>
+          <div data-dc-tpl="120" style="font-size: 12.5px; opacity: 0.6; margin-top: 3px;">аутоиммунные · генетика · онкология</div>
+        </div>
+        <div data-dc-tpl="121" style="padding: 30px 26px; text-align: center; color: rgb(255, 255, 255); border-left: 1px solid rgba(255, 255, 255, 0.1);">
+          <div data-dc-tpl="122" style="font-size: 38px; font-weight: 800; line-height: 1; color: rgb(127, 227, 208);">2016</div>
+          <div data-dc-tpl="123" style="font-weight: 700; margin-top: 8px; font-size: 15px;">лицензия Росздравнадзора</div>
+          <div data-dc-tpl="124" style="font-size: 12.5px; opacity: 0.6; margin-top: 3px;">ЛО-78-01-006578</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="125" style="padding: 72px 0px 0px;">
+    <div data-dc-tpl="126" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+      <a data-dc-tpl="127" href="#analizy" class="scp5" style="position: relative; overflow: hidden; text-decoration: none; color: rgb(255, 255, 255); border-radius: 20px; padding: 38px; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(140deg, rgb(31, 122, 140), rgb(47, 155, 171)); box-shadow: rgba(31, 122, 140, 0.28) 0px 16px 40px; transition: transform 0.2s;">
+        <span data-dc-tpl="128" style="position: absolute; right: -40px; top: -40px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255, 255, 255, 0.08);"></span>
+        <span data-dc-tpl="129" style="width: 54px; height: 54px; border-radius: 14px; background: rgba(255, 255, 255, 0.16); display: grid; place-items: center; margin-bottom: auto;"><svg data-dc-tpl="130" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="131" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path data-dc-tpl="132" d="m9 12 2 2 4-4"></path></svg></span>
+        <div data-dc-tpl="133" style="font-size: 27px; font-weight: 800; letter-spacing: -0.4px; margin-top: 16px;">Аутоиммунная диагностика</div>
+        <div data-dc-tpl="134" style="font-size: 15px; opacity: 0.9; margin-top: 8px; max-width: 380px; line-height: 1.5;">Целиакия, аутоиммунные заболевания печени, ВЗК, ревматология — наша узкая экспертиза.</div>
+        <span data-dc-tpl="135" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 800; margin-top: 18px;">Перейти к анализам<svg data-dc-tpl="136" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="137" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="138" points="14 6 20 12 14 18"></polyline></svg></span>
+      </a>
+      <a data-dc-tpl="139" href="#genetika" class="scp5" style="position: relative; overflow: hidden; text-decoration: none; color: rgb(255, 255, 255); border-radius: 20px; padding: 38px; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(140deg, rgb(232, 131, 90), rgb(194, 94, 54)); box-shadow: rgba(194, 94, 54, 0.28) 0px 16px 40px; transition: transform 0.2s;">
+        <span data-dc-tpl="140" style="position: absolute; right: -40px; top: -40px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255, 255, 255, 0.1);"></span>
+        <span data-dc-tpl="141" style="display: inline-flex; align-self: flex-start; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.18); font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 999px; letter-spacing: 0.4px; text-transform: uppercase;">Фирменное направление</span>
+        <span data-dc-tpl="142" style="width: 54px; height: 54px; border-radius: 14px; background: rgba(255, 255, 255, 0.16); display: grid; place-items: center; margin-top: auto;"><svg data-dc-tpl="143" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="144" d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 3"></path><path data-dc-tpl="145" d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 3"></path><line data-dc-tpl="146" x1="12" y1="4" x2="12" y2="20"></line></svg></span>
+        <div data-dc-tpl="147" style="font-size: 27px; font-weight: 800; letter-spacing: -0.4px; margin-top: 16px;">Медицинская генетика</div>
+        <div data-dc-tpl="148" style="font-size: 15px; opacity: 0.92; margin-top: 8px; max-width: 380px; line-height: 1.5;">Кариотип, наследственные синдромы и молекулярные исследования — лицо нашей лаборатории.</div>
+        <span data-dc-tpl="149" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 800; margin-top: 18px;">Смотреть тесты<svg data-dc-tpl="150" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="151" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="152" points="14 6 20 12 14 18"></polyline></svg></span>
+      </a>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="153" id="genetika" style="background: rgb(251, 244, 239); padding: 80px 0px; margin-top: 72px; border-top: 1px solid rgb(240, 226, 216); border-bottom: 1px solid rgb(240, 226, 216);">
+    <div data-dc-tpl="154" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="155" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 40px;">
+        <div data-dc-tpl="156" style="max-width: 640px;">
+          <span data-dc-tpl="157" style="display: inline-flex; align-items: center; gap: 8px; color: rgb(194, 94, 54); font-weight: 800; font-size: 13px; letter-spacing: 1px; text-transform: uppercase;"><svg data-dc-tpl="158" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="159" d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 3"></path><path data-dc-tpl="160" d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 3"></path><line data-dc-tpl="161" x1="12" y1="4" x2="12" y2="20"></line></svg>Витрина генетики</span>
+          <h2 data-dc-tpl="162" style="font-size: 38px; font-weight: 800; letter-spacing: -0.7px; margin: 12px 0px 0px; color: rgb(22, 50, 58);">Медицинская генетика — фирменное направление</h2>
+          <p data-dc-tpl="163" style="font-size: 17px; color: rgb(122, 102, 87); line-height: 1.55; margin: 12px 0px 0px;">Современные молекулярно-генетические и цитогенетические исследования с понятными ценами. Все тесты выполняются в собственной лаборатории.</p>
+        </div>
+        <a data-dc-tpl="164" href="#zayavka" class="scp6" style="display: inline-flex; align-items: center; gap: 9px; background: rgb(232, 131, 90); color: rgb(255, 255, 255); font-weight: 800; font-size: 15px; padding: 14px 24px; border-radius: 12px; text-decoration: none; box-shadow: rgba(232, 131, 90, 0.3) 0px 10px 24px; transition: background 0.15s; flex: 0 0 auto;">Консультация генетика</a>
+      </div>
+      <div data-dc-tpl="165" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        
+          <div data-dc-tpl="167" class="scp7" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: rgba(120, 80, 50, 0.05) 0px 1px 3px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="168" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; color: rgb(22, 50, 58);"><span class="sc-interp">Хромосомный набор — 23 хромосомы</span></div>
+            <div data-dc-tpl="169" style="font-size: 14px; color: rgb(138, 117, 101); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Комплексное исследование кариотипа по всем парам хромосом</span></div>
+            <div data-dc-tpl="170" style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+              <span data-dc-tpl="171" style="font-weight: 800; font-size: 20px; color: rgb(194, 94, 54);"><span class="sc-interp">6 900 ₽</span></span>
+              <a data-dc-tpl="172" href="#zayavka" class="scp8" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(194, 94, 54); background: rgb(251, 238, 231); padding: 9px 16px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Заказать<svg data-dc-tpl="173" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="174" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="175" points="14 6 20 12 14 18"></polyline></svg></a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="167" class="scp7" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: rgba(120, 80, 50, 0.05) 0px 1px 3px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="168" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; color: rgb(22, 50, 58);"><span class="sc-interp">Микроделеции и микродупликации хромосом</span></div>
+            <div data-dc-tpl="169" style="font-size: 14px; color: rgb(138, 117, 101); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Молекулярный скрининг скрытых перестроек высокого разрешения</span></div>
+            <div data-dc-tpl="170" style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+              <span data-dc-tpl="171" style="font-weight: 800; font-size: 20px; color: rgb(194, 94, 54);"><span class="sc-interp">6 900 ₽</span></span>
+              <a data-dc-tpl="172" href="#zayavka" class="scp8" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(194, 94, 54); background: rgb(251, 238, 231); padding: 9px 16px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Заказать<svg data-dc-tpl="173" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="174" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="175" points="14 6 20 12 14 18"></polyline></svg></a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="167" class="scp7" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: rgba(120, 80, 50, 0.05) 0px 1px 3px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="168" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; color: rgb(22, 50, 58);"><span class="sc-interp">Синдром Жильбера</span></div>
+            <div data-dc-tpl="169" style="font-size: 14px; color: rgb(138, 117, 101); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Ген UGT1A1 — наследственное нарушение обмена билирубина</span></div>
+            <div data-dc-tpl="170" style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+              <span data-dc-tpl="171" style="font-weight: 800; font-size: 20px; color: rgb(194, 94, 54);"><span class="sc-interp">2 900 ₽</span></span>
+              <a data-dc-tpl="172" href="#zayavka" class="scp8" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(194, 94, 54); background: rgb(251, 238, 231); padding: 9px 16px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Заказать<svg data-dc-tpl="173" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="174" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="175" points="14 6 20 12 14 18"></polyline></svg></a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="167" class="scp7" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: rgba(120, 80, 50, 0.05) 0px 1px 3px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="168" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; color: rgb(22, 50, 58);"><span class="sc-interp">Синдром Мартина-Белла</span></div>
+            <div data-dc-tpl="169" style="font-size: 14px; color: rgb(138, 117, 101); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">X-ломкая хромосома — частая причина наследственной умственной отсталости</span></div>
+            <div data-dc-tpl="170" style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+              <span data-dc-tpl="171" style="font-weight: 800; font-size: 20px; color: rgb(194, 94, 54);"><span class="sc-interp">4 500 ₽</span></span>
+              <a data-dc-tpl="172" href="#zayavka" class="scp8" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(194, 94, 54); background: rgb(251, 238, 231); padding: 9px 16px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Заказать<svg data-dc-tpl="173" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="174" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="175" points="14 6 20 12 14 18"></polyline></svg></a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="167" class="scp7" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: rgba(120, 80, 50, 0.05) 0px 1px 3px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="168" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; color: rgb(22, 50, 58);"><span class="sc-interp">Синдром Ретта у девочек</span></div>
+            <div data-dc-tpl="169" style="font-size: 14px; color: rgb(138, 117, 101); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Анализ гена MECP2 при нарушениях развития</span></div>
+            <div data-dc-tpl="170" style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+              <span data-dc-tpl="171" style="font-weight: 800; font-size: 20px; color: rgb(194, 94, 54);"><span class="sc-interp">6 900 ₽</span></span>
+              <a data-dc-tpl="172" href="#zayavka" class="scp8" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(194, 94, 54); background: rgb(251, 238, 231); padding: 9px 16px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Заказать<svg data-dc-tpl="173" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="174" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="175" points="14 6 20 12 14 18"></polyline></svg></a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="167" class="scp7" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: rgba(120, 80, 50, 0.05) 0px 1px 3px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="168" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; color: rgb(22, 50, 58);"><span class="sc-interp">Дефицит лактазы (ПЦР)</span></div>
+            <div data-dc-tpl="169" style="font-size: 14px; color: rgb(138, 117, 101); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Ген LCT — наследственная непереносимость лактозы</span></div>
+            <div data-dc-tpl="170" style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+              <span data-dc-tpl="171" style="font-weight: 800; font-size: 20px; color: rgb(194, 94, 54);"><span class="sc-interp">1 650 ₽</span></span>
+              <a data-dc-tpl="172" href="#zayavka" class="scp8" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(194, 94, 54); background: rgb(251, 238, 231); padding: 9px 16px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Заказать<svg data-dc-tpl="173" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="174" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="175" points="14 6 20 12 14 18"></polyline></svg></a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="176" id="analizy" style="background: rgb(243, 248, 249); padding: 80px 0px;">
+    <div data-dc-tpl="177" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="178" style="text-align: center; max-width: 640px; margin: 0px auto 44px;">
+        <h2 data-dc-tpl="179" style="font-size: 36px; font-weight: 800; letter-spacing: -0.6px; margin: 0px;">Популярные анализы</h2>
+        <p data-dc-tpl="180" style="font-size: 17px; color: rgb(81, 102, 109); line-height: 1.55; margin: 12px 0px 0px;">Базовые исследования и профильные маркеры по прозрачным ценам — запишитесь онлайн за пару минут.</p>
+      </div>
+      <div data-dc-tpl="181" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        
+          <div data-dc-tpl="183" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="184" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+              <span data-dc-tpl="185" style="width: 46px; height: 46px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="186" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="187" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+              
+                <span data-dc-tpl="189" style="font-size: 11.5px; font-weight: 800; color: rgb(255, 255, 255); background: rgb(232, 131, 90); padding: 5px 11px; border-radius: 999px; white-space: nowrap;"><span class="sc-interp">Хит цены</span></span>
+              
+            </div>
+            <div data-dc-tpl="190" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; margin-top: 4px;"><span class="sc-interp">Клинический анализ крови с лейкоформулой и СОЭ</span></div>
+            <div data-dc-tpl="191" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Базовая оценка состояния здоровья — лейкоформула и СОЭ включены</span></div>
+            <div data-dc-tpl="192" style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 14px; border-top: 1px solid rgb(238, 243, 244);">
+              <span data-dc-tpl="193" style="font-weight: 800; font-size: 21px; color: rgb(31, 122, 140);"><span class="sc-interp">400 ₽</span></span>
+              <a data-dc-tpl="194" href="#zayavka" class="scpa" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 10px 18px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Записаться</a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="183" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="184" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+              <span data-dc-tpl="185" style="width: 46px; height: 46px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="186" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="187" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+              
+            </div>
+            <div data-dc-tpl="190" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; margin-top: 4px;"><span class="sc-interp">Антинуклеарный фактор на HEp-2 (АНФ)</span></div>
+            <div data-dc-tpl="191" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Ключевой скрининг системных аутоиммунных заболеваний</span></div>
+            <div data-dc-tpl="192" style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 14px; border-top: 1px solid rgb(238, 243, 244);">
+              <span data-dc-tpl="193" style="font-weight: 800; font-size: 21px; color: rgb(31, 122, 140);"><span class="sc-interp">1 500 ₽</span></span>
+              <a data-dc-tpl="194" href="#zayavka" class="scpa" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 10px 18px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Записаться</a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="183" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="184" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+              <span data-dc-tpl="185" style="width: 46px; height: 46px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="186" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="187" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+              
+            </div>
+            <div data-dc-tpl="190" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; margin-top: 4px;"><span class="sc-interp">Скрининг целиакии (ААГ IgG и ТТГ2 IgA)</span></div>
+            <div data-dc-tpl="191" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Антитела к глиадину и тканевой трансглутаминазе</span></div>
+            <div data-dc-tpl="192" style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 14px; border-top: 1px solid rgb(238, 243, 244);">
+              <span data-dc-tpl="193" style="font-weight: 800; font-size: 21px; color: rgb(31, 122, 140);"><span class="sc-interp">2 450 ₽</span></span>
+              <a data-dc-tpl="194" href="#zayavka" class="scpa" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 10px 18px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Записаться</a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="183" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="184" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+              <span data-dc-tpl="185" style="width: 46px; height: 46px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="186" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="187" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+              
+            </div>
+            <div data-dc-tpl="190" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; margin-top: 4px;"><span class="sc-interp">Фекальный кальпротектин</span></div>
+            <div data-dc-tpl="191" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Маркер воспаления кишечника при ВЗК</span></div>
+            <div data-dc-tpl="192" style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 14px; border-top: 1px solid rgb(238, 243, 244);">
+              <span data-dc-tpl="193" style="font-weight: 800; font-size: 21px; color: rgb(31, 122, 140);"><span class="sc-interp">2 800 ₽</span></span>
+              <a data-dc-tpl="194" href="#zayavka" class="scpa" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 10px 18px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Записаться</a>
+            </div>
+          </div>
+        
+          <div data-dc-tpl="183" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="184" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+              <span data-dc-tpl="185" style="width: 46px; height: 46px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="186" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="187" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+              
+            </div>
+            <div data-dc-tpl="190" style="font-weight: 800; font-size: 17.5px; line-height: 1.3; margin-top: 4px;"><span class="sc-interp">Минеральный обмен в крови</span></div>
+            <div data-dc-tpl="191" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5; flex: 1 1 0%;"><span class="sc-interp">Кальций, фосфор, магний и другие электролиты</span></div>
+            <div data-dc-tpl="192" style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 14px; border-top: 1px solid rgb(238, 243, 244);">
+              <span data-dc-tpl="193" style="font-weight: 800; font-size: 21px; color: rgb(31, 122, 140);"><span class="sc-interp">3 000 ₽</span></span>
+              <a data-dc-tpl="194" href="#zayavka" class="scpa" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 10px 18px; border-radius: 10px; text-decoration: none; transition: 0.15s;">Записаться</a>
+            </div>
+          </div>
+        
+        <a data-dc-tpl="195" href="#zayavka" style="background: linear-gradient(140deg, rgb(31, 122, 140), rgb(47, 155, 171)); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: center; text-decoration: none; color: rgb(255, 255, 255); box-shadow: rgba(31, 122, 140, 0.22) 0px 14px 34px;">
+          <svg data-dc-tpl="196" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 14px;"><circle data-dc-tpl="197" cx="11" cy="11" r="7"></circle><line data-dc-tpl="198" x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+          <div data-dc-tpl="199" style="font-size: 20px; font-weight: 800; line-height: 1.25;">Более 1000 анализов в каталоге</div>
+          <div data-dc-tpl="200" style="font-size: 14px; opacity: 0.9; margin-top: 8px; line-height: 1.5;">Найдите нужное исследование или попросите помощи в подборе.</div>
+          <span data-dc-tpl="201" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 800; margin-top: 16px;">Открыть каталог<svg data-dc-tpl="202" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="203" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="204" points="14 6 20 12 14 18"></polyline></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="205" id="razdely" style="padding: 80px 0px;">
+    <div data-dc-tpl="206" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="207" style="text-align: center; max-width: 640px; margin: 0px auto 44px;">
+        <h2 data-dc-tpl="208" style="font-size: 36px; font-weight: 800; letter-spacing: -0.6px; margin: 0px;">Разделы диагностики</h2>
+        <p data-dc-tpl="209" style="font-size: 17px; color: rgb(81, 102, 109); line-height: 1.55; margin: 12px 0px 0px;">Выберите направление — внутри собраны профильные анализы и рекомендации.</p>
+      </div>
+      <div data-dc-tpl="210" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M7 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM17 11a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM9.6 9.6l4.8 4.8"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Системные ревматические заболевания</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M12 2.7s6 6 6 10.3a6 6 0 0 1-12 0c0-4.3 6-10.3 6-10.3z"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Миелома и парапротеинемии</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 3M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 3M12 4v16"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Неврология</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M12 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 21v-2a6 6 0 0 1 12 0v2"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Отставание развития у детей</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M12 3s5 5 5 9a5 5 0 0 1-10 0c0-1 .3-2 .8-3"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Мочекаменная болезнь</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M5 12c0-4 3-6 7-6s7 2 7 6-3 6-7 6-7-2-7-6zM9 12h6"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Заболевания кишечника и печени</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M12 8a4 4 0 0 0-7 2 4 4 0 0 0 7 3 4 4 0 0 0 7-3 4 4 0 0 0-7-2z"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Эндокринология</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M12 3v18M12 8c1.5-1.5 4-1.5 4-1.5s0 2.5-1.5 4M12 8c-1.5-1.5-4-1.5-4-1.5s0 2.5 1.5 4M12 14c1.5-1.5 4-1.5 4-1.5s0 2.5-1.5 4M12 14c-1.5-1.5-4-1.5-4-1.5s0 2.5 1.5 4"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Целиакия</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M12 2.7s6 6 6 10.3a6 6 0 0 1-12 0c0-4.3 6-10.3 6-10.3zM9 13h6"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Анемия</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M19 5l-5.5 5.5M19 5h-5M19 5v5M10.5 13a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Рак предстательной железы</span></span>
+          </a>
+        
+          <a data-dc-tpl="212" href="#analizy" class="scpb" style="display: flex; align-items: center; gap: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 18px; text-decoration: none; color: rgb(22, 50, 58); transition: 0.15s;">
+            <span data-dc-tpl="213" style="width: 44px; height: 44px; border-radius: 12px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="214" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="215" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+            <span data-dc-tpl="216" style="font-weight: 700; font-size: 15px; line-height: 1.3;"><span class="sc-interp">Общелабораторные анализы</span></span>
+          </a>
+        
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="217" id="about" style="background: rgb(243, 248, 249); padding: 80px 0px;">
+    <div data-dc-tpl="218" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="219" style="text-align: center; max-width: 640px; margin: 0px auto 44px;">
+        <span data-dc-tpl="220" style="display: inline-flex; align-items: center; gap: 8px; color: rgb(194, 94, 54); font-weight: 800; font-size: 13px; letter-spacing: 1px; text-transform: uppercase;">Команда</span>
+        <h2 data-dc-tpl="221" style="font-size: 36px; font-weight: 800; letter-spacing: -0.6px; margin: 12px 0px 0px;">Наши врачи-генетики</h2>
+        <p data-dc-tpl="222" style="font-size: 17px; color: rgb(81, 102, 109); line-height: 1.55; margin: 12px 0px 0px;">Консультируют по результатам исследований и помогают выбрать программу обследования.</p>
+      </div>
+      <div data-dc-tpl="223" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;">
+        
+          <div data-dc-tpl="225" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="226" style="width: 96px; height: 96px; border-radius: 50%; margin: 0px auto 16px; background: linear-gradient(150deg, rgb(232, 244, 246), rgb(214, 236, 239)); display: grid; place-items: center; color: rgb(127, 170, 178);"><svg data-dc-tpl="227" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="228" cx="12" cy="8" r="4"></circle><path data-dc-tpl="229" d="M5 21v-1a7 7 0 0 1 14 0v1"></path></svg></div>
+            <div data-dc-tpl="230" style="font-weight: 800; font-size: 18px;"><span class="sc-interp">Имя Фамилия</span></div>
+            <div data-dc-tpl="231" style="font-size: 14px; color: rgb(31, 122, 140); font-weight: 700; margin-top: 4px;"><span class="sc-interp">врач-генетик</span></div>
+            <div data-dc-tpl="232" style="font-size: 13px; color: rgb(130, 152, 160); margin-top: 6px;"><span class="sc-interp">Медицинская генетика</span></div>
+          </div>
+        
+          <div data-dc-tpl="225" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="226" style="width: 96px; height: 96px; border-radius: 50%; margin: 0px auto 16px; background: linear-gradient(150deg, rgb(232, 244, 246), rgb(214, 236, 239)); display: grid; place-items: center; color: rgb(127, 170, 178);"><svg data-dc-tpl="227" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="228" cx="12" cy="8" r="4"></circle><path data-dc-tpl="229" d="M5 21v-1a7 7 0 0 1 14 0v1"></path></svg></div>
+            <div data-dc-tpl="230" style="font-weight: 800; font-size: 18px;"><span class="sc-interp">Имя Фамилия</span></div>
+            <div data-dc-tpl="231" style="font-size: 14px; color: rgb(31, 122, 140); font-weight: 700; margin-top: 4px;"><span class="sc-interp">врач-генетик</span></div>
+            <div data-dc-tpl="232" style="font-size: 13px; color: rgb(130, 152, 160); margin-top: 6px;"><span class="sc-interp">Наследственные патологии</span></div>
+          </div>
+        
+          <div data-dc-tpl="225" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="226" style="width: 96px; height: 96px; border-radius: 50%; margin: 0px auto 16px; background: linear-gradient(150deg, rgb(232, 244, 246), rgb(214, 236, 239)); display: grid; place-items: center; color: rgb(127, 170, 178);"><svg data-dc-tpl="227" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="228" cx="12" cy="8" r="4"></circle><path data-dc-tpl="229" d="M5 21v-1a7 7 0 0 1 14 0v1"></path></svg></div>
+            <div data-dc-tpl="230" style="font-weight: 800; font-size: 18px;"><span class="sc-interp">Имя Фамилия</span></div>
+            <div data-dc-tpl="231" style="font-size: 14px; color: rgb(31, 122, 140); font-weight: 700; margin-top: 4px;"><span class="sc-interp">врач-генетик</span></div>
+            <div data-dc-tpl="232" style="font-size: 13px; color: rgb(130, 152, 160); margin-top: 6px;"><span class="sc-interp">Хромосомный анализ</span></div>
+          </div>
+        
+          <div data-dc-tpl="225" class="scp9" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.18s, box-shadow 0.18s;">
+            <div data-dc-tpl="226" style="width: 96px; height: 96px; border-radius: 50%; margin: 0px auto 16px; background: linear-gradient(150deg, rgb(232, 244, 246), rgb(214, 236, 239)); display: grid; place-items: center; color: rgb(127, 170, 178);"><svg data-dc-tpl="227" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="228" cx="12" cy="8" r="4"></circle><path data-dc-tpl="229" d="M5 21v-1a7 7 0 0 1 14 0v1"></path></svg></div>
+            <div data-dc-tpl="230" style="font-weight: 800; font-size: 18px;"><span class="sc-interp">Имя Фамилия</span></div>
+            <div data-dc-tpl="231" style="font-size: 14px; color: rgb(31, 122, 140); font-weight: 700; margin-top: 4px;"><span class="sc-interp">врач-генетик</span></div>
+            <div data-dc-tpl="232" style="font-size: 13px; color: rgb(130, 152, 160); margin-top: 6px;"><span class="sc-interp">Генетика развития</span></div>
+          </div>
+        
+      </div>
+      <p data-dc-tpl="233" style="text-align: center; font-size: 13px; color: rgb(154, 169, 174); margin: 24px 0px 0px;">Карточки врачей — плейсхолдеры, заполним реальными данными.</p>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="234" id="kaksdat" style="padding: 80px 0px;">
+    <div data-dc-tpl="235" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="236" style="text-align: center; max-width: 640px; margin: 0px auto 48px;">
+        <h2 data-dc-tpl="237" style="font-size: 36px; font-weight: 800; letter-spacing: -0.6px; margin: 0px;">Как сдать анализ</h2>
+        <p data-dc-tpl="238" style="font-size: 17px; color: rgb(81, 102, 109); line-height: 1.55; margin: 12px 0px 0px;">Четыре простых шага — от выбора исследования до результата онлайн.</p>
+      </div>
+      <div data-dc-tpl="239" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;">
+        
+          <div data-dc-tpl="241" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 24px; position: relative;">
+            <div data-dc-tpl="242" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span data-dc-tpl="243" style="width: 50px; height: 50px; border-radius: 13px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="244" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="245" d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.5-4.5"></path></svg></span>
+              <span data-dc-tpl="246" style="font-size: 42px; font-weight: 800; color: rgb(234, 242, 243); line-height: 1;"><span class="sc-interp">1</span></span>
+            </div>
+            <div data-dc-tpl="247" style="font-weight: 800; font-size: 18px; margin-bottom: 6px;"><span class="sc-interp">Выберите анализ</span></div>
+            <div data-dc-tpl="248" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5;"><span class="sc-interp">Найдите исследование в каталоге или попросите подобрать по симптому.</span></div>
+          </div>
+        
+          <div data-dc-tpl="241" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 24px; position: relative;">
+            <div data-dc-tpl="242" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span data-dc-tpl="243" style="width: 50px; height: 50px; border-radius: 13px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="244" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="245" d="M3 4h18v18H3zM3 9h18M8 2v4M16 2v4"></path></svg></span>
+              <span data-dc-tpl="246" style="font-size: 42px; font-weight: 800; color: rgb(234, 242, 243); line-height: 1;"><span class="sc-interp">2</span></span>
+            </div>
+            <div data-dc-tpl="247" style="font-weight: 800; font-size: 18px; margin-bottom: 6px;"><span class="sc-interp">Запишитесь</span></div>
+            <div data-dc-tpl="248" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5;"><span class="sc-interp">Онлайн на сайте или по телефону — выберите удобное время.</span></div>
+          </div>
+        
+          <div data-dc-tpl="241" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 24px; position: relative;">
+            <div data-dc-tpl="242" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span data-dc-tpl="243" style="width: 50px; height: 50px; border-radius: 13px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="244" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="245" d="M12 2.7s6 6 6 10.3a6 6 0 0 1-12 0c0-4.3 6-10.3 6-10.3z"></path></svg></span>
+              <span data-dc-tpl="246" style="font-size: 42px; font-weight: 800; color: rgb(234, 242, 243); line-height: 1;"><span class="sc-interp">3</span></span>
+            </div>
+            <div data-dc-tpl="247" style="font-weight: 800; font-size: 18px; margin-bottom: 6px;"><span class="sc-interp">Сдайте биоматериал</span></div>
+            <div data-dc-tpl="248" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5;"><span class="sc-interp">Кровь — утром натощак. Быстро и без очередей.</span></div>
+          </div>
+        
+          <div data-dc-tpl="241" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 28px 24px; position: relative;">
+            <div data-dc-tpl="242" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span data-dc-tpl="243" style="width: 50px; height: 50px; border-radius: 13px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="244" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="245" d="M9 12l2 2 4-4M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path></svg></span>
+              <span data-dc-tpl="246" style="font-size: 42px; font-weight: 800; color: rgb(234, 242, 243); line-height: 1;"><span class="sc-interp">4</span></span>
+            </div>
+            <div data-dc-tpl="247" style="font-weight: 800; font-size: 18px; margin-bottom: 6px;"><span class="sc-interp">Результат онлайн</span></div>
+            <div data-dc-tpl="248" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5;"><span class="sc-interp">Готовый результат придёт на почту и в личный кабинет.</span></div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="249" style="background: rgb(243, 248, 249); padding: 80px 0px;">
+    <div data-dc-tpl="250" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="251" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 40px;">
+        <div data-dc-tpl="252">
+          <h2 data-dc-tpl="253" style="font-size: 36px; font-weight: 800; letter-spacing: -0.6px; margin: 0px;">Отзывы пациентов</h2>
+          <div data-dc-tpl="254" style="display: flex; align-items: center; gap: 12px; margin-top: 14px;">
+            <span data-dc-tpl="255" style="font-size: 30px; font-weight: 800; color: rgb(22, 50, 58);">4.9</span>
+            <span data-dc-tpl="256" style="display: inline-flex; gap: 2px; color: rgb(245, 166, 35);"><svg data-dc-tpl="257" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="258" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="259" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="260" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="261" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="262" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="263" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="264" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="265" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="266" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg></span>
+            <span data-dc-tpl="267" style="font-size: 14px; color: rgb(130, 152, 160);">средняя оценка · 120+ отзывов</span>
+          </div>
+        </div>
+        <a data-dc-tpl="268" href="#" class="scpc" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; color: rgb(31, 122, 140); background: rgb(255, 255, 255); border: 1.5px solid rgb(207, 227, 230); padding: 13px 22px; border-radius: 12px; text-decoration: none; transition: 0.15s;">Все отзывы<svg data-dc-tpl="269" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line data-dc-tpl="270" x1="4" y1="12" x2="20" y2="12"></line><polyline data-dc-tpl="271" points="14 6 20 12 14 18"></polyline></svg></a>
+      </div>
+      <div data-dc-tpl="272" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        
+          <div data-dc-tpl="274" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 26px; display: flex; flex-direction: column;">
+            <div data-dc-tpl="275" style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+              <span data-dc-tpl="276" style="width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: rgb(255, 255, 255); font-weight: 800; font-size: 18px; flex: 0 0 auto; background: rgb(47, 155, 171);"><span class="sc-interp">А</span></span>
+              <div data-dc-tpl="277">
+                <div data-dc-tpl="278" style="font-weight: 800; font-size: 15px;"><span class="sc-interp">Анна К.</span></div>
+                <span data-dc-tpl="279" style="display: inline-flex; gap: 1px; color: rgb(245, 166, 35); margin-top: 2px;"><svg data-dc-tpl="280" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="281" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="282" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="283" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="284" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="285" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="286" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="287" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="288" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="289" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg></span>
+              </div>
+            </div>
+            <p data-dc-tpl="290" style="font-size: 14.5px; color: rgb(60, 79, 85); line-height: 1.6; margin: 0px; flex: 1 1 0%;"><span class="sc-interp">Сдавала генетический анализ — всё подробно объяснили, результат пришёл онлайн в срок. Цены адекватные.</span></p>
+            <div data-dc-tpl="291" style="font-size: 12.5px; color: rgb(154, 169, 174); margin-top: 14px;"><span class="sc-interp">Апрель 2026</span></div>
+          </div>
+        
+          <div data-dc-tpl="274" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 26px; display: flex; flex-direction: column;">
+            <div data-dc-tpl="275" style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+              <span data-dc-tpl="276" style="width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: rgb(255, 255, 255); font-weight: 800; font-size: 18px; flex: 0 0 auto; background: rgb(232, 131, 90);"><span class="sc-interp">И</span></span>
+              <div data-dc-tpl="277">
+                <div data-dc-tpl="278" style="font-weight: 800; font-size: 15px;"><span class="sc-interp">Игорь М.</span></div>
+                <span data-dc-tpl="279" style="display: inline-flex; gap: 1px; color: rgb(245, 166, 35); margin-top: 2px;"><svg data-dc-tpl="280" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="281" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="282" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="283" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="284" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="285" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="286" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="287" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="288" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="289" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg></span>
+              </div>
+            </div>
+            <p data-dc-tpl="290" style="font-size: 14.5px; color: rgb(60, 79, 85); line-height: 1.6; margin: 0px; flex: 1 1 0%;"><span class="sc-interp">Делал скрининг целиакии по направлению врача. Понравился внимательный персонал и удобная запись.</span></p>
+            <div data-dc-tpl="291" style="font-size: 12.5px; color: rgb(154, 169, 174); margin-top: 14px;"><span class="sc-interp">Март 2026</span></div>
+          </div>
+        
+          <div data-dc-tpl="274" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 16px; padding: 26px; display: flex; flex-direction: column;">
+            <div data-dc-tpl="275" style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+              <span data-dc-tpl="276" style="width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: rgb(255, 255, 255); font-weight: 800; font-size: 18px; flex: 0 0 auto; background: rgb(31, 122, 140);"><span class="sc-interp">М</span></span>
+              <div data-dc-tpl="277">
+                <div data-dc-tpl="278" style="font-weight: 800; font-size: 15px;"><span class="sc-interp">Мария С.</span></div>
+                <span data-dc-tpl="279" style="display: inline-flex; gap: 1px; color: rgb(245, 166, 35); margin-top: 2px;"><svg data-dc-tpl="280" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="281" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="282" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="283" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="284" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="285" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="286" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="287" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg><svg data-dc-tpl="288" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="289" d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L6 21.1l1.4-7L2.2 9.3l7-.8z"></path></svg></span>
+              </div>
+            </div>
+            <p data-dc-tpl="290" style="font-size: 14.5px; color: rgb(60, 79, 85); line-height: 1.6; margin: 0px; flex: 1 1 0%;"><span class="sc-interp">Клинический анализ крови за 400 ₽ — отличная цена. Быстро взяли кровь, результат на следующий день.</span></p>
+            <div data-dc-tpl="291" style="font-size: 12.5px; color: rgb(154, 169, 174); margin-top: 14px;"><span class="sc-interp">Март 2026</span></div>
+          </div>
+        
+      </div>
+      <p data-dc-tpl="292" style="text-align: center; font-size: 13px; color: rgb(154, 169, 174); margin: 24px 0px 0px;">Отзывы и оценка — плейсхолдеры, подключим реальные.</p>
+    </div>
+  </section>
+
+  
+  <section data-dc-tpl="293" id="zayavka" style="background: linear-gradient(120deg, rgb(22, 50, 58), rgb(31, 122, 140)); padding: 72px 0px;">
+    <div data-dc-tpl="294" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center;">
+      <div data-dc-tpl="295">
+        <h2 data-dc-tpl="296" style="font-size: 34px; font-weight: 800; letter-spacing: -0.5px; color: rgb(255, 255, 255); margin: 0px 0px 14px; line-height: 1.15;">Запишитесь на анализ или консультацию генетика</h2>
+        <p data-dc-tpl="297" style="font-size: 17px; color: rgba(255, 255, 255, 0.85); margin: 0px 0px 26px; line-height: 1.55;">Оставьте контакты — перезвоним, поможем подобрать исследование и подскажем подготовку. Или позвоните нам напрямую.</p>
+        <div data-dc-tpl="298" style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
+          <a data-dc-tpl="299" href="tel:+79219058951" style="display: inline-flex; align-items: center; gap: 10px; color: rgb(255, 255, 255); font-weight: 800; font-size: 21px; text-decoration: none;"><span data-dc-tpl="300" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(255, 255, 255, 0.14); display: grid; place-items: center;"><svg data-dc-tpl="301" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7fe3d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="302" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>+7 (921) 905-89-51</a>
+          <span data-dc-tpl="303" style="display: inline-flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.85); font-weight: 600; font-size: 15px;"><svg data-dc-tpl="304" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7fe3d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle data-dc-tpl="305" cx="12" cy="12" r="9"></circle><path data-dc-tpl="306" d="M12 7v5l3 2"></path></svg>пн–пт 9:00–16:00 · сб 9:00–13:00</span>
+        </div>
+      </div>
+      <div data-dc-tpl="307" style="background: rgb(255, 255, 255); border-radius: 18px; padding: 28px; box-shadow: rgba(0, 0, 0, 0.22) 0px 24px 60px;">
+        
+          <form data-dc-tpl="309" style="display: flex; flex-direction: column; gap: 12px;">
+            <div data-dc-tpl="310" style="font-weight: 800; font-size: 20px; margin-bottom: 2px;">Записаться на приём</div>
+            <input data-dc-tpl="311" placeholder="Ваше имя" class="scp3" value="" style="font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; padding: 14px 16px; border: 1.5px solid rgb(227, 236, 238); border-radius: 12px; background: rgb(247, 250, 251); outline: none;">
+            <input data-dc-tpl="312" placeholder="Телефон" class="scp3" value="" style="font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; padding: 14px 16px; border: 1.5px solid rgb(227, 236, 238); border-radius: 12px; background: rgb(247, 250, 251); outline: none;">
+            <button data-dc-tpl="313" type="submit" class="scp1" style="font-style: inherit; font-variant: inherit; font-weight: 800; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; color: rgb(255, 255, 255); background: rgb(47, 155, 171); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 15px; border-radius: 12px; cursor: pointer; box-shadow: rgba(47, 155, 171, 0.3) 0px 10px 24px; transition: background 0.15s;">Отправить заявку</button>
+            <div data-dc-tpl="314" style="font-size: 12px; color: rgb(154, 169, 174); line-height: 1.45;">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</div>
+          </form>
+        
+        
+      </div>
+    </div>
+  </section>
+
+  
+  <footer data-dc-tpl="323" id="footer" style="background: rgb(16, 38, 44); color: rgba(255, 255, 255, 0.72); padding: 60px 0px 0px;">
+    <div data-dc-tpl="324" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px 44px; display: grid; grid-template-columns: 1.5fr 1fr 1.1fr 1.1fr; gap: 36px;">
+      <div data-dc-tpl="325">
+        <div data-dc-tpl="326" style="display: inline-flex; align-items: center; gap: 12px;">
+          <span data-dc-tpl="327" style="position: relative; width: 42px; height: 42px; flex: 0 0 auto;">
+            <span data-dc-tpl="328" style="position: absolute; width: 27px; height: 27px; left: 0px; top: 3px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgb(127, 214, 226), rgb(47, 155, 171));"></span>
+            <span data-dc-tpl="329" style="position: absolute; width: 20px; height: 20px; left: 18px; top: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgb(244, 173, 146), rgb(232, 131, 90));"></span>
+          </span>
+          <span data-dc-tpl="330" style="display: flex; flex-direction: column; line-height: 1.04;">
+            <span data-dc-tpl="331" style="font-weight: 800; font-size: 22px; letter-spacing: 0.5px; color: rgb(255, 255, 255);">ЛМД</span>
+            <span data-dc-tpl="332" style="font-size: 10.5px; font-weight: 600; color: rgb(127, 160, 168);">Лабораторная диагностика</span>
+          </span>
+        </div>
+        <p data-dc-tpl="333" style="font-size: 14px; line-height: 1.6; margin: 16px 0px 18px; max-width: 300px;">Центр лабораторной медицинской диагностики. Более 12 лет: аутоиммунные состояния, наследственные патологии, онкология.</p>
+        <div data-dc-tpl="334" style="display: flex; gap: 10px;">
+          <a data-dc-tpl="335" href="#" class="scpd" style="width: 40px; height: 40px; border-radius: 11px; background: rgba(255, 255, 255, 0.08); display: grid; place-items: center; text-decoration: none; color: rgb(255, 255, 255); transition: background 0.15s;"><svg data-dc-tpl="336" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="337" d="M12.5 17h1.4c.3 0 .4-.1.5-.4 0-.7.3-1.3.9-1.3.5 0 .7.4 1.4 1.1.5.5.9.6 1.5.6h1.4c.5 0 .8-.2.6-.7-.2-.5-1.4-1.7-1.5-1.9-.3-.3-.2-.5 0-.8.1-.1 1.2-1.7 1.3-2.2.1-.3 0-.5-.4-.5h-1.4c-.4 0-.5.2-.6.4 0 0-.7 1.7-1.6 2.8-.3.3-.4.2-.4-.1V11c0-.3-.1-.5-.4-.5h-2.2c-.2 0-.4.1-.4.3 0 .3.4.4.5 1.1v1.6c0 .4-.1.5-.2.5-.4 0-1.3-1.7-1.8-3.6-.1-.3-.2-.4-.5-.4H8.6c-.4 0-.5.2-.5.4 0 .4.5 2.3 2.2 4.7 1.2 1.7 2.7 2.4 4.2 2.4z"></path></svg></a>
+          <a data-dc-tpl="338" href="#" class="scpd" style="width: 40px; height: 40px; border-radius: 11px; background: rgba(255, 255, 255, 0.08); display: grid; place-items: center; text-decoration: none; color: rgb(255, 255, 255); transition: background 0.15s;"><svg data-dc-tpl="339" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path data-dc-tpl="340" d="M21.9 5.2 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L7.5 13l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.5.2 1.1 1.8z"></path></svg></a>
+        </div>
+      </div>
+      <div data-dc-tpl="341">
+        <div data-dc-tpl="342" style="color: rgb(255, 255, 255); font-weight: 800; margin-bottom: 14px; font-size: 15px;">Разделы</div>
+        <a data-dc-tpl="343" href="#analizy" class="scpe" style="display: block; color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 14px; padding: 5px 0px; transition: color 0.15s;">Анализы и цены</a>
+        <a data-dc-tpl="344" href="#genetika" class="scpe" style="display: block; color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 14px; padding: 5px 0px; transition: color 0.15s;">Медицинская генетика</a>
+        <a data-dc-tpl="345" href="#razdely" class="scpe" style="display: block; color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 14px; padding: 5px 0px; transition: color 0.15s;">Разделы диагностики</a>
+        <a data-dc-tpl="346" href="#kaksdat" class="scpe" style="display: block; color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 14px; padding: 5px 0px; transition: color 0.15s;">Как сдать анализ</a>
+        <a data-dc-tpl="347" href="#about" class="scpe" style="display: block; color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 14px; padding: 5px 0px; transition: color 0.15s;">О компании</a>
+      </div>
+      <div data-dc-tpl="348">
+        <div data-dc-tpl="349" style="color: rgb(255, 255, 255); font-weight: 800; margin-bottom: 14px; font-size: 15px;">Контакты</div>
+        <div data-dc-tpl="350" style="font-size: 14px; line-height: 1.6; margin-bottom: 12px;">СПб, Большой пр. ПС, 102</div>
+        <a data-dc-tpl="351" href="tel:+79219058951" style="display: block; font-weight: 800; color: rgb(255, 255, 255); font-size: 17px; text-decoration: none; margin-bottom: 8px;">+7 (921) 905-89-51</a>
+        <a data-dc-tpl="352" href="mailto:labmd@bk.ru" style="display: block; color: rgb(127, 227, 208); text-decoration: none; font-size: 14px; font-weight: 600;">labmd@bk.ru</a>
+      </div>
+      <div data-dc-tpl="353">
+        <div data-dc-tpl="354" style="color: rgb(255, 255, 255); font-weight: 800; margin-bottom: 14px; font-size: 15px;">Часы работы</div>
+        <div data-dc-tpl="355" style="font-size: 14px; line-height: 1.7;">Пн–Пт: 9:00–16:00<br data-dc-tpl="356"><span data-dc-tpl="357" style="opacity: 0.7;">(приём крови 9:00–13:00)</span><br data-dc-tpl="358">Сб: 9:00–13:00<br data-dc-tpl="359">Вс: выходной</div>
+        <div data-dc-tpl="360" style="font-size: 12.5px; opacity: 0.6; margin-top: 14px; line-height: 1.5;">Лицензия ЛО-78-01-006578<br data-dc-tpl="361">от 20.02.2016</div>
+      </div>
+    </div>
+    <div data-dc-tpl="362" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+      <div data-dc-tpl="363" style="max-width: 1180px; margin: 0px auto; padding: 20px 32px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; opacity: 0.62;">
+        <span data-dc-tpl="364">© 2026 ЛМД — Центр лабораторной медицинской диагностики</span>
+        <span data-dc-tpl="365">Информация на сайте не является публичной офертой · Политика конфиденциальности</span>
+      </div>
+    </div>
+  </footer>
+
+  
+  <section data-dc-tpl="366" style="background: rgb(233, 238, 240); padding: 72px 0px;">
+    <div data-dc-tpl="367" style="max-width: 1180px; margin: 0px auto; padding: 0px 32px;">
+      <div data-dc-tpl="368" style="text-align: center; margin-bottom: 44px;">
+        <h2 data-dc-tpl="369" style="font-size: 30px; font-weight: 800; letter-spacing: -0.5px; margin: 0px; color: rgb(22, 50, 58);">Мобильные виды ключевых блоков</h2>
+        <p data-dc-tpl="370" style="font-size: 16px; color: rgb(81, 102, 109); margin: 10px 0px 0px;">Hero, витрина генетики и карточки анализов на смартфоне.</p>
+      </div>
+      <div data-dc-tpl="371" style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+
+        
+        <div data-dc-tpl="372" style="text-align: center;">
+          <div data-dc-tpl="373" style="font-size: 13px; font-weight: 700; color: rgb(124, 138, 143); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Hero</div>
+          <div data-dc-tpl="374" data-screen-label="Mobile · Hero" style="width: 340px; flex: 0 0 auto; border-radius: 44px; background: rgb(22, 50, 58); padding: 11px; box-shadow: rgba(20, 50, 60, 0.22) 0px 30px 60px;">
+            <div data-dc-tpl="375" style="border-radius: 34px; overflow: hidden; background: rgb(255, 255, 255); height: 700px;">
+              <div data-dc-tpl="376" style="height: 34px; display: flex; align-items: center; justify-content: space-between; padding: 0px 22px; font-size: 12px; font-weight: 700; color: rgb(22, 50, 58); background: rgb(232, 244, 246);"><span data-dc-tpl="377">9:41</span><span data-dc-tpl="378">● ● ●</span></div>
+              <div data-dc-tpl="379" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid rgb(238, 243, 244);">
+                <div data-dc-tpl="380" style="display: flex; align-items: center; gap: 8px;"><span data-dc-tpl="381" style="position: relative; width: 30px; height: 30px; flex: 0 0 auto;"><span data-dc-tpl="382" style="position: absolute; width: 19px; height: 19px; left: 0px; top: 2px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgb(127, 214, 226), rgb(47, 155, 171));"></span><span data-dc-tpl="383" style="position: absolute; width: 14px; height: 14px; left: 13px; top: 13px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgb(244, 173, 146), rgb(232, 131, 90));"></span></span><span data-dc-tpl="384" style="font-weight: 800; font-size: 17px; color: rgb(31, 122, 140); letter-spacing: 0.5px;">ЛМД</span></div>
+                <span data-dc-tpl="385" style="width: 34px; height: 34px; border-radius: 9px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="386" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line data-dc-tpl="387" x1="3" y1="6" x2="21" y2="6"></line><line data-dc-tpl="388" x1="3" y1="12" x2="21" y2="12"></line><line data-dc-tpl="389" x1="3" y1="18" x2="21" y2="18"></line></svg></span>
+              </div>
+              <div data-dc-tpl="390" style="padding: 20px 18px; background: linear-gradient(rgb(232, 244, 246), rgb(255, 255, 255));">
+                <span data-dc-tpl="391" style="display: inline-flex; align-items: center; gap: 6px; background: rgb(255, 255, 255); border: 1px solid rgb(214, 236, 239); color: rgb(31, 122, 140); font-weight: 700; font-size: 11px; padding: 6px 11px; border-radius: 999px;">12+ лет в Санкт-Петербурге</span>
+                <h1 data-dc-tpl="392" style="font-size: 27px; line-height: 1.08; font-weight: 800; letter-spacing: -0.6px; margin: 12px 0px 10px; color: rgb(22, 50, 58);">Точная диагностика — по понятной цене</h1>
+                <p data-dc-tpl="393" style="font-size: 14px; color: rgb(81, 102, 109); line-height: 1.5; margin: 0px 0px 16px;">Клинический анализ крови — <b data-dc-tpl="394" style="color: rgb(22, 50, 58);">400&nbsp;₽</b>. Узкая экспертиза в аутоиммунной и генетической диагностике.</p>
+                <a data-dc-tpl="395" href="#" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: rgb(47, 155, 171); color: rgb(255, 255, 255); font-weight: 800; font-size: 15px; padding: 14px; border-radius: 12px; text-decoration: none; margin-bottom: 10px; box-shadow: rgba(47, 155, 171, 0.3) 0px 8px 18px;">Подобрать анализ</a>
+                <a data-dc-tpl="396" href="#" style="display: flex; align-items: center; justify-content: center; background: rgb(255, 255, 255); color: rgb(31, 122, 140); font-weight: 800; font-size: 15px; padding: 14px; border-radius: 12px; text-decoration: none; border: 1.5px solid rgb(207, 227, 230);">Записаться</a>
+              </div>
+              <div data-dc-tpl="397" style="padding: 16px 18px;">
+                <div data-dc-tpl="398" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 16px; box-shadow: rgba(20, 60, 70, 0.08) 0px 8px 24px;">
+                  <div data-dc-tpl="399" style="font-weight: 800; font-size: 15px; margin-bottom: 10px;">Не знаете, что нужно?</div>
+                  <div data-dc-tpl="400" style="display: flex; gap: 8px;"><div data-dc-tpl="401" style="flex: 1 1 0%; font-size: 13px; color: rgb(154, 169, 174); padding: 11px 12px; border: 1.5px solid rgb(227, 236, 238); border-radius: 10px; background: rgb(247, 250, 251);">Симптом или анализ…</div><span data-dc-tpl="402" style="width: 42px; background: rgb(47, 155, 171); border-radius: 10px; display: grid; place-items: center; color: rgb(255, 255, 255);"><svg data-dc-tpl="403" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle data-dc-tpl="404" cx="11" cy="11" r="7"></circle><line data-dc-tpl="405" x1="21" y1="21" x2="16.5" y2="16.5"></line></svg></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div data-dc-tpl="406" style="text-align: center;">
+          <div data-dc-tpl="407" style="font-size: 13px; font-weight: 700; color: rgb(124, 138, 143); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Витрина генетики</div>
+          <div data-dc-tpl="408" data-screen-label="Mobile · Genetics" style="width: 340px; flex: 0 0 auto; border-radius: 44px; background: rgb(22, 50, 58); padding: 11px; box-shadow: rgba(20, 50, 60, 0.22) 0px 30px 60px;">
+            <div data-dc-tpl="409" style="border-radius: 34px; overflow: hidden; background: rgb(251, 244, 239); height: 700px;">
+              <div data-dc-tpl="410" style="height: 34px; display: flex; align-items: center; justify-content: space-between; padding: 0px 22px; font-size: 12px; font-weight: 700; color: rgb(22, 50, 58); background: rgb(244, 230, 219);"><span data-dc-tpl="411">9:41</span><span data-dc-tpl="412">● ● ●</span></div>
+              <div data-dc-tpl="413" style="padding: 22px 18px 16px;">
+                <span data-dc-tpl="414" style="display: inline-flex; align-items: center; gap: 6px; color: rgb(194, 94, 54); font-weight: 800; font-size: 11px; letter-spacing: 0.8px; text-transform: uppercase;">Фирменное направление</span>
+                <h2 data-dc-tpl="415" style="font-size: 24px; font-weight: 800; letter-spacing: -0.4px; margin: 8px 0px 6px; color: rgb(22, 50, 58);">Медицинская генетика</h2>
+                <p data-dc-tpl="416" style="font-size: 13.5px; color: rgb(122, 102, 87); line-height: 1.5; margin: 0px;">Молекулярные и цитогенетические исследования с понятными ценами.</p>
+              </div>
+              <div data-dc-tpl="417" style="padding: 0px 18px 18px; display: flex; flex-direction: column; gap: 12px;">
+                <div data-dc-tpl="418" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 14px; padding: 16px;">
+                  <div data-dc-tpl="419" style="font-weight: 800; font-size: 15px; line-height: 1.3; color: rgb(22, 50, 58);">Хромосомный набор (23 хромосомы)</div>
+                  <div data-dc-tpl="420" style="font-size: 12.5px; color: rgb(138, 117, 101); margin: 6px 0px 10px; line-height: 1.4;">Кариотип по всем парам хромосом</div>
+                  <div data-dc-tpl="421" style="display: flex; align-items: center; justify-content: space-between;"><span data-dc-tpl="422" style="font-weight: 800; font-size: 18px; color: rgb(194, 94, 54);">6 900 ₽</span><span data-dc-tpl="423" style="font-weight: 800; font-size: 13px; color: rgb(255, 255, 255); background: rgb(232, 131, 90); padding: 8px 14px; border-radius: 9px;">Заказать</span></div>
+                </div>
+                <div data-dc-tpl="424" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 14px; padding: 16px;">
+                  <div data-dc-tpl="425" style="font-weight: 800; font-size: 15px; line-height: 1.3; color: rgb(22, 50, 58);">Синдром Жильбера</div>
+                  <div data-dc-tpl="426" style="font-size: 12.5px; color: rgb(138, 117, 101); margin: 6px 0px 10px; line-height: 1.4;">Ген UGT1A1, обмен билирубина</div>
+                  <div data-dc-tpl="427" style="display: flex; align-items: center; justify-content: space-between;"><span data-dc-tpl="428" style="font-weight: 800; font-size: 18px; color: rgb(194, 94, 54);">2 900 ₽</span><span data-dc-tpl="429" style="font-weight: 800; font-size: 13px; color: rgb(255, 255, 255); background: rgb(232, 131, 90); padding: 8px 14px; border-radius: 9px;">Заказать</span></div>
+                </div>
+                <div data-dc-tpl="430" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 216); border-radius: 14px; padding: 16px;">
+                  <div data-dc-tpl="431" style="font-weight: 800; font-size: 15px; line-height: 1.3; color: rgb(22, 50, 58);">Дефицит лактазы (ПЦР)</div>
+                  <div data-dc-tpl="432" style="font-size: 12.5px; color: rgb(138, 117, 101); margin: 6px 0px 10px; line-height: 1.4;">Непереносимость лактозы, ген LCT</div>
+                  <div data-dc-tpl="433" style="display: flex; align-items: center; justify-content: space-between;"><span data-dc-tpl="434" style="font-weight: 800; font-size: 18px; color: rgb(194, 94, 54);">1 650 ₽</span><span data-dc-tpl="435" style="font-weight: 800; font-size: 13px; color: rgb(255, 255, 255); background: rgb(232, 131, 90); padding: 8px 14px; border-radius: 9px;">Заказать</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div data-dc-tpl="436" style="text-align: center;">
+          <div data-dc-tpl="437" style="font-size: 13px; font-weight: 700; color: rgb(124, 138, 143); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Карточки анализов</div>
+          <div data-dc-tpl="438" data-screen-label="Mobile · Analyses" style="width: 340px; flex: 0 0 auto; border-radius: 44px; background: rgb(22, 50, 58); padding: 11px; box-shadow: rgba(20, 50, 60, 0.22) 0px 30px 60px;">
+            <div data-dc-tpl="439" style="border-radius: 34px; overflow: hidden; background: rgb(243, 248, 249); height: 700px;">
+              <div data-dc-tpl="440" style="height: 34px; display: flex; align-items: center; justify-content: space-between; padding: 0px 22px; font-size: 12px; font-weight: 700; color: rgb(22, 50, 58); background: rgb(232, 244, 246);"><span data-dc-tpl="441">9:41</span><span data-dc-tpl="442">● ● ●</span></div>
+              <div data-dc-tpl="443" style="padding: 22px 18px 16px; text-align: center;">
+                <h2 data-dc-tpl="444" style="font-size: 24px; font-weight: 800; letter-spacing: -0.4px; margin: 0px 0px 6px; color: rgb(22, 50, 58);">Популярные анализы</h2>
+                <p data-dc-tpl="445" style="font-size: 13.5px; color: rgb(81, 102, 109); line-height: 1.5; margin: 0px;">Прозрачные цены, запись онлайн.</p>
+              </div>
+              <div data-dc-tpl="446" style="padding: 0px 18px 18px; display: flex; flex-direction: column; gap: 12px;">
+                <div data-dc-tpl="447" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 16px;">
+                  <div data-dc-tpl="448" style="display: flex; justify-content: space-between; align-items: flex-start;"><span data-dc-tpl="449" style="width: 38px; height: 38px; border-radius: 10px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="450" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="451" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span><span data-dc-tpl="452" style="font-size: 10.5px; font-weight: 800; color: rgb(255, 255, 255); background: rgb(232, 131, 90); padding: 4px 9px; border-radius: 999px;">Хит цены</span></div>
+                  <div data-dc-tpl="453" style="font-weight: 800; font-size: 15px; line-height: 1.3; margin: 10px 0px 4px;">Клинический анализ крови с лейкоформулой и СОЭ</div>
+                  <div data-dc-tpl="454" style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid rgb(238, 243, 244);"><span data-dc-tpl="455" style="font-weight: 800; font-size: 18px; color: rgb(31, 122, 140);">400 ₽</span><span data-dc-tpl="456" style="font-weight: 800; font-size: 13px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 8px 14px; border-radius: 9px;">Записаться</span></div>
+                </div>
+                <div data-dc-tpl="457" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 16px;">
+                  <span data-dc-tpl="458" style="width: 38px; height: 38px; border-radius: 10px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="459" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="460" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+                  <div data-dc-tpl="461" style="font-weight: 800; font-size: 15px; line-height: 1.3; margin: 10px 0px 4px;">Скрининг целиакии (ААГ IgG и ТТГ2 IgA)</div>
+                  <div data-dc-tpl="462" style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid rgb(238, 243, 244);"><span data-dc-tpl="463" style="font-weight: 800; font-size: 18px; color: rgb(31, 122, 140);">2 450 ₽</span><span data-dc-tpl="464" style="font-weight: 800; font-size: 13px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 8px 14px; border-radius: 9px;">Записаться</span></div>
+                </div>
+                <div data-dc-tpl="465" style="background: rgb(255, 255, 255); border: 1px solid rgb(227, 236, 238); border-radius: 14px; padding: 16px;">
+                  <span data-dc-tpl="466" style="width: 38px; height: 38px; border-radius: 10px; background: rgb(232, 244, 246); color: rgb(31, 122, 140); display: grid; place-items: center;"><svg data-dc-tpl="467" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="468" d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"></path></svg></span>
+                  <div data-dc-tpl="469" style="font-weight: 800; font-size: 15px; line-height: 1.3; margin: 10px 0px 4px;">Фекальный кальпротектин</div>
+                  <div data-dc-tpl="470" style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid rgb(238, 243, 244);"><span data-dc-tpl="471" style="font-weight: 800; font-size: 18px; color: rgb(31, 122, 140);">2 800 ₽</span><span data-dc-tpl="472" style="font-weight: 800; font-size: 13px; color: rgb(31, 122, 140); background: rgb(232, 244, 246); padding: 8px 14px; border-radius: 9px;">Записаться</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section></div></div></div>
+
+
+
+</body></html>

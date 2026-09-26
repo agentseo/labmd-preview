@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LABMD — Точное знание</title>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="./tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--lmd-bg);
+      color: var(--lmd-ink);
+      font-family: var(--lmd-font-text);
+      font-size: 19px;
+      line-height: 1.55;
+      font-variant-numeric: tabular-nums lining-nums;
+      text-rendering: optimizeLegibility;
+    }
+    button, input { font: inherit; }
+    button, a, input { transition: color var(--lmd-transition), background-color var(--lmd-transition), border-color var(--lmd-transition), box-shadow var(--lmd-transition), transform var(--lmd-transition); }
+    button:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 3px solid var(--lmd-accent);
+      outline-offset: var(--lmd-space-1);
+    }
+    h1, h2, h3, p { margin-block-start: 0; }
+    h1, h2, h3 { font-family: var(--lmd-font-head); letter-spacing: -0.025em; }
+    h1 { max-width: 14ch; margin-block-end: var(--lmd-space-5); font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 0.98; }
+    h2 { margin-block-end: var(--lmd-space-5); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; }
+    h3 { margin-block-end: var(--lmd-space-3); font-size: 1.45rem; line-height: 1.2; }
+    small { font-size: 1rem; line-height: 1.45; }
+    .shell { width: min(calc(100% - (var(--lmd-space-4) * 2)), 76rem); margin-inline: auto; }
+    .section { padding-block: var(--lmd-space-8); }
+    .section + .section { border-top: 1px solid var(--lmd-border); }
+    .section-head { display: grid; grid-template-columns: minmax(0, 2fr) minmax(14rem, 1fr); gap: var(--lmd-space-6); align-items: end; margin-block-end: var(--lmd-space-7); }
+    .section-index, .eyebrow { margin-block-end: var(--lmd-space-3); color: var(--lmd-brand); font-size: 1rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .section-note { margin: 0; color: var(--lmd-ink-muted); }
+    .intro { padding-block-start: var(--lmd-space-7); }
+    .intro-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(16rem, 0.75fr); gap: var(--lmd-space-7); align-items: end; }
+    .wordmark { display: inline-flex; align-items: baseline; gap: var(--lmd-space-3); margin-block-end: var(--lmd-space-8); }
+    .wordmark strong { color: var(--lmd-brand); font-size: 1.7rem; letter-spacing: 0.02em; }
+    .wordmark span { max-width: 23rem; color: var(--lmd-ink-muted); font-size: 1rem; line-height: 1.3; }
+    .archetype-card { padding: var(--lmd-space-6); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); box-shadow: var(--lmd-shadow); }
+    .archetype-card strong { display: block; margin-block-end: var(--lmd-space-4); color: var(--lmd-brand); font-size: 1.35rem; }
+    .archetype-card p:last-child { margin: 0; }
+    .lede { max-width: 48rem; margin-block-end: 0; color: var(--lmd-ink-muted); font-size: 1.2rem; }
+
+    .palette-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--lmd-space-4); }
+    .swatch { overflow: hidden; border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); }
+    .swatch-color { min-height: var(--lmd-space-8); border-bottom: 1px solid var(--lmd-border); background: var(--swatch); }
+    .swatch-meta { padding: var(--lmd-space-4); }
+    .swatch-name { display: block; margin-block-end: var(--lmd-space-1); font-weight: 600; overflow-wrap: anywhere; }
+    .swatch-value, .swatch-ratio { display: block; color: var(--lmd-ink-muted); font-size: 1rem; }
+
+    .type-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.7fr); gap: var(--lmd-space-7); }
+    .type-stack { display: grid; gap: var(--lmd-space-6); }
+    .type-row { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: var(--lmd-space-5); align-items: baseline; padding-block-end: var(--lmd-space-5); border-bottom: 1px solid var(--lmd-border); }
+    .type-label { color: var(--lmd-ink-muted); font-size: 1rem; }
+    .sample-h1 { font-size: 3.2rem; font-weight: 600; line-height: 1.02; letter-spacing: -0.03em; }
+    .sample-h2 { font-size: 2.3rem; font-weight: 600; line-height: 1.08; }
+    .sample-h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.18; }
+    .sample-price { font-size: 2rem; font-weight: 600; line-height: 1; }
+    .glyph-card { align-self: start; padding: var(--lmd-space-6); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); }
+    .glyph-line { margin-block-end: var(--lmd-space-5); font-size: 2rem; font-weight: 500; letter-spacing: 0.04em; }
+    .digit-line { margin: 0; color: var(--lmd-brand); font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 600; letter-spacing: 0.08em; white-space: nowrap; }
+
+    .ui-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--lmd-space-6); }
+    .panel { padding: var(--lmd-space-6); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); box-shadow: var(--lmd-shadow); }
+    .button-row { display: flex; flex-wrap: wrap; gap: var(--lmd-space-3); align-items: center; margin-block-end: var(--lmd-space-6); }
+    .btn { display: inline-flex; min-height: var(--lmd-space-7); align-items: center; justify-content: center; padding-inline: var(--lmd-space-5); border: 1px solid var(--lmd-brand); border-radius: var(--lmd-radius); cursor: pointer; font-weight: 600; text-decoration: none; }
+    .btn-primary { background: var(--lmd-brand); color: var(--lmd-brand-contrast); }
+    .btn-primary:hover { border-color: var(--lmd-brand-hover); background: var(--lmd-brand-hover); }
+    .btn-secondary { background: var(--lmd-surface); color: var(--lmd-brand); }
+    .btn-secondary:hover { background: var(--lmd-bg); color: var(--lmd-brand-hover); }
+    .btn:active { transform: translateY(var(--lmd-space-1)); }
+    .btn:disabled { border-color: var(--lmd-border); background: var(--lmd-bg); color: var(--lmd-ink-muted); cursor: not-allowed; transform: none; }
+    .license { display: inline-flex; gap: var(--lmd-space-2); align-items: center; padding: var(--lmd-space-2) var(--lmd-space-3); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-bg); color: var(--lmd-ink); font-size: 1rem; font-weight: 500; }
+    .license::before { width: var(--lmd-space-2); height: var(--lmd-space-2); border-radius: 50%; background: var(--lmd-success); content: ''; }
+    .analysis-card { display: grid; min-height: 100%; grid-template-rows: auto 1fr auto; }
+    .analysis-code { margin-block-end: var(--lmd-space-5); color: var(--lmd-brand); font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; }
+    .analysis-title { max-width: 28rem; }
+    .analysis-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--lmd-space-4); padding-block-start: var(--lmd-space-5); border-top: 1px solid var(--lmd-border); }
+    .analysis-meta span { display: block; color: var(--lmd-ink-muted); font-size: 1rem; }
+    .analysis-meta strong { display: block; font-size: 1.2rem; }
+    .field-label { display: block; margin-block-end: var(--lmd-space-2); font-weight: 600; }
+    .field-hint { margin-block-start: var(--lmd-space-2); color: var(--lmd-ink-muted); font-size: 1rem; }
+    .field { width: 100%; min-height: var(--lmd-space-7); padding-inline: var(--lmd-space-4); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); color: var(--lmd-ink); }
+    .field:focus { border-color: var(--lmd-brand); box-shadow: 0 0 0 var(--lmd-space-1) color-mix(in srgb, var(--lmd-brand) 18%, transparent); }
+    .table-wrap { margin-block-start: var(--lmd-space-6); overflow-x: auto; border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); }
+    table { width: 100%; border-collapse: collapse; background: var(--lmd-surface); font-size: 1rem; }
+    caption { padding: var(--lmd-space-4); border-bottom: 1px solid var(--lmd-border); font-weight: 600; text-align: left; }
+    th, td { padding: var(--lmd-space-3) var(--lmd-space-4); border-bottom: 1px solid var(--lmd-border); text-align: left; white-space: nowrap; }
+    th { background: var(--lmd-bg); color: var(--lmd-ink-muted); font-size: 1rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    td:nth-child(n+2), th:nth-child(n+2) { text-align: right; }
+    tr:last-child td { border-bottom: 0; }
+    .normal { color: var(--lmd-success); font-weight: 600; }
+    .warning { color: var(--lmd-warning); font-weight: 600; }
+    .state-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--lmd-space-4); margin-block-start: var(--lmd-space-6); }
+    .state { min-height: 100%; padding: var(--lmd-space-4); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); }
+    .state strong { display: block; margin-block-end: var(--lmd-space-2); }
+    .state p { margin: 0; color: var(--lmd-ink-muted); }
+    .state-error { border-left: var(--lmd-space-1) solid var(--lmd-danger); }
+    .state-loading { border-left: var(--lmd-space-1) solid var(--lmd-brand); }
+    .state-empty { border-left: var(--lmd-space-1) solid var(--lmd-warning); }
+
+    .hero-demo { overflow: hidden; border: 1px solid var(--lmd-border); border-radius: calc(var(--lmd-radius) * 2); background: var(--lmd-surface); box-shadow: var(--lmd-shadow); }
+    .hero-nav { display: flex; gap: var(--lmd-space-5); align-items: center; justify-content: space-between; padding: var(--lmd-space-5) var(--lmd-space-6); border-bottom: 1px solid var(--lmd-border); }
+    .hero-logo strong { display: block; color: var(--lmd-brand); font-size: 1.55rem; line-height: 1; }
+    .hero-logo span { display: block; margin-block-start: var(--lmd-space-1); color: var(--lmd-ink-muted); font-size: 1rem; }
+    .hero-phone { color: var(--lmd-ink); font-weight: 600; text-decoration: none; }
+    .hero-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.65fr); gap: var(--lmd-space-7); padding: var(--lmd-space-8); }
+    .hero-body h2 { max-width: 15ch; margin-block-end: var(--lmd-space-5); font-size: clamp(2.4rem, 5vw, 4.1rem); }
+    .hero-copy { max-width: 40rem; margin-block-end: var(--lmd-space-6); color: var(--lmd-ink-muted); font-size: 1.12rem; }
+    .hero-annotation { align-self: end; padding: var(--lmd-space-5); border-left: var(--lmd-space-1) solid var(--lmd-accent); background: color-mix(in srgb, var(--lmd-accent) 18%, var(--lmd-surface)); color: var(--lmd-accent-contrast); }
+    .hero-annotation strong { display: block; margin-block-end: var(--lmd-space-2); }
+    .trust-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--lmd-border); }
+    .trust-item { padding: var(--lmd-space-5) var(--lmd-space-6); }
+    .trust-item + .trust-item { border-left: 1px solid var(--lmd-border); }
+    .trust-item strong { display: block; margin-block-end: var(--lmd-space-1); }
+    .trust-item span { display: block; color: var(--lmd-ink-muted); font-size: 1rem; }
+
+    .genetics { padding: var(--lmd-space-7); border: 1px solid var(--lmd-border); border-radius: calc(var(--lmd-radius) * 2); background: color-mix(in srgb, var(--lmd-accent) 30%, var(--lmd-surface)); color: var(--lmd-accent-contrast); }
+    .genetics-head { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 0.65fr); gap: var(--lmd-space-6); align-items: end; margin-block-end: var(--lmd-space-7); }
+    .genetics .eyebrow { display: inline-block; width: fit-content; padding: var(--lmd-space-1) var(--lmd-space-3); border-radius: var(--lmd-radius); background: var(--lmd-accent); color: var(--lmd-accent-contrast); }
+    .genetics p { margin-block-end: 0; }
+    .genetics-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--lmd-space-5); }
+    .genetics-card { display: grid; min-height: 15rem; grid-template-rows: auto 1fr auto; padding: var(--lmd-space-6); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); color: var(--lmd-ink); }
+    .genetics-card .method { margin-block-end: var(--lmd-space-5); color: var(--lmd-ink-muted); font-size: 1rem; font-weight: 500; }
+    .genetics-footer { display: flex; gap: var(--lmd-space-4); align-items: baseline; justify-content: space-between; padding-block-start: var(--lmd-space-5); border-top: 1px solid var(--lmd-border); }
+    .genetics-price { font-size: 1.65rem; font-weight: 600; }
+    .genetics-time { color: var(--lmd-ink-muted); font-size: 1rem; text-align: right; }
+
+    .verdict { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--lmd-space-6); }
+    .verdict-card { padding: var(--lmd-space-6); border: 1px solid var(--lmd-border); border-radius: var(--lmd-radius); background: var(--lmd-surface); }
+    .verdict-card ul { margin: 0; padding-inline-start: var(--lmd-space-5); }
+    .verdict-card li + li { margin-block-start: var(--lmd-space-3); }
+
+    @media (max-width: 800px) {
+      .section { padding-block: var(--lmd-space-7); }
+      .section-head, .intro-grid, .type-grid, .ui-grid, .hero-body, .genetics-head, .verdict { grid-template-columns: 1fr; }
+      .section-head { gap: var(--lmd-space-4); }
+      .palette-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .wordmark { margin-block-end: var(--lmd-space-7); }
+      .hero-body, .genetics { padding: var(--lmd-space-6); }
+      .trust-row { grid-template-columns: 1fr; }
+      .trust-item + .trust-item { border-top: 1px solid var(--lmd-border); border-left: 0; }
+      .genetics-grid { grid-template-columns: 1fr; }
+      .state-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      body { font-size: 19px; }
+      .shell { width: min(calc(100% - (var(--lmd-space-4) * 2)), 76rem); }
+      .palette-grid { grid-template-columns: 1fr; }
+      .type-row { grid-template-columns: 1fr; gap: var(--lmd-space-2); }
+      .sample-h1 { font-size: 2.45rem; }
+      .sample-h2 { font-size: 2rem; }
+      .glyph-line { font-size: 1.7rem; }
+      .digit-line { font-size: 1.45rem; letter-spacing: 0.04em; }
+      .hero-nav { align-items: flex-start; padding: var(--lmd-space-4); }
+      .hero-phone { font-size: 1rem; text-align: right; }
+      .hero-body, .genetics { padding: var(--lmd-space-5); }
+      .hero-body h2 { font-size: 2.35rem; }
+      .button-row .btn { width: 100%; }
+      .analysis-meta { grid-template-columns: 1fr; }
+      .genetics-footer { align-items: flex-start; flex-direction: column; }
+      .genetics-time { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="section intro">
+      <div class="shell">
+        <div class="wordmark" aria-label="LABMD — Центр лабораторной медицинской диагностики">
+          <img src="./logo.svg" alt="LABMD" style="height:44px;width:auto;display:block">
+          <strong hidden>LABMD</strong>
+          
+        </div>
+        <div class="intro-grid">
+          <div>
+            <p class="eyebrow">Направление E · Мудрец</p>
+            <h1>«Точное знание»</h1>
+            <p class="lede">Мы понимаем сложное: аутоиммунная диагностика и медицинская генетика — точные данные, ясные сроки и понятные следующие шаги.</p>
+          </div>
+          <aside class="archetype-card">
+            <strong>Авторитет без дистанции</strong>
+            <p>Чёткая сетка и цифры создают доверие, а тёплая генетика и разговорный язык не дают образу стать холодным.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <header class="section-head">
+          <div><p class="section-index">01 · Палитра</p><h2>Спокойный синий, тёплая генетика</h2></div>
+          <p class="section-note">Средняя глубина синего работает на белом фоне. Оранжевый остаётся заливкой, а не цветом текста.</p>
+        </header>
+        <div class="palette-grid">
+          <article class="swatch" style="--swatch: var(--lmd-ink)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-ink</span><span class="swatch-value">#172B3D</span><span class="swatch-ratio">14,35:1 на surface</span></div></article>
+          <article class="swatch" style="--swatch: var(--lmd-ink-muted)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-ink-muted</span><span class="swatch-value">#485E70</span><span class="swatch-ratio">6,69:1 на surface</span></div></article>
+          <article class="swatch" style="--swatch: var(--lmd-bg)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-bg</span><span class="swatch-value">#F6F8FA</span><span class="swatch-ratio">13,61:1 с ink</span></div></article>
+          <article class="swatch" style="--swatch: var(--lmd-surface)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-surface</span><span class="swatch-value">#FEFEFC</span><span class="swatch-ratio">14,35:1 с ink</span></div></article>
+          <article class="swatch" style="--swatch: var(--lmd-border)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-border</span><span class="swatch-value">#8194A4</span><span class="swatch-ratio">3,10:1 на surface</span></div></article>
+          <article class="swatch" style="--swatch: var(--lmd-brand)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-brand</span><span class="swatch-value">#27699F</span><span class="swatch-ratio">5,61:1 с brand-contrast</span></div></article>
+          <article class="swatch" style="--swatch: var(--lmd-brand-hover)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-brand-hover</span><span class="swatch-value">#1C527E</span><span class="swatch-ratio">7,91:1 с brand-contrast</span></div></article>
+          <article class="swatch" style="--swatch: var(--lmd-accent)"><div class="swatch-color"></div><div class="swatch-meta"><span class="swatch-name">--lmd-accent</span><span class="swatch-value">#E99A57</span><span class="swatch-ratio">6,44:1 с accent-contrast</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <header class="section-head">
+          <div><p class="section-index">02 · Типографика</p><h2>IBM Plex Sans · 19 px</h2></div>
+          <p class="section-note">Табличные цифры включены по умолчанию. Различимые 1, l и I помогают читать коды, цены и результаты.</p>
+        </header>
+        <div class="type-grid">
+          <div class="type-stack">
+            <div class="type-row"><span class="type-label">H1 · 61 px</span><strong class="sample-h1">Точные данные</strong></div>
+            <div class="type-row"><span class="type-label">H2 · 44 px</span><strong class="sample-h2">Результат без догадок</strong></div>
+            <div class="type-row"><span class="type-label">H3 · 29 px</span><strong class="sample-h3">Референсные значения</strong></div>
+            <div class="type-row"><span class="type-label">Body · 19 px</span><span>Клинический анализ крови с лейкоформулой и СОЭ — 400 ₽. Щ ъ ё №. Метод и срок уточним до оформления.</span></div>
+            <div class="type-row"><span class="type-label">Small · 19 px</span><small>Результаты лабораторных исследований не заменяют консультацию врача.</small></div>
+            <div class="type-row"><span class="type-label">Цена · 38 px</span><strong class="sample-price">400 ₽</strong></div>
+          </div>
+          <aside class="glyph-card">
+            <p class="eyebrow">Проверка знаков</p>
+            <p class="glyph-line">1 l I · Щ ъ ё №</p>
+            <p class="digit-line">0123456789</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ui">
+      <div class="shell">
+        <header class="section-head">
+          <div><p class="section-index">03 · UI на токенах</p><h2>Точность в каждом состоянии</h2></div>
+          <p class="section-note">Чёткие границы, видимый фокус и один главный CTA. Цена и срок стоят на общей базовой линии.</p>
+        </header>
+        <div class="ui-grid">
+          <div class="panel">
+            <h3>Действия и ввод</h3>
+            <div class="button-row"><button class="btn btn-primary" type="button">Записаться</button><button class="btn btn-secondary" type="button">Подробнее о методе</button><button class="btn" type="button" disabled>Недоступно</button></div>
+            <p><span class="license">Лицензия ЛО-78-01-006578</span></p>
+            <label class="field-label" for="analysis-search">Название анализа или показателя</label>
+            <input class="field" id="analysis-search" type="search" placeholder="Например, клинический анализ крови">
+            <p class="field-hint">Поиск понимает полное название и сокращение.</p>
+          </div>
+          <article class="panel analysis-card">
+            <div><p class="analysis-code">ОБЩЕЛАБОРАТОРНЫЕ АНАЛИЗЫ</p><h3 class="analysis-title">Клинический анализ крови с лейкоформулой и СОЭ</h3><p>Метод и подготовку подтвердит администратор до записи.</p></div>
+            <div></div>
+            <div class="analysis-meta"><div><span>Стоимость</span><strong>400 ₽</strong></div><div><span>Срок готовности</span><strong>Уточнить до записи</strong></div></div>
+          </article>
+        </div>
+        <div class="state-grid" aria-label="Состояния интерфейса">
+          <article class="state state-loading"><strong>Загрузка</strong><p>Проверяем доступные исследования и актуальные цены…</p></article>
+          <article class="state state-empty"><strong>Нет совпадений</strong><p>Попробуйте полное название или позвоните — поможем найти исследование.</p></article>
+          <article class="state state-error"><strong>Не удалось загрузить</strong><p>Цены временно недоступны. Повторите позже или свяжитесь с администратором.</p></article>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Демонстрация результата · границы нормы и единицы измерения</caption>
+            <thead><tr><th scope="col">Показатель</th><th scope="col">Результат</th><th scope="col">Референс</th><th scope="col">Ед.</th><th scope="col">Статус</th></tr></thead>
+            <tbody>
+              <tr><td>Гемоглобин</td><td>138,0</td><td>120,0–150,0</td><td>г/л</td><td class="normal">Норма</td></tr>
+              <tr><td>Лейкоциты</td><td>6,42</td><td>4,00–9,00</td><td>10⁹/л</td><td class="normal">Норма</td></tr>
+              <tr><td>СОЭ</td><td>22,0</td><td>2,0–20,0</td><td>мм/ч</td><td class="warning">Выше</td></tr>
+              <tr><td>Тромбоциты</td><td>267,0</td><td>150,0–400,0</td><td>10⁹/л</td><td class="normal">Норма</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <header class="section-head">
+          <div><p class="section-index">04 · Hero-фрагмент</p><h2>Сложное — понятным языком</h2></div>
+          <p class="section-note">Лабораторная экспертиза не требует от пациента медицинского словаря.</p>
+        </header>
+        <div class="hero-demo">
+          <div class="hero-nav">
+            <div class="hero-logo"><img src="./logo.svg" alt="LABMD — Центр лабораторной медицинской диагностики" style="height:40px;width:auto;display:block"></div>
+            <a class="hero-phone" href="tel:+79219058951">+7 (921) 905-89-51</a>
+          </div>
+          <div class="hero-body">
+            <div>
+              <p class="eyebrow">12+ лет в лабораторной диагностике</p>
+              <h2>Точная диагностика. Ясный следующий шаг.</h2>
+              <p class="hero-copy">Разбираемся в аутоиммунных состояниях и наследственных патологиях. До оформления покажем метод, стоимость и срок результата.</p>
+              <div class="button-row"><a class="btn btn-primary" href="#ui">Подобрать анализ</a><a class="btn btn-secondary" href="tel:+79219058951">Записаться</a></div>
+            </div>
+            <aside class="hero-annotation"><strong>400 ₽</strong><span>Клинический анализ крови с лейкоформулой и СОЭ</span></aside>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item"><strong>Срок результата</strong><span>Уточним до оформления исследования</span></div>
+            <div class="trust-item"><strong>Лицензия ЛО-78-01-006578</strong><span>Выдана 20.02.2016</span></div>
+            <div class="trust-item"><strong>12+ лет</strong><span>В лабораторной диагностике</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <header class="section-head">
+          <div><p class="section-index">05 · Фирменное направление</p><h2>Генетика получает тепло</h2></div>
+          <p class="section-note">Оранжевый работает большой светлой заливкой. Весь текст остаётся тёмным и контрастным.</p>
+        </header>
+        <div class="genetics">
+          <div class="genetics-head">
+            <div><p class="eyebrow">Медицинская генетика</p><h2>Знать причину — принимать решения спокойнее</h2></div>
+            <p>Объясняем, что исследует тест, каким методом он выполняется и когда будет готов результат.</p>
+          </div>
+          <div class="genetics-grid">
+            <article class="genetics-card"><p class="method">Метод — уточнить до записи</p><h3>Комплексное исследование хромосомного набора (23 хромосомы)</h3><div class="genetics-footer"><strong class="genetics-price">6 900 ₽</strong><span class="genetics-time">Срок уточнит администратор</span></div></article>
+            <article class="genetics-card"><p class="method">Метод — уточнить до записи</p><h3>Синдром Жильбера</h3><div class="genetics-footer"><strong class="genetics-price">2 900 ₽</strong><span class="genetics-time">Срок уточнит администратор</span></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <header class="section-head">
+          <div><p class="section-index">06 · Итог</p><h2>Кому подойдёт «Точное знание»</h2></div>
+          <p class="section-note">Мудрец здесь объясняет, а не экзаменует.</p>
+        </header>
+        <div class="verdict">
+          <article class="verdict-card"><h3>Подойдёт</h3><ul><li>Пациентам, которым важно заранее видеть цену, метод и срок.</li><li>Сложным направлениям: аутоиммунной диагностике и медицинской генетике.</li><li>Лаборатории, которая хочет говорить точными фактами без врачебного жаргона.</li></ul></article>
+          <article class="verdict-card"><h3>Не подойдёт</h3><ul><li>Коммуникации, построенной на эмоциональных обещаниях и ярких промоакциях.</li><li>Образу универсальной поликлиники с множеством несвязанных услуг.</li><li>Бренду, который не готов показывать сроки, методы и лицензию на виду.</li></ul></article>
+        </div>
+      </div>
+    </section>
+  </main>
+<p style="max-width:960px;margin:32px auto 60px;padding:0 24px;font-size:15px;opacity:.75"><a href="../../index.html">← Все варианты</a> · <a href="./moodboard.html">Мудборд направления</a></p></body>
+</html>
