@@ -1,0 +1,413 @@
+<!doctype html>
+<html data-dc-canvas=""><head><link rel="stylesheet" href="./fonts.css"><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>x-dc{display:none!important}</style>
+<style data-dc-canvas="">html,body{background:#f0eee6}#dc-root>.sc-host{position:relative}</style><style>html,body{height:100%;margin:0}#dc-root,#dc-root>.sc-host{height:100%}</style><meta name="design_doc_mode" content="canvas" data-dc-tpl="1"><style data-dc-tpl="5">
+body { margin: 0; background: #ECEDEE; }
+a { color: inherit; }
+a:hover { color: inherit; }
+</style><title>LABMD — направления фирменного стиля</title><meta name="robots" content="noindex, nofollow"></head>
+<body>
+<div id="dc-root"><div class="sc-host" data-sc-name="Фирменный стиль ЛМД"><section data-dc-tpl="6" style="display: flex; flex-wrap: wrap; gap: 32px; padding: 48px 48px 0px; align-items: flex-start; font-family: &quot;Golos Text&quot;, sans-serif;">
+
+  <div data-dc-tpl="7" id="4a" style="width: 880px; background: rgb(255, 252, 247); border-radius: 4px; padding: 48px; display: flex; flex-direction: column; gap: 32px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="8" style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
+      <span data-dc-tpl="9" style="background: rgb(232, 114, 12); color: rgb(255, 252, 247); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">4a</span>
+      <span data-dc-tpl="10" style="font-size: 15px; font-weight: 600; color: rgb(34, 28, 22);">«Свой» — развитие</span>
+      <span data-dc-tpl="11" style="font-size: 12px; color: rgb(138, 126, 112);">Golos Text · шкала, шапка, герой, прайс</span>
+    </div>
+    <div data-dc-tpl="12" style="border: 1px solid rgb(233, 224, 210); border-radius: 4px; overflow: hidden;">
+      <div data-dc-tpl="13" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 28px; background: rgb(255, 255, 255); border-bottom: 1px solid rgb(233, 224, 210);">
+        <div data-dc-tpl="14" style="display: flex; align-items: baseline; gap: 8px;">
+          <span data-dc-tpl="15" style="font-size: 22px; font-weight: 800; color: rgb(34, 28, 22); letter-spacing: -0.02em;">ЛМД</span>
+          <span data-dc-tpl="16" style="font-size: 12px; color: rgb(138, 126, 112);">медицинский центр</span>
+        </div>
+        <div data-dc-tpl="17" style="display: flex; gap: 22px; font-size: 14px; font-weight: 500; color: rgb(34, 28, 22);">
+          <span data-dc-tpl="18">Анализы и цены</span><span data-dc-tpl="19">Как сдать</span><span data-dc-tpl="20">Разделы</span><span data-dc-tpl="21">Контакты</span>
+        </div>
+        <div data-dc-tpl="22" style="background: rgb(232, 114, 12); color: rgb(255, 252, 247); font-size: 13px; font-weight: 600; padding: 9px 16px; border-radius: 3px;">+7 (921) 905-89-51</div>
+      </div>
+      <div data-dc-tpl="23" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; padding: 40px 28px; background: rgb(255, 252, 247);">
+        <div data-dc-tpl="24" style="display: flex; flex-direction: column; gap: 18px;">
+          <div data-dc-tpl="25" style="font-size: 38px; font-weight: 800; line-height: 1.15; color: rgb(34, 28, 22); letter-spacing: -0.015em; text-wrap: pretty;">Анализы рядом с домом. Честные цены, без навязанных панелей</div>
+          <div data-dc-tpl="26" style="font-size: 16px; line-height: 1.6; color: rgb(90, 80, 68); text-wrap: pretty;">Петроградская сторона, Большой пр. ПС, 102. Результаты — с комментарием врача.</div>
+          <div data-dc-tpl="27" style="display: flex; gap: 12px;">
+            <div data-dc-tpl="28" style="background: rgb(34, 28, 22); color: rgb(255, 252, 247); font-size: 15px; font-weight: 600; padding: 13px 24px; border-radius: 3px;">Выбрать анализы</div>
+            <div data-dc-tpl="29" style="border: 1.5px solid rgb(34, 28, 22); color: rgb(34, 28, 22); font-size: 15px; font-weight: 600; padding: 13px 24px; border-radius: 3px;">Как подготовиться</div>
+          </div>
+        </div>
+        <div data-dc-tpl="30" style="background: rgb(255, 255, 255); border: 1px solid rgb(233, 224, 210); border-radius: 4px; padding: 22px; display: flex; flex-direction: column; gap: 12px; align-self: start;">
+          <div data-dc-tpl="31" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(62, 124, 79);">Популярное</div>
+          <div data-dc-tpl="32" style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span data-dc-tpl="33" style="font-size: 15px; font-weight: 500; color: rgb(34, 28, 22);">Общий анализ крови</span>
+            <span data-dc-tpl="34" style="font-size: 19px; font-weight: 800; color: rgb(232, 114, 12);">400 ₽</span>
+          </div>
+          <div data-dc-tpl="35" style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-top: 1px solid rgb(233, 224, 210); padding-top: 10px;">
+            <span data-dc-tpl="36" style="font-size: 15px; font-weight: 500; color: rgb(34, 28, 22);">Общий анализ мочи</span>
+            <span data-dc-tpl="37" style="font-size: 19px; font-weight: 800; color: rgb(232, 114, 12);">350 ₽</span>
+          </div>
+          <div data-dc-tpl="38" style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-top: 1px solid rgb(233, 224, 210); padding-top: 10px;">
+            <span data-dc-tpl="39" style="font-size: 15px; font-weight: 500; color: rgb(34, 28, 22);">Биохимический профиль</span>
+            <span data-dc-tpl="40" style="font-size: 19px; font-weight: 800; color: rgb(232, 114, 12);">— ₽</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-dc-tpl="41" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+      <div data-dc-tpl="42" style="display: flex; flex-direction: column; gap: 10px;">
+        <div data-dc-tpl="43" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(138, 126, 112);">Типографическая шкала · Golos Text</div>
+        <div data-dc-tpl="44" style="font-size: 34px; font-weight: 800; color: rgb(34, 28, 22); letter-spacing: -0.015em;">H1 · 38/800</div>
+        <div data-dc-tpl="45" style="font-size: 24px; font-weight: 700; color: rgb(34, 28, 22);">H2 · 24/700</div>
+        <div data-dc-tpl="46" style="font-size: 17px; font-weight: 600; color: rgb(34, 28, 22);">H3 · 17/600</div>
+        <div data-dc-tpl="47" style="font-size: 15px; color: rgb(90, 80, 68); line-height: 1.6;">Текст · 15/400 — результаты с комментарием врача, понятным пациенту.</div>
+        <div data-dc-tpl="48" style="font-size: 12px; color: rgb(138, 126, 112);">Подпись · 12/400</div>
+      </div>
+      <div data-dc-tpl="49" style="display: flex; flex-direction: column; gap: 10px;">
+        <div data-dc-tpl="50" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(138, 126, 112);">Палитра и роли</div>
+        <div data-dc-tpl="51" style="display: flex; gap: 8px;">
+          <div data-dc-tpl="52" style="flex: 2 1 0%; height: 56px; background: rgb(232, 114, 12); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(78, 37, 0); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#E8720C · цены, акцент</div>
+          <div data-dc-tpl="53" style="flex: 1 1 0%; height: 56px; background: rgb(62, 124, 79); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(207, 231, 214); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#3E7C4F</div>
+        </div>
+        <div data-dc-tpl="54" style="display: flex; gap: 8px;">
+          <div data-dc-tpl="55" style="flex: 1 1 0%; height: 56px; background: rgb(34, 28, 22); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(168, 157, 143); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#221C16 · текст, кнопки</div>
+          <div data-dc-tpl="56" style="flex: 1 1 0%; height: 56px; background: rgb(255, 252, 247); border: 1px solid rgb(233, 224, 210); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(138, 126, 112); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#FFFCF7 · фон</div>
+        </div>
+        <div data-dc-tpl="57" style="font-size: 13px; line-height: 1.55; color: rgb(90, 80, 68); text-wrap: pretty;">Оранжевый — только для цен и одного акцента на экран; зелёный — «всё в порядке» (статусы, готовность результата). Чёрно-коричневый держит серьёзность, чтобы доступность не читалась как дешевизна.</div>
+      </div>
+    </div>
+  </div></section><section data-dc-tpl="58" style="display: flex; flex-wrap: wrap; gap: 32px; padding: 48px 48px 0px; align-items: stretch; font-family: &quot;Golos Text&quot;, sans-serif; opacity: 1;">
+
+  <div data-dc-tpl="59" id="3a" style="width: 540px; background: rgb(251, 243, 234); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 26px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="60" style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
+      <span data-dc-tpl="61" style="background: rgb(199, 91, 57); color: rgb(251, 243, 234); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">3a</span>
+      <span data-dc-tpl="62" style="font-size: 15px; font-weight: 600; color: rgb(46, 33, 26);">Заботливый</span>
+      <span data-dc-tpl="63" style="font-size: 12px; color: rgb(141, 122, 108);">«Тебе страшно — мы рядом и всё объясним» · Commissioner + Golos Text</span>
+    </div>
+    <div data-dc-tpl="64">
+      <div data-dc-tpl="65" style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(199, 91, 57);">Медицинский центр</div>
+      <div data-dc-tpl="66" style="font-family: Commissioner, sans-serif; font-size: 70px; font-weight: 600; color: rgb(46, 33, 26); line-height: 1;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="67" style="font-family: Commissioner, sans-serif; font-size: 28px; font-weight: 600; line-height: 1.25; color: rgb(46, 33, 26); text-wrap: pretty;">Объясним каждый результат — простыми словами и без спешки</div>
+    <div data-dc-tpl="68" style="font-size: 15px; line-height: 1.65; color: rgb(93, 76, 64); text-wrap: pretty;">Для каждого исследования приводим развёрнутый комментарий врача: что означает результат и что делать дальше. Приём без очередей, по записи.</div>
+    <div data-dc-tpl="69" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="70" style="flex: 2 1 0%; height: 64px; background: rgb(199, 91, 57); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(249, 217, 204); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#C75B39</div>
+      <div data-dc-tpl="71" style="flex: 1 1 0%; height: 64px; background: rgb(221, 161, 46); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(84, 58, 5); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#DDA12E</div>
+      <div data-dc-tpl="72" style="flex: 1 1 0%; height: 64px; background: rgb(46, 33, 26); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(179, 159, 145); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#2E211A</div>
+      <div data-dc-tpl="73" style="flex: 1 1 0%; height: 64px; background: rgb(251, 243, 234); border: 1px solid rgb(235, 220, 203); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(141, 122, 108); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#FBF3EA</div>
+    </div>
+    <div data-dc-tpl="74" style="background: rgb(255, 255, 255); border: 1px solid rgb(235, 220, 203); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+      <div data-dc-tpl="75" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(221, 161, 46);">Комментарий врача к результату</div>
+      <div data-dc-tpl="76" style="font-size: 14px; line-height: 1.6; color: rgb(93, 76, 64); text-wrap: pretty;">«Антинуклеарный фактор в вашем случае повышен незначительно. Это не диагноз — объясняем, какие два уточняющих теста стоит сдать.»</div>
+      <div data-dc-tpl="77" style="display: flex; gap: 10px; margin-top: 4px;">
+        <div data-dc-tpl="78" style="background: rgb(199, 91, 57); color: rgb(251, 243, 234); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Задать вопрос врачу</div>
+        <div data-dc-tpl="79" style="border: 1.5px solid rgb(46, 33, 26); color: rgb(46, 33, 26); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Как сдать анализы</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-dc-tpl="80" id="3b" style="width: 540px; background: rgb(246, 241, 231); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 26px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="81" style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
+      <span data-dc-tpl="82" style="background: rgb(122, 31, 43); color: rgb(246, 241, 231); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">3b</span>
+      <span data-dc-tpl="83" style="font-size: 15px; font-weight: 600; color: rgb(38, 24, 26);">Мудрец</span>
+      <span data-dc-tpl="84" style="font-size: 12px; color: rgb(135, 119, 102);">«Мы понимаем сложное» · Sofia Sans + Golos Text</span>
+    </div>
+    <div data-dc-tpl="85">
+      <div data-dc-tpl="86" style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(181, 129, 42);">Медицинский центр</div>
+      <div data-dc-tpl="87" style="font-family: &quot;Sofia Sans&quot;, sans-serif; font-size: 76px; font-weight: 800; color: rgb(122, 31, 43); line-height: 0.95; letter-spacing: -0.01em;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="88" style="font-family: &quot;Sofia Sans&quot;, sans-serif; font-size: 30px; font-weight: 700; line-height: 1.2; color: rgb(38, 24, 26); text-wrap: pretty;">Понимаем сложное: аутоиммунные заболевания и генетика</div>
+    <div data-dc-tpl="89" style="font-size: 15px; line-height: 1.65; color: rgb(87, 73, 62); text-wrap: pretty;">Диагностика редких состояний и сложных случаев. Сотрудничая с академическими клиническими центрами, первыми применяем современные методы лабораторной диагностики.</div>
+    <div data-dc-tpl="90" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="91" style="flex: 2 1 0%; height: 64px; background: rgb(122, 31, 43); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(229, 184, 190); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#7A1F2B</div>
+      <div data-dc-tpl="92" style="flex: 1 1 0%; height: 64px; background: rgb(181, 129, 42); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(69, 48, 5); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#B5812A</div>
+      <div data-dc-tpl="93" style="flex: 1 1 0%; height: 64px; background: rgb(38, 24, 26); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(168, 147, 149); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#26181A</div>
+      <div data-dc-tpl="94" style="flex: 1 1 0%; height: 64px; background: rgb(246, 241, 231); border: 1px solid rgb(227, 217, 198); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(135, 119, 102); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#F6F1E7</div>
+    </div>
+    <div data-dc-tpl="95" style="background: rgb(255, 253, 248); border: 1px solid rgb(227, 217, 198); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div data-dc-tpl="96" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(181, 129, 42);">Раздел диагностики</div>
+      <div data-dc-tpl="97" style="font-family: &quot;Sofia Sans&quot;, sans-serif; font-size: 21px; font-weight: 700; color: rgb(38, 24, 26);">Отставание развития у детей: генетическая панель</div>
+      <div data-dc-tpl="98" style="display: flex; gap: 10px;">
+        <div data-dc-tpl="99" style="background: rgb(122, 31, 43); color: rgb(246, 241, 231); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Анализы раздела</div>
+        <div data-dc-tpl="100" style="border: 1.5px solid rgb(122, 31, 43); color: rgb(122, 31, 43); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Для врачей</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-dc-tpl="101" id="3c" style="width: 540px; background: rgb(255, 252, 247); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 26px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="102" style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
+      <span data-dc-tpl="103" style="background: rgb(232, 114, 12); color: rgb(255, 252, 247); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">3c</span>
+      <span data-dc-tpl="104" style="font-size: 15px; font-weight: 600; color: rgb(34, 28, 22);">Свой</span>
+      <span data-dc-tpl="105" style="font-size: 12px; color: rgb(138, 126, 112);">«Анализы без переплат и пафоса» · Golos Text</span>
+    </div>
+    <div data-dc-tpl="106">
+      <div data-dc-tpl="107" style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(232, 114, 12);">Медицинский центр</div>
+      <div data-dc-tpl="108" style="font-size: 72px; font-weight: 800; color: rgb(34, 28, 22); line-height: 1; letter-spacing: -0.02em;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="109" style="font-size: 28px; font-weight: 700; line-height: 1.25; color: rgb(34, 28, 22); letter-spacing: -0.01em; text-wrap: pretty;">Анализы рядом с домом. Честные цены, без навязанных панелей</div>
+    <div data-dc-tpl="110" style="font-size: 15px; line-height: 1.65; color: rgb(90, 80, 68); text-wrap: pretty;">Общелабораторные анализы — по понятному прайсу. Петроградская сторона, Большой пр. ПС, 102. Пн–пт 9:00–16:00, сб 9:00–13:00.</div>
+    <div data-dc-tpl="111" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="112" style="flex: 2 1 0%; height: 64px; background: rgb(232, 114, 12); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(78, 37, 0); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#E8720C</div>
+      <div data-dc-tpl="113" style="flex: 1 1 0%; height: 64px; background: rgb(62, 124, 79); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(207, 231, 214); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#3E7C4F</div>
+      <div data-dc-tpl="114" style="flex: 1 1 0%; height: 64px; background: rgb(34, 28, 22); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(168, 157, 143); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#221C16</div>
+      <div data-dc-tpl="115" style="flex: 1 1 0%; height: 64px; background: rgb(255, 252, 247); border: 1px solid rgb(233, 224, 210); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(138, 126, 112); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#FFFCF7</div>
+    </div>
+    <div data-dc-tpl="116" style="background: rgb(255, 255, 255); border: 1px solid rgb(233, 224, 210); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div data-dc-tpl="117" style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+        <div data-dc-tpl="118" style="font-size: 17px; font-weight: 600; color: rgb(34, 28, 22);">Общий анализ крови</div>
+        <div data-dc-tpl="119" style="font-size: 24px; font-weight: 800; color: rgb(232, 114, 12); white-space: nowrap;">400 ₽</div>
+      </div>
+      <div data-dc-tpl="120" style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-top: 1px solid rgb(233, 224, 210); padding-top: 12px;">
+        <div data-dc-tpl="121" style="font-size: 17px; font-weight: 600; color: rgb(34, 28, 22);">Общий анализ мочи</div>
+        <div data-dc-tpl="122" style="font-size: 24px; font-weight: 800; color: rgb(232, 114, 12); white-space: nowrap;">350 ₽</div>
+      </div>
+      <div data-dc-tpl="123" style="display: flex; gap: 10px;">
+        <div data-dc-tpl="124" style="background: rgb(34, 28, 22); color: rgb(255, 252, 247); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Выбрать анализы</div>
+        <div data-dc-tpl="125" style="border: 1.5px solid rgb(62, 124, 79); color: rgb(62, 124, 79); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Весь прайс</div>
+      </div>
+    </div>
+  </div></section><section data-dc-tpl="126" style="display: flex; flex-wrap: wrap; gap: 32px; padding: 48px 48px 0px; align-items: stretch; font-family: &quot;Golos Text&quot;, sans-serif; opacity: 1;">
+
+  <div data-dc-tpl="127" id="2a" style="width: 540px; background: rgb(255, 246, 239); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 12px;">
+      <span data-dc-tpl="129" style="background: rgb(225, 75, 42); color: rgb(255, 246, 239); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">2a</span>
+      <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(43, 26, 18);">Смелый и тёплый</span>
+      <span data-dc-tpl="131" style="font-size: 12px; color: rgb(140, 117, 101);">Unbounded + Golos Text</span>
+    </div>
+    <div data-dc-tpl="132">
+      <div data-dc-tpl="133" style="font-family: &quot;Golos Text&quot;, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(225, 75, 42);">Медицинский центр</div>
+      <div data-dc-tpl="134" style="font-family: Unbounded, sans-serif; font-size: 62px; font-weight: 700; color: rgb(43, 26, 18); line-height: 1.1;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="135" style="font-family: Unbounded, sans-serif; font-size: 23px; font-weight: 600; line-height: 1.35; color: rgb(43, 26, 18); text-wrap: pretty;">Диагностика аутоиммунных, наследственных и онкологических заболеваний</div>
+    <div data-dc-tpl="136" style="font-family: &quot;Golos Text&quot;, sans-serif; font-size: 15px; line-height: 1.6; color: rgb(92, 74, 62); text-wrap: pretty;">Проводим диагностику редких состояний и комплексную диагностику сложных случаев. Для каждого исследования — развёрнутый комментарий врача.</div>
+    <div data-dc-tpl="137" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="138" style="flex: 2 1 0%; height: 64px; background: rgb(225, 75, 42); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(255, 217, 205); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#E14B2A</div>
+      <div data-dc-tpl="139" style="flex: 1 1 0%; height: 64px; background: rgb(245, 163, 0); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(92, 61, 0); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#F5A300</div>
+      <div data-dc-tpl="140" style="flex: 1 1 0%; height: 64px; background: rgb(43, 26, 18); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(180, 155, 140); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#2B1A12</div>
+      <div data-dc-tpl="141" style="flex: 1 1 0%; height: 64px; background: rgb(255, 246, 239); border: 1px solid rgb(240, 222, 207); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(140, 117, 101); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#FFF6EF</div>
+    </div>
+    <div data-dc-tpl="142" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 222, 207); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div data-dc-tpl="143" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(245, 163, 0);">Раздел диагностики</div>
+      <div data-dc-tpl="144" style="font-family: Unbounded, sans-serif; font-size: 17px; font-weight: 600; color: rgb(43, 26, 18);">Системные ревматические заболевания</div>
+      <div data-dc-tpl="145" style="display: flex; gap: 10px;">
+        <div data-dc-tpl="146" style="background: rgb(225, 75, 42); color: rgb(255, 246, 239); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Анализы раздела</div>
+        <div data-dc-tpl="147" style="border: 1.5px solid rgb(43, 26, 18); color: rgb(43, 26, 18); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">О разделе</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-dc-tpl="148" id="2b" style="width: 540px; background: rgb(255, 249, 238); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="149" style="display: flex; align-items: baseline; gap: 12px;">
+      <span data-dc-tpl="150" style="background: rgb(232, 139, 0); color: rgb(64, 42, 27); font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 3px;">2b</span>
+      <span data-dc-tpl="151" style="font-size: 15px; font-weight: 600; color: rgb(64, 42, 27);">Медовый, доверительный</span>
+      <span data-dc-tpl="152" style="font-size: 12px; color: rgb(151, 129, 95);">Wix Madefor Display + Text</span>
+    </div>
+    <div data-dc-tpl="153">
+      <div data-dc-tpl="154" style="font-family: &quot;Wix Madefor Text&quot;, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(195, 81, 47);">Медицинский центр</div>
+      <div data-dc-tpl="155" style="font-family: &quot;Wix Madefor Display&quot;, sans-serif; font-size: 72px; font-weight: 800; color: rgb(64, 42, 27); line-height: 1; letter-spacing: -0.01em;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="156" style="font-family: &quot;Wix Madefor Display&quot;, sans-serif; font-size: 27px; font-weight: 700; line-height: 1.25; color: rgb(64, 42, 27); text-wrap: pretty;">Диагностика аутоиммунных, наследственных и онкологических заболеваний</div>
+    <div data-dc-tpl="157" style="font-family: &quot;Wix Madefor Text&quot;, sans-serif; font-size: 15px; line-height: 1.6; color: rgb(107, 86, 63); text-wrap: pretty;">Сотрудничая с академическими клиническими центрами, мы первыми применяем современные методы лабораторной диагностики.</div>
+    <div data-dc-tpl="158" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="159" style="flex: 2 1 0%; height: 64px; background: rgb(232, 139, 0); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(79, 48, 0); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#E88B00</div>
+      <div data-dc-tpl="160" style="flex: 1 1 0%; height: 64px; background: rgb(195, 81, 47); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(251, 220, 210); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#C3512F</div>
+      <div data-dc-tpl="161" style="flex: 1 1 0%; height: 64px; background: rgb(64, 42, 27); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(191, 168, 144); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#402A1B</div>
+      <div data-dc-tpl="162" style="flex: 1 1 0%; height: 64px; background: rgb(255, 249, 238); border: 1px solid rgb(239, 225, 198); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(151, 129, 95); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#FFF9EE</div>
+    </div>
+    <div data-dc-tpl="163" style="background: rgb(255, 255, 255); border: 1px solid rgb(239, 225, 198); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px; font-family: &quot;Wix Madefor Text&quot;, sans-serif;">
+      <div data-dc-tpl="164" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(232, 139, 0);">Раздел диагностики</div>
+      <div data-dc-tpl="165" style="font-family: &quot;Wix Madefor Display&quot;, sans-serif; font-size: 19px; font-weight: 700; color: rgb(64, 42, 27);">Системные ревматические заболевания</div>
+      <div data-dc-tpl="166" style="display: flex; gap: 10px;">
+        <div data-dc-tpl="167" style="background: rgb(195, 81, 47); color: rgb(255, 249, 238); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Анализы раздела</div>
+        <div data-dc-tpl="168" style="border: 1.5px solid rgb(195, 81, 47); color: rgb(195, 81, 47); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">О разделе</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-dc-tpl="169" id="2c" style="width: 540px; background: rgb(253, 239, 230); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="170" style="display: flex; align-items: baseline; gap: 12px;">
+      <span data-dc-tpl="171" style="background: rgb(194, 46, 82); color: rgb(253, 239, 230); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">2c</span>
+      <span data-dc-tpl="172" style="font-size: 15px; font-weight: 600; color: rgb(51, 21, 32);">Ягодный, энергичный</span>
+      <span data-dc-tpl="173" style="font-size: 12px; color: rgb(150, 112, 124);">Rubik + Golos Text</span>
+    </div>
+    <div data-dc-tpl="174">
+      <div data-dc-tpl="175" style="font-size: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(233, 110, 51);">Медицинский центр</div>
+      <div data-dc-tpl="176" style="font-family: Rubik, sans-serif; font-size: 72px; font-weight: 700; color: rgb(194, 46, 82); line-height: 1; letter-spacing: -0.01em;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="177" style="font-family: Rubik, sans-serif; font-size: 27px; font-weight: 600; line-height: 1.25; color: rgb(51, 21, 32); text-wrap: pretty;">Диагностика аутоиммунных, наследственных и онкологических заболеваний</div>
+    <div data-dc-tpl="178" style="font-size: 15px; line-height: 1.6; color: rgb(100, 68, 79); text-wrap: pretty;">Взрослые: пн–пт 9:00–16:00, сб 9:00–13:00. Каждому пациенту — развёрнутый комментарий врача к результатам исследования.</div>
+    <div data-dc-tpl="179" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="180" style="flex: 2 1 0%; height: 64px; background: rgb(194, 46, 82); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(248, 203, 215); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#C22E52</div>
+      <div data-dc-tpl="181" style="flex: 1 1 0%; height: 64px; background: rgb(233, 110, 51); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(89, 35, 10); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#E96E33</div>
+      <div data-dc-tpl="182" style="flex: 1 1 0%; height: 64px; background: rgb(51, 21, 32); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(180, 146, 160); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#331520</div>
+      <div data-dc-tpl="183" style="flex: 1 1 0%; height: 64px; background: rgb(253, 239, 230); border: 1px solid rgb(240, 216, 203); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(150, 112, 124); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#FDEFE6</div>
+    </div>
+    <div data-dc-tpl="184" style="background: rgb(255, 255, 255); border: 1px solid rgb(240, 216, 203); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div data-dc-tpl="185" style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(233, 110, 51);">Раздел диагностики</div>
+      <div data-dc-tpl="186" style="font-family: Rubik, sans-serif; font-size: 19px; font-weight: 600; color: rgb(51, 21, 32);">Системные ревматические заболевания</div>
+      <div data-dc-tpl="187" style="display: flex; gap: 10px;">
+        <div data-dc-tpl="188" style="background: rgb(194, 46, 82); color: rgb(253, 239, 230); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Анализы раздела</div>
+        <div data-dc-tpl="189" style="border: 1.5px solid rgb(194, 46, 82); color: rgb(194, 46, 82); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">О разделе</div>
+      </div>
+    </div>
+  </div></section><section data-dc-tpl="190" style="display: flex; flex-wrap: wrap; gap: 32px; padding: 48px; align-items: stretch; font-family: Onest, sans-serif; opacity: 1;">
+
+  <div data-dc-tpl="191" id="1a" style="width: 540px; background: rgb(245, 248, 248); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="192" style="display: flex; align-items: baseline; gap: 12px;">
+      <span data-dc-tpl="193" style="background: rgb(14, 90, 94); color: rgb(245, 248, 248); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">1a</span>
+      <span data-dc-tpl="194" style="font-size: 15px; font-weight: 600; color: rgb(16, 32, 31);">Лабораторная точность</span>
+      <span data-dc-tpl="195" style="font-size: 12px; color: rgb(91, 110, 109);">IBM Plex Sans + IBM Plex Serif</span>
+    </div>
+    <div data-dc-tpl="196" style="font-family: &quot;IBM Plex Sans&quot;, sans-serif;">
+      <div data-dc-tpl="197" style="font-size: 15px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(14, 90, 94);">Медицинский центр</div>
+      <div data-dc-tpl="198" style="font-size: 72px; font-weight: 700; color: rgb(16, 32, 31); letter-spacing: -0.02em; line-height: 1;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="199" style="font-family: &quot;IBM Plex Sans&quot;, sans-serif; font-size: 27px; font-weight: 600; line-height: 1.25; color: rgb(16, 32, 31); text-wrap: pretty;">Диагностика аутоиммунных, наследственных и онкологических заболеваний</div>
+    <div data-dc-tpl="200" style="font-family: &quot;IBM Plex Serif&quot;, serif; font-size: 15px; line-height: 1.6; color: rgb(60, 75, 74); text-wrap: pretty;">Для каждого исследования приводим развёрнутый комментарий, объясняющий клиническую значимость выявленного феномена.</div>
+    <div data-dc-tpl="201" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="202" style="flex: 2 1 0%; height: 64px; background: rgb(14, 90, 94); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(191, 220, 218); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#0E5A5E</div>
+      <div data-dc-tpl="203" style="flex: 1 1 0%; height: 64px; background: rgb(16, 32, 31); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(143, 165, 163); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#10201F</div>
+      <div data-dc-tpl="204" style="flex: 1 1 0%; height: 64px; background: rgb(111, 191, 180); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(14, 75, 69); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#6FBFB4</div>
+      <div data-dc-tpl="205" style="flex: 1 1 0%; height: 64px; background: rgb(245, 248, 248); border: 1px solid rgb(212, 222, 221); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(91, 110, 109); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#F5F8F8</div>
+    </div>
+    <div data-dc-tpl="206" style="background: rgb(255, 255, 255); border: 1px solid rgb(212, 222, 221); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px; font-family: &quot;IBM Plex Sans&quot;, sans-serif;">
+      <div data-dc-tpl="207" style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(111, 191, 180);">Раздел диагностики</div>
+      <div data-dc-tpl="208" style="font-size: 19px; font-weight: 600; color: rgb(16, 32, 31);">Системные ревматические заболевания</div>
+      <div data-dc-tpl="209" style="display: flex; gap: 10px;">
+        <div data-dc-tpl="210" style="background: rgb(14, 90, 94); color: rgb(245, 248, 248); font-size: 13px; font-weight: 500; padding: 10px 18px; border-radius: 3px;">Анализы раздела</div>
+        <div data-dc-tpl="211" style="border: 1px solid rgb(14, 90, 94); color: rgb(14, 90, 94); font-size: 13px; font-weight: 500; padding: 10px 18px; border-radius: 3px;">О разделе</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-dc-tpl="212" id="1b" style="width: 540px; background: rgb(247, 244, 236); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="213" style="display: flex; align-items: baseline; gap: 12px;">
+      <span data-dc-tpl="214" style="background: rgb(30, 44, 78); color: rgb(247, 244, 236); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">1b</span>
+      <span data-dc-tpl="215" style="font-size: 15px; font-weight: 600; color: rgb(30, 44, 78);">Академическая школа</span>
+      <span data-dc-tpl="216" style="font-size: 12px; color: rgb(117, 111, 96);">Spectral + Commissioner</span>
+    </div>
+    <div data-dc-tpl="217">
+      <div data-dc-tpl="218" style="font-family: Commissioner, sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(142, 59, 69);">Медицинский центр</div>
+      <div data-dc-tpl="219" style="font-family: Spectral, serif; font-size: 72px; font-weight: 600; color: rgb(30, 44, 78); line-height: 1;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="220" style="font-family: Spectral, serif; font-size: 28px; font-weight: 500; line-height: 1.25; color: rgb(30, 44, 78); text-wrap: pretty;">Диагностика аутоиммунных, наследственных и онкологических заболеваний</div>
+    <div data-dc-tpl="221" style="font-family: Commissioner, sans-serif; font-size: 15px; line-height: 1.6; color: rgb(74, 69, 54); text-wrap: pretty;">Сотрудничая с академическими клиническими центрами, мы первыми применяем современные методы лабораторной диагностики.</div>
+    <div data-dc-tpl="222" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="223" style="flex: 2 1 0%; height: 64px; background: rgb(30, 44, 78); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(169, 180, 206); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#1E2C4E</div>
+      <div data-dc-tpl="224" style="flex: 1 1 0%; height: 64px; background: rgb(142, 59, 69); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(233, 198, 202); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#8E3B45</div>
+      <div data-dc-tpl="225" style="flex: 1 1 0%; height: 64px; background: rgb(199, 163, 86); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(86, 66, 26); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#C7A356</div>
+      <div data-dc-tpl="226" style="flex: 1 1 0%; height: 64px; background: rgb(247, 244, 236); border: 1px solid rgb(223, 217, 201); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(117, 111, 96); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#F7F4EC</div>
+    </div>
+    <div data-dc-tpl="227" style="background: rgb(255, 253, 248); border: 1px solid rgb(223, 217, 201); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div data-dc-tpl="228" style="font-family: Commissioner, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(142, 59, 69);">Раздел диагностики</div>
+      <div data-dc-tpl="229" style="font-family: Spectral, serif; font-size: 20px; font-weight: 600; color: rgb(30, 44, 78);">Системные ревматические заболевания</div>
+      <div data-dc-tpl="230" style="display: flex; gap: 10px; font-family: Commissioner, sans-serif;">
+        <div data-dc-tpl="231" style="background: rgb(142, 59, 69); color: rgb(247, 244, 236); font-size: 13px; font-weight: 500; padding: 10px 18px; border-radius: 3px;">Анализы раздела</div>
+        <div data-dc-tpl="232" style="border: 1px solid rgb(30, 44, 78); color: rgb(30, 44, 78); font-size: 13px; font-weight: 500; padding: 10px 18px; border-radius: 3px;">О разделе</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-dc-tpl="233" id="1c" style="width: 540px; background: rgb(22, 24, 27); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 28px; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;">
+    <div data-dc-tpl="234" style="display: flex; align-items: baseline; gap: 12px;">
+      <span data-dc-tpl="235" style="background: rgb(88, 213, 180); color: rgb(22, 24, 27); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">1c</span>
+      <span data-dc-tpl="236" style="font-size: 15px; font-weight: 600; color: rgb(242, 244, 243);">Новая лаборатория</span>
+      <span data-dc-tpl="237" style="font-size: 12px; color: rgb(139, 148, 144);">Onest + JetBrains Mono</span>
+    </div>
+    <div data-dc-tpl="238">
+      <div data-dc-tpl="239" style="font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(88, 213, 180);">Медицинский центр</div>
+      <div data-dc-tpl="240" style="font-family: Onest, sans-serif; font-size: 72px; font-weight: 700; color: rgb(242, 244, 243); letter-spacing: -0.03em; line-height: 1;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="241" style="font-family: Onest, sans-serif; font-size: 27px; font-weight: 600; line-height: 1.25; color: rgb(242, 244, 243); letter-spacing: -0.01em; text-wrap: pretty;">Диагностика аутоиммунных, наследственных и онкологических заболеваний</div>
+    <div data-dc-tpl="242" style="font-family: Onest, sans-serif; font-size: 15px; line-height: 1.6; color: rgb(169, 177, 174); text-wrap: pretty;">Проводим диагностику редких состояний и комплексную диагностику сложных случаев.</div>
+    <div data-dc-tpl="243" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="244" style="flex: 2 1 0%; height: 64px; background: rgb(88, 213, 180); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(16, 58, 46); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#58D5B4</div>
+      <div data-dc-tpl="245" style="flex: 1 1 0%; height: 64px; background: rgb(22, 24, 27); border: 1px solid rgb(51, 56, 60); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(139, 148, 144); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#16181B</div>
+      <div data-dc-tpl="246" style="flex: 1 1 0%; height: 64px; background: rgb(36, 40, 44); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(139, 148, 144); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#24282C</div>
+      <div data-dc-tpl="247" style="flex: 1 1 0%; height: 64px; background: rgb(237, 242, 240); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(91, 102, 99); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#EDF2F0</div>
+    </div>
+    <div data-dc-tpl="248" style="background: rgb(36, 40, 44); border: 1px solid rgb(51, 56, 60); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div data-dc-tpl="249" style="font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(88, 213, 180);">Раздел диагностики</div>
+      <div data-dc-tpl="250" style="font-family: Onest, sans-serif; font-size: 19px; font-weight: 600; color: rgb(242, 244, 243);">Системные ревматические заболевания</div>
+      <div data-dc-tpl="251" style="display: flex; gap: 10px; font-family: Onest, sans-serif;">
+        <div data-dc-tpl="252" style="background: rgb(88, 213, 180); color: rgb(22, 24, 27); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 3px;">Анализы раздела</div>
+        <div data-dc-tpl="253" style="border: 1px solid rgb(88, 213, 180); color: rgb(88, 213, 180); font-size: 13px; font-weight: 500; padding: 10px 18px; border-radius: 3px;">О разделе</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-dc-tpl="254" id="1d" style="width: 540px; background: rgb(251, 246, 241); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;">
+    <div data-dc-tpl="255" style="display: flex; align-items: baseline; gap: 12px;">
+      <span data-dc-tpl="256" style="background: rgb(193, 91, 63); color: rgb(251, 246, 241); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 3px;">1d</span>
+      <span data-dc-tpl="257" style="font-size: 15px; font-weight: 600; color: rgb(51, 48, 43);">Человечная медицина</span>
+      <span data-dc-tpl="258" style="font-size: 12px; color: rgb(138, 128, 115);">Lora + Manrope</span>
+    </div>
+    <div data-dc-tpl="259">
+      <div data-dc-tpl="260" style="font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(193, 91, 63);">Медицинский центр</div>
+      <div data-dc-tpl="261" style="font-family: Lora, serif; font-size: 72px; font-weight: 600; color: rgb(51, 48, 43); line-height: 1;">ЛМД</div>
+    </div>
+    <div data-dc-tpl="262" style="font-family: Lora, serif; font-size: 28px; font-weight: 500; line-height: 1.3; color: rgb(51, 48, 43); text-wrap: pretty;">Диагностика аутоиммунных, наследственных и онкологических заболеваний</div>
+    <div data-dc-tpl="263" style="font-family: Manrope, sans-serif; font-size: 15px; line-height: 1.6; color: rgb(92, 85, 74); text-wrap: pretty;">Взрослые: пн–пт 9:00–16:00, сб 9:00–13:00. Каждому пациенту — развёрнутый комментарий врача к результатам.</div>
+    <div data-dc-tpl="264" style="display: flex; gap: 8px;">
+      <div data-dc-tpl="265" style="flex: 2 1 0%; height: 64px; background: rgb(193, 91, 63); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(247, 221, 212); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#C15B3F</div>
+      <div data-dc-tpl="266" style="flex: 1 1 0%; height: 64px; background: rgb(51, 48, 43); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(163, 154, 140); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#33302B</div>
+      <div data-dc-tpl="267" style="flex: 1 1 0%; height: 64px; background: rgb(124, 140, 110); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(44, 54, 36); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#7C8C6E</div>
+      <div data-dc-tpl="268" style="flex: 1 1 0%; height: 64px; background: rgb(251, 246, 241); border: 1px solid rgb(229, 220, 208); border-radius: 3px; display: flex; align-items: flex-end; padding: 8px; color: rgb(138, 128, 115); font-family: &quot;JetBrains Mono&quot;, monospace; font-size: 10px;">#FBF6F1</div>
+    </div>
+    <div data-dc-tpl="269" style="background: rgb(255, 255, 255); border: 1px solid rgb(229, 220, 208); border-radius: 6px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div data-dc-tpl="270" style="font-family: Manrope, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(124, 140, 110);">Раздел диагностики</div>
+      <div data-dc-tpl="271" style="font-family: Lora, serif; font-size: 20px; font-weight: 600; color: rgb(51, 48, 43);">Системные ревматические заболевания</div>
+      <div data-dc-tpl="272" style="display: flex; gap: 10px; font-family: Manrope, sans-serif;">
+        <div data-dc-tpl="273" style="background: rgb(193, 91, 63); color: rgb(251, 246, 241); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 999px;">Анализы раздела</div>
+        <div data-dc-tpl="274" style="border: 1px solid rgb(193, 91, 63); color: rgb(193, 91, 63); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 999px;">О разделе</div>
+      </div>
+    </div>
+  </div></section></div></div>
+
+
+</body></html>
